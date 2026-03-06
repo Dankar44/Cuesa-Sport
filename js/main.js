@@ -228,23 +228,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   lazyImages.forEach(img => imgObserver.observe(img));
 
-  // ===== CURSOR GLOW (desktop only) =====
-  if (window.matchMedia('(pointer: fine)').matches) {
-    const glow = document.createElement('div');
-    glow.style.cssText = `
-      position: fixed; width: 300px; height: 300px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(126,181,214,0.08) 0%, transparent 70%);
-      pointer-events: none; z-index: 0; transition: transform 0.15s ease-out;
-      transform: translate(-50%, -50%);
-    `;
-    document.body.appendChild(glow);
-
-    document.addEventListener('mousemove', (e) => {
-      glow.style.left = e.clientX + 'px';
-      glow.style.top = e.clientY + 'px';
-    }, { passive: true });
-  }
-
   // ===== POOL SHOWCASE SCROLL ANIMATION =====
   const poolStages = document.querySelectorAll('.pool-stage');
   const stageTriggered = new Set();
@@ -286,6 +269,71 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.6, rootMargin: '0px 0px -10% 0px' });
 
     poolStages.forEach(stage => poolObserver.observe(stage));
+  }
+
+  // ===== MISSION/VISION: fallback a imagen si el vídeo no carga =====
+  const mvBg = document.querySelector('.mv-bg');
+  const mvVideo = document.querySelector('.mv-bg-video');
+  if (mvBg && mvVideo) {
+    mvVideo.addEventListener('error', () => mvBg.classList.add('mv-bg--fallback'));
+    mvVideo.addEventListener('loadeddata', () => mvBg.classList.remove('mv-bg--fallback'));
+    const t = setTimeout(() => {
+      if (mvVideo.readyState < 2) mvBg.classList.add('mv-bg--fallback');
+    }, 3000);
+    mvVideo.addEventListener('canplay', () => clearTimeout(t), { once: true });
+  }
+
+  // ===== VALORES: carrusel vertical (palabras que se mueven arriba/abajo con flechas) =====
+  const valuesTrack = document.getElementById('valuesWordsTrack');
+  const valuesDescription = document.getElementById('valuesDescription');
+  const valuesPrev = document.getElementById('valuesPrev');
+  const valuesNext = document.getElementById('valuesNext');
+  const valuesDataEl = document.getElementById('valuesData');
+
+  if (valuesTrack && valuesDescription && valuesDataEl) {
+    const items = valuesTrack.querySelectorAll('.values-word-item');
+    const total = items.length;
+    const barritaThumb = document.querySelector('#valuesBarrita .values-barrita-thumb');
+
+    let activeIndex = 0;
+    let data = [];
+    try {
+      data = JSON.parse(valuesDataEl.textContent || '[]');
+    } catch (e) {}
+
+    function getValuesHeights() {
+      const isNarrow = window.innerWidth <= 768;
+      return { itemHeight: isNarrow ? 48 : 56, rowTop: isNarrow ? 48 : 56 };
+    }
+
+    function updateValuesCarousel() {
+      const { itemHeight, rowTop } = getValuesHeights();
+      const ty = rowTop - activeIndex * itemHeight;
+      valuesTrack.style.transform = `translateY(${ty}px)`;
+      items.forEach((el, i) => el.classList.toggle('active', i === activeIndex));
+      if (data[activeIndex]) {
+        valuesDescription.textContent = data[activeIndex].description;
+      }
+      if (barritaThumb) {
+        barritaThumb.style.left = (activeIndex * (100 / total)) + '%';
+      }
+    }
+
+    if (valuesPrev) {
+      valuesPrev.addEventListener('click', () => {
+        activeIndex = (activeIndex - 1 + total) % total;
+        updateValuesCarousel();
+      });
+    }
+    if (valuesNext) {
+      valuesNext.addEventListener('click', () => {
+        activeIndex = (activeIndex + 1) % total;
+        updateValuesCarousel();
+      });
+    }
+
+    updateValuesCarousel();
+    window.addEventListener('resize', updateValuesCarousel);
   }
 
 });

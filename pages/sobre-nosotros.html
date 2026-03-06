@@ -92,58 +92,94 @@
     </div>
   </section>
 
-  <!-- Mission & Vision -->
-  <section class="section section--alt">
-    <div class="container">
+  <!-- Mission & Vision — Glassmorphism + fondo inmersivo -->
+  <section class="mission-vision-section">
+    <!-- Fondo: vídeo a cámara lenta (opcional) + imagen de respaldo -->
+    <div class="mv-bg" aria-hidden="true">
+      <video class="mv-bg-video" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=1920&q=80">
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-close-up-of-clear-water-in-a-swimming-pool-4072-large.mp4" type="video/mp4">
+      </video>
+      <img class="mv-bg-img" src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=1920&q=80" alt="">
+    </div>
+    <div class="mv-bg-overlay"></div>
+
+    <div class="container mission-vision-intro">
       <div class="section-header section-header--center reveal">
         <span class="section-badge"><i class="fas fa-compass"></i> Nuestro propósito</span>
         <h2 class="section-title">Misión y <span>visión</span></h2>
       </div>
-      <div class="features-grid stagger">
-        <div class="feature-card reveal">
-          <div class="feature-card-icon feature-card-icon--blue"><i class="fas fa-bullseye"></i></div>
-          <h3>Misión</h3>
+    </div>
+    <div class="mission-vision-panes">
+      <div class="mv-pane mv-pane--mission reveal-left">
+        <span class="mv-pane-bg-letter" aria-hidden="true">M</span>
+        <div class="mv-pane-content">
+          <div class="mv-pane-icon"><i class="fas fa-bullseye"></i></div>
+          <h2 class="mv-pane-title">Misión</h2>
           <p>Construir, mantener y reformar recintos acuáticos polivalentes ofreciendo la mejor relación <strong>calidad-precio</strong> del mercado. Trabajamos para que cada cliente disfrute de su piscina con total tranquilidad y satisfacción.</p>
         </div>
-        <div class="feature-card reveal">
-          <div class="feature-card-icon feature-card-icon--teal"><i class="fas fa-eye"></i></div>
-          <h3>Visión</h3>
+      </div>
+      <div class="mv-divider"></div>
+      <div class="mv-pane mv-pane--vision reveal-right">
+        <span class="mv-pane-bg-letter" aria-hidden="true">V</span>
+        <div class="mv-pane-content">
+          <div class="mv-pane-icon"><i class="fas fa-eye"></i></div>
+          <h2 class="mv-pane-title">Visión</h2>
           <p>Consolidarnos como <strong>líderes del sector</strong> en la Comunidad de Madrid a través del esfuerzo constante, el trabajo bien hecho y la apuesta continua por la innovación y la mejora en nuestros procesos.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Values -->
-  <section class="section" id="valores">
+  <!-- Values — carrusel vertical tipo "palabras que se mueven" -->
+  <section class="section section--alt values-section" id="valores">
     <div class="container">
       <div class="section-header section-header--center reveal">
         <span class="section-badge"><i class="fas fa-heart"></i> Los pilares de Cuesa Sport</span>
         <h2 class="section-title">Nuestros <span>valores</span></h2>
         <p class="section-subtitle">Principios que guían nuestro día a día y definen nuestra forma de trabajar.</p>
       </div>
-      <div class="reasons-grid stagger">
-        <div class="reason-card reveal">
-          <div class="reason-card-icon" style="background:var(--primary-pastel);color:var(--primary-dark)"><i class="fas fa-handshake"></i></div>
-          <h4>Compromiso</h4>
-          <p>Asumimos cada proyecto con responsabilidad total hacia el cliente, cumpliendo plazos y garantizando la máxima calidad en cada detalle.</p>
+
+      <div class="values-carousel-layout reveal">
+        <div class="values-words-col">
+          <div class="values-words-viewport">
+            <div class="values-words-track" id="valuesWordsTrack">
+              <div class="values-word-item" data-index="0">Compromiso</div>
+              <div class="values-word-item" data-index="1">Responsabilidad</div>
+              <div class="values-word-item" data-index="2">Visión</div>
+              <div class="values-word-item" data-index="3">Profesionalidad</div>
+            </div>
+          </div>
         </div>
-        <div class="reason-card reveal">
-          <div class="reason-card-icon" style="background:var(--accent-pastel);color:var(--accent-dark)"><i class="fas fa-balance-scale"></i></div>
-          <h4>Responsabilidad</h4>
-          <p>Actuamos con integridad, cumpliendo normativas vigentes y ofreciendo transparencia en cada fase del proyecto y en nuestra relación con clientes y proveedores.</p>
-        </div>
-        <div class="reason-card reveal">
-          <div class="reason-card-icon" style="background:var(--teal-pastel);color:var(--teal)"><i class="fas fa-lightbulb"></i></div>
-          <h4>Visión</h4>
-          <p>Miramos al futuro con optimismo, incorporando nuevas tecnologías y métodos de trabajo que nos permiten ofrecer soluciones más eficientes y sostenibles.</p>
-        </div>
-        <div class="reason-card reveal">
-          <div class="reason-card-icon" style="background:var(--lavender-light);color:var(--lavender)"><i class="fas fa-certificate"></i></div>
-          <h4>Profesionalidad</h4>
-          <p>Contamos con equipos multidisciplinares formados por técnicos cualificados que velan por la excelencia en cada actuación.</p>
+        <div class="values-content-col">
+          <div class="values-content-text">
+            <div class="values-description">
+              <p id="valuesDescription">Asumimos cada proyecto con responsabilidad total hacia el cliente, cumpliendo plazos y garantizando la máxima calidad en cada detalle.</p>
+            </div>
+            <div class="values-barrita" id="valuesBarrita" aria-hidden="true">
+              <span class="values-barrita-track"></span>
+              <span class="values-barrita-thumb"></span>
+            </div>
+          </div>
+          <div class="values-nav">
+            <button type="button" class="values-nav-btn values-nav-prev" aria-label="Valor anterior" id="valuesPrev">
+              <i class="fas fa-arrow-left"></i>
+            </button>
+            <button type="button" class="values-nav-btn values-nav-next" aria-label="Siguiente valor" id="valuesNext">
+              <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
         </div>
       </div>
+
+      <!-- Datos de cada valor (ocultos, para JS) -->
+      <script type="application/json" id="valuesData">
+        [
+          {"title":"Compromiso","description":"Asumimos cada proyecto con responsabilidad total hacia el cliente, cumpliendo plazos y garantizando la máxima calidad en cada detalle."},
+          {"title":"Responsabilidad","description":"Actuamos con integridad, cumpliendo normativas vigentes y ofreciendo transparencia en cada fase del proyecto y en nuestra relación con clientes y proveedores."},
+          {"title":"Visión","description":"Miramos al futuro con optimismo, incorporando nuevas tecnologías y métodos de trabajo que nos permiten ofrecer soluciones más eficientes y sostenibles."},
+          {"title":"Profesionalidad","description":"Contamos con equipos multidisciplinares formados por técnicos cualificados que velan por la excelencia en cada actuación."}
+        ]
+      </script>
     </div>
   </section>
 
