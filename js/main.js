@@ -228,6 +228,206 @@ document.addEventListener('DOMContentLoaded', () => {
 
   lazyImages.forEach(img => imgObserver.observe(img));
 
+  // ===== CURSOR GLOW (desktop only) =====
+  if (window.matchMedia('(pointer: fine)').matches) {
+    const glow = document.createElement('div');
+    glow.style.cssText = `
+      position: fixed; width: 300px; height: 300px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(126,181,214,0.08) 0%, transparent 70%);
+      pointer-events: none; z-index: 0; transition: transform 0.15s ease-out;
+      transform: translate(-50%, -50%);
+    `;
+    document.body.appendChild(glow);
+
+    document.addEventListener('mousemove', (e) => {
+      glow.style.left = e.clientX + 'px';
+      glow.style.top = e.clientY + 'px';
+    }, { passive: true });
+  }
+
+  // ===== CARD DECK: carta sale de baraja → sube al stage → despliega texto → cierra → baja =====
+  const deckStage = document.getElementById('cardDeckStage');
+  const deckCards = document.querySelectorAll('.deck-card');
+  const deckDots = document.querySelectorAll('.deck-dot');
+
+  if (deckCards.length && deckStage) {
+    let currentDeckIndex = 0;
+    let deckTimeout = null;
+    let flyingClone = null;
+    let deployEl = null;
+
+    const FLY_UP_MS   = 650;
+    const DEPLOY_DELAY = 150;
+    const HOLD_MS     = 2200;
+    const FOLD_MS     = 450;
+    const FLY_DOWN_MS = 550;
+    const PAUSE_MS    = 700;
+
+    function clearDeck() {
+      if (deckTimeout) clearTimeout(deckTimeout);
+      deckTimeout = null;
+      if (flyingClone) { flyingClone.remove(); flyingClone = null; }
+      if (deployEl) { deployEl.remove(); deployEl = null; }
+      deckCards.forEach(c => {
+        c.classList.remove('deck-card--gone', 'deck-card--staged');
+      });
+      deckDots.forEach(d => d.classList.remove('deck-dot--active'));
+      deckStage.innerHTML = '';
+    }
+
+    function highlightDot(index) {
+      deckDots.forEach(d => d.classList.remove('deck-dot--active'));
+      if (index >= 0 && deckDots[index]) deckDots[index].classList.add('deck-dot--active');
+    }
+
+    /** PASO 1: Carta sale de baraja y vuela al stage */
+    function step1_flyUp(index) {
+      currentDeckIndex = index;
+      const card = deckCards[index];
+      const cardRect = card.getBoundingClientRect();
+      const stageRect = deckStage.getBoundingClientRect();
+      const targetLeft = stageRect.left + 40;
+      const targetTop = stageRect.top + (stageRect.height / 2) - (cardRect.height / 2);
+
+      card.classList.add('deck-card--gone');
+      highlightDot(index);
+
+      flyingClone = card.cloneNode(true);
+      flyingClone.classList.remove('deck-card--gone');
+      flyingClone.classList.add('deck-card--flying');
+      flyingClone.style.cssText = `
+        position: fixed;
+        left: ${cardRect.left}px;
+        top: ${cardRect.top}px;
+        width: ${cardRect.width}px;
+        height: ${cardRect.height}px;
+        margin: 0; z-index: 1000; pointer-events: none;
+        transition: left ${FLY_UP_MS}ms cubic-bezier(0.25,0.46,0.45,0.94),
+                    top ${FLY_UP_MS}ms cubic-bezier(0.25,0.46,0.45,0.94);
+      `;
+      document.body.appendChild(flyingClone);
+
+      flyingClone.offsetHeight;
+      requestAnimationFrame(() => {
+        flyingClone.style.left = targetLeft + 'px';
+        flyingClone.style.top = targetTop + 'px';
+      });
+
+      deckTimeout = setTimeout(() => step2_placeAndDeploy(index), FLY_UP_MS + 60);
+    }
+
+    /** PASO 2: Carta se queda en el stage y despliega texto a la derecha */
+    function step2_placeAndDeploy(index) {
+      if (flyingClone) { flyingClone.remove(); flyingClone = null; }
+      const card = deckCards[index];
+
+      const stagedCard = card.cloneNode(true);
+      stagedCard.classList.remove('deck-card--gone');
+      stagedCard.classList.add('deck-card--staged');
+      stagedCard.style.position = 'relative';
+      stagedCard.style.display = 'inline-flex';
+
+      deployEl = document.createElement('div');
+      deployEl.className = 'card-deploy-text';
+      deployEl.innerHTML = `<div class="card-deploy-text-inner"><h4>${card.dataset.title}</h4><p>${card.dataset.text}</p></div>`;
+      stagedCard.appendChild(deployEl);
+
+      deckStage.innerHTML = '';
+      deckStage.style.cssText = 'display:flex;align-items:center;padding-left:40px;';
+      deckStage.appendChild(stagedCard);
+
+      deckTimeout = setTimeout(() => {
+        deployEl.classList.add('is-open');
+        deckTimeout = setTimeout(step3_foldText, HOLD_MS);
+      }, DEPLOY_DELAY);
+    }
+
+    /** PASO 3: Pliega el texto */
+    function step3_foldText() {
+      if (deployEl) deployEl.classList.remove('is-open');
+      deckTimeout = setTimeout(step4_flyDown, FOLD_MS);
+    }
+
+    /** PASO 4: Carta vuela de vuelta a su sitio en la baraja */
+    function step4_flyDown() {
+      const index = currentDeckIndex;
+      const card = deckCards[index];
+      const cardRect = card.getBoundingClientRect();
+
+      const stagedCard = deckStage.querySelector('.deck-card--staged');
+      if (!stagedCard) { step5_landed(); return; }
+      const stagedRect = stagedCard.getBoundingClientRect();
+
+      flyingClone = document.createElement('div');
+      flyingClone.className = 'deck-card deck-card--flying';
+      flyingClone.innerHTML = card.innerHTML;
+      flyingClone.style.cssText = `
+        position: fixed;
+        left: ${stagedRect.left}px;
+        top: ${stagedRect.top}px;
+        width: ${stagedRect.width}px;
+        height: ${stagedRect.height}px;
+        margin: 0; z-index: 1000; pointer-events: none;
+        transition: left ${FLY_DOWN_MS}ms cubic-bezier(0.25,0.46,0.45,0.94),
+                    top ${FLY_DOWN_MS}ms cubic-bezier(0.25,0.46,0.45,0.94),
+                    width ${FLY_DOWN_MS}ms ease,
+                    height ${FLY_DOWN_MS}ms ease;
+      `;
+      document.body.appendChild(flyingClone);
+
+      deckStage.innerHTML = '';
+      deployEl = null;
+
+      flyingClone.offsetHeight;
+      requestAnimationFrame(() => {
+        flyingClone.style.left = cardRect.left + 'px';
+        flyingClone.style.top = cardRect.top + 'px';
+        flyingClone.style.width = cardRect.width + 'px';
+        flyingClone.style.height = cardRect.height + 'px';
+      });
+
+      deckTimeout = setTimeout(step5_landed, FLY_DOWN_MS + 60);
+    }
+
+    /** PASO 5: Carta vuelve a la baraja, pausa, siguiente */
+    function step5_landed() {
+      if (flyingClone) { flyingClone.remove(); flyingClone = null; }
+      deckCards[currentDeckIndex].classList.remove('deck-card--gone');
+      highlightDot(-1);
+      currentDeckIndex = (currentDeckIndex + 1) % deckCards.length;
+      deckTimeout = setTimeout(() => step1_flyUp(currentDeckIndex), PAUSE_MS);
+    }
+
+    function startDeckCycle() {
+      clearDeck();
+      deckTimeout = setTimeout(() => step1_flyUp(0), 1000);
+    }
+
+    function goToDeckCard(index) {
+      clearDeck();
+      step1_flyUp(index);
+    }
+
+    deckCards.forEach((card, i) => {
+      card.addEventListener('click', () => goToDeckCard(i));
+    });
+
+    deckDots.forEach((dot) => {
+      dot.addEventListener('click', () => goToDeckCard(parseInt(dot.dataset.index, 10)));
+    });
+
+    const deckObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          startDeckCycle();
+          deckObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    deckObserver.observe(deckStage);
+  }
+
   // ===== POOL SHOWCASE SCROLL ANIMATION =====
   const poolStages = document.querySelectorAll('.pool-stage');
   const stageTriggered = new Set();
@@ -269,71 +469,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.6, rootMargin: '0px 0px -10% 0px' });
 
     poolStages.forEach(stage => poolObserver.observe(stage));
-  }
-
-  // ===== MISSION/VISION: fallback a imagen si el vídeo no carga =====
-  const mvBg = document.querySelector('.mv-bg');
-  const mvVideo = document.querySelector('.mv-bg-video');
-  if (mvBg && mvVideo) {
-    mvVideo.addEventListener('error', () => mvBg.classList.add('mv-bg--fallback'));
-    mvVideo.addEventListener('loadeddata', () => mvBg.classList.remove('mv-bg--fallback'));
-    const t = setTimeout(() => {
-      if (mvVideo.readyState < 2) mvBg.classList.add('mv-bg--fallback');
-    }, 3000);
-    mvVideo.addEventListener('canplay', () => clearTimeout(t), { once: true });
-  }
-
-  // ===== VALORES: carrusel vertical (palabras que se mueven arriba/abajo con flechas) =====
-  const valuesTrack = document.getElementById('valuesWordsTrack');
-  const valuesDescription = document.getElementById('valuesDescription');
-  const valuesPrev = document.getElementById('valuesPrev');
-  const valuesNext = document.getElementById('valuesNext');
-  const valuesDataEl = document.getElementById('valuesData');
-
-  if (valuesTrack && valuesDescription && valuesDataEl) {
-    const items = valuesTrack.querySelectorAll('.values-word-item');
-    const total = items.length;
-    const barritaThumb = document.querySelector('#valuesBarrita .values-barrita-thumb');
-
-    let activeIndex = 0;
-    let data = [];
-    try {
-      data = JSON.parse(valuesDataEl.textContent || '[]');
-    } catch (e) {}
-
-    function getValuesHeights() {
-      const isNarrow = window.innerWidth <= 768;
-      return { itemHeight: isNarrow ? 48 : 56, rowTop: isNarrow ? 48 : 56 };
-    }
-
-    function updateValuesCarousel() {
-      const { itemHeight, rowTop } = getValuesHeights();
-      const ty = rowTop - activeIndex * itemHeight;
-      valuesTrack.style.transform = `translateY(${ty}px)`;
-      items.forEach((el, i) => el.classList.toggle('active', i === activeIndex));
-      if (data[activeIndex]) {
-        valuesDescription.textContent = data[activeIndex].description;
-      }
-      if (barritaThumb) {
-        barritaThumb.style.left = (activeIndex * (100 / total)) + '%';
-      }
-    }
-
-    if (valuesPrev) {
-      valuesPrev.addEventListener('click', () => {
-        activeIndex = (activeIndex - 1 + total) % total;
-        updateValuesCarousel();
-      });
-    }
-    if (valuesNext) {
-      valuesNext.addEventListener('click', () => {
-        activeIndex = (activeIndex + 1) % total;
-        updateValuesCarousel();
-      });
-    }
-
-    updateValuesCarousel();
-    window.addEventListener('resize', updateValuesCarousel);
   }
 
 });
