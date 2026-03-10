@@ -7,6 +7,148 @@
   <meta name="description" content="Piscinas infinity en Madrid: el agua se funde con el horizonte. Diseño, construcción y asesoramiento. Más de 30 años de experiencia. Presupuesto gratuito.">
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <style>
+    .plans-carousel-section { padding: 80px 0 100px; }
+    .plans-carousel-wrapper {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 56px;
+    }
+    .plans-carousel {
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(30,45,61,0.06);
+      background: #fff;
+    }
+    .plans-carousel-track {
+      display: flex;
+      scroll-snap-type: x mandatory;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .plans-carousel-track::-webkit-scrollbar { display: none; }
+    .plans-carousel-slide {
+      flex: 0 0 100%;
+      scroll-snap-align: center;
+      scroll-snap-stop: always;
+    }
+    .plans-carousel-card {
+      position: relative;
+      padding: 24px;
+      background: #fff;
+    }
+    .plans-carousel-card img {
+      width: 100%;
+      height: auto;
+      max-height: 520px;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+    .plans-carousel-label {
+      display: block;
+      text-align: center;
+      margin-top: 16px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--primary-dark, #5A9BC5);
+      letter-spacing: 0.5px;
+    }
+    .plans-carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: none;
+      background: #fff;
+      color: var(--dark, #1E2D3D);
+      box-shadow: 0 4px 20px rgba(30,45,61,0.15);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      z-index: 2;
+    }
+    .plans-carousel-btn:hover {
+      transform: translateY(-50%) scale(1.05);
+      box-shadow: 0 8px 28px rgba(30,45,61,0.2);
+    }
+    .plans-carousel-btn--prev { left: 0; }
+    .plans-carousel-btn--next { right: 0; }
+    .plans-carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 24px;
+    }
+    .plans-carousel-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: none;
+      background: var(--border, #E8EDF2);
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+    .plans-carousel-dot.is-active {
+      background: var(--primary, #7EB5D6);
+      transform: scale(1.2);
+    }
+    .plans-carousel-dot:hover { background: var(--primary-light, #B8D8EB); }
+    .plans-carousel-copy {
+      max-width: 720px;
+      margin: 48px auto 0;
+      text-align: center;
+    }
+    .plans-carousel-copy p {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--text, #4A5568);
+    }
+    @media (max-width: 768px) {
+      .plans-carousel-wrapper { padding: 0 16px; }
+      .plans-carousel-btn { display: none; }
+      .plans-carousel-card { padding: 16px; }
+      .plans-carousel-card img { max-height: 360px; }
+      .plans-carousel-copy { margin-top: 32px; padding: 0 8px; }
+      .plans-carousel-copy p { font-size: 1rem; }
+    }
+    .coverage-map-wrapper { margin-top: 24px; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 32px rgba(30,45,61,0.08); }
+    .coverage-map { width: 100%; height: 560px; background: var(--bg-alt); }
+    .coverage-map-attribution { margin-top: 12px; font-size: 0.75rem; color: var(--text-light); text-align: center; }
+    .coverage-map-attribution a { color: var(--primary); }
+    .coverage-map-actions { margin-top: 24px; text-align: center; }
+    .coverage-map-text { font-size: 1rem; color: var(--text); margin: 0; line-height: 1.6; }
+    .coverage-map-pill {
+      display: inline-block;
+      padding: 8px 20px;
+      margin-left: 4px;
+      font-weight: 600;
+      color: var(--primary-dark);
+      background: var(--primary-pastel);
+      border-radius: 50px;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+    .coverage-map-pill:hover {
+      background: var(--primary);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+    .leaflet-popup-content-wrapper { border-radius: 12px; box-shadow: 0 8px 24px rgba(30,45,61,0.12); }
+    .coverage-popup img { width: 100%; max-width: 280px; height: auto; border-radius: 8px; margin-bottom: 10px; display: block; }
+    .coverage-popup h4 { margin: 0 0 8px; font-size: 1rem; color: var(--dark); }
+    .coverage-popup p { margin: 0; font-size: 0.9rem; line-height: 1.5; color: var(--text); }
+    .coverage-popup a { display: inline-block; margin-top: 10px; font-size: 0.85rem; font-weight: 600; color: var(--primary); }
+    @media (max-width: 768px) {
+      .coverage-map { height: 400px; }
+    }
+  </style>
 </head>
 <body>
 
@@ -29,13 +171,12 @@
           </div>
         </div>
         <div class="nav-dropdown">
-          <a href="construccion-piscinas.html" class="nav-link">Servicios <i class="fas fa-chevron-down" style="font-size:0.6em;margin-left:4px"></i></a>
+          <a href="servicios.html" class="nav-link">Servicios <i class="fas fa-chevron-down" style="font-size:0.6em;margin-left:4px"></i></a>
           <div class="nav-dropdown-menu">
-            <a href="construccion-piscinas.html">Construcción de piscinas</a>
-            <a href="piscinas-infinity.html">Piscinas Infinity</a>
-            <a href="mantenimiento-piscinas.html">Mantenimiento de piscinas</a>
-            <a href="reforma-piscinas.html">Reforma de piscinas</a>
-            <a href="climatizacion-piscinas.html">Climatización de piscinas</a>
+            <a href="servicios.html#construccion">Construcción de piscinas</a>
+            <a href="servicios.html#mantenimiento">Mantenimiento de piscinas</a>
+            <a href="servicios.html#reforma">Reforma de piscinas</a>
+            <a href="servicios.html#climatizacion">Climatización de piscinas</a>
           </div>
         </div>
         <a href="proyectos.html" class="nav-link">Proyectos</a>
@@ -53,7 +194,9 @@
         <nav class="breadcrumb reveal">
           <a href="../index.html">Inicio</a>
           <span><i class="fas fa-chevron-right" style="font-size:0.6em;opacity:0.5"></i></span>
-          <a href="construccion-piscinas.html">Construcción</a>
+          <a href="servicios.html">Servicios</a>
+          <span><i class="fas fa-chevron-right" style="font-size:0.6em;opacity:0.5"></i></span>
+          <a href="construccion-piscinas.html">Construcción de piscinas</a>
           <span><i class="fas fa-chevron-right" style="font-size:0.6em;opacity:0.5"></i></span>
           <span>Piscinas Infinity</span>
         </nav>
@@ -88,6 +231,51 @@
     </div>
   </section>
 
+  <!-- Planos: carrusel ultramoderno con los 3 planos infinity -->
+  <section class="section plans-carousel-section" style="background: #FFFFFF;">
+    <div class="container">
+      <div class="section-header section-header--center reveal">
+        <span class="section-badge"><i class="fas fa-drafting-compass"></i> Planos de proyecto</span>
+        <h2 class="section-title">Planos de ejecución <span>piscina infinity</span></h2>
+        <p class="section-subtitle">Planta, alzados y detalles técnicos de un proyecto real. Desliza para ver cada plano.</p>
+      </div>
+      <div class="plans-carousel-wrapper reveal">
+        <div class="plans-carousel" id="plansCarousel">
+          <div class="plans-carousel-track">
+            <div class="plans-carousel-slide">
+              <div class="plans-carousel-card">
+                <img src="../img/Plano1-infinito.png" alt="Plano 1 - Planta piscina infinity">
+                <span class="plans-carousel-label">Planta</span>
+              </div>
+            </div>
+            <div class="plans-carousel-slide">
+              <div class="plans-carousel-card">
+                <img src="../img/Plano2_Infinito.png" alt="Plano 2 - Alzado y sección piscina infinity">
+                <span class="plans-carousel-label">Alzado y sección</span>
+              </div>
+            </div>
+            <div class="plans-carousel-slide">
+              <div class="plans-carousel-card">
+                <img src="../img/Plano3_Infinito.png" alt="Plano 3 - Detalles técnicos piscina infinity">
+                <span class="plans-carousel-label">Detalles técnicos</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="plans-carousel-btn plans-carousel-btn--prev" aria-label="Planos anterior">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button type="button" class="plans-carousel-btn plans-carousel-btn--next" aria-label="Siguiente plano">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+        <div class="plans-carousel-dots" id="plansCarouselDots"></div>
+      </div>
+      <div class="plans-carousel-copy reveal">
+        <p>En Cuesa Sport nos basamos en la excelencia en cada proyecto. Por eso elaboramos planos de ejecución detallados para tu piscina infinity: planta, alzados, secciones y detalles técnicos que garantizan una construcción precisa y un resultado de máxima calidad. Nuestros planos no son solo un trámite: son la base de un trabajo bien hecho y la tranquilidad de que tu piscina se construye tal como la has soñado.</p>
+      </div>
+    </div>
+  </section>
+
   <section class="section section--alt">
     <div class="container">
       <div class="section-header section-header--center reveal">
@@ -95,13 +283,12 @@
         <h2 class="section-title">Piscinas infinity en <span>Madrid y alrededores</span></h2>
         <p class="section-subtitle">Construimos piscinas infinity en la Comunidad de Madrid: Boadilla, Pozuelo, Las Rozas, Majadahonda, Torrelodones y más localidades.</p>
       </div>
-      <div class="locations-grid stagger reveal">
-        <a href="contacto.html" class="location-card"><i class="fas fa-map-pin"></i> Boadilla del Monte</a>
-        <a href="contacto.html" class="location-card"><i class="fas fa-map-pin"></i> Pozuelo de Alarcón</a>
-        <a href="contacto.html" class="location-card"><i class="fas fa-map-pin"></i> Las Rozas</a>
-        <a href="contacto.html" class="location-card"><i class="fas fa-map-pin"></i> Majadahonda</a>
-        <a href="contacto.html" class="location-card"><i class="fas fa-map-pin"></i> Torrelodones</a>
-        <a href="contacto.html" class="location-card"><i class="fas fa-map-pin"></i> Villalba</a>
+      <div class="coverage-map-wrapper reveal">
+        <div id="coverage-map" class="coverage-map"></div>
+      </div>
+      <p class="coverage-map-attribution">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors</p>
+      <div class="coverage-map-actions reveal">
+        <p class="coverage-map-text">Si desea ver todos los tipos de piscinas que hemos construido <a href="proyectos.html" class="coverage-map-pill">pulse aquí</a></p>
       </div>
     </div>
   </section>
@@ -191,8 +378,11 @@
         <div>
           <h4>Servicios</h4>
           <ul class="footer-links">
+            <li><a href="servicios.html">Servicios</a></li>
             <li><a href="construccion-piscinas.html">Construcción de piscinas</a></li>
             <li><a href="piscinas-infinity.html">Piscinas Infinity</a></li>
+            <li><a href="piscinas-desbordante.html">Piscinas Desbordantes</a></li>
+            <li><a href="piscinas-forma.html">Piscinas con forma</a></li>
             <li><a href="mantenimiento-piscinas.html">Mantenimiento</a></li>
             <li><a href="reforma-piscinas.html">Reforma</a></li>
             <li><a href="climatizacion-piscinas.html">Climatización</a></li>
@@ -235,5 +425,74 @@
   </button>
 
   <script src="../js/main.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script>
+    (function() {
+      var carousel = document.getElementById('plansCarousel');
+      var track = carousel && carousel.querySelector('.plans-carousel-track');
+      var dotsContainer = document.getElementById('plansCarouselDots');
+      var slides = track ? track.querySelectorAll('.plans-carousel-slide') : [];
+      var prevBtn = document.querySelector('.plans-carousel-btn--prev');
+      var nextBtn = document.querySelector('.plans-carousel-btn--next');
+      var total = slides.length;
+      if (!track || total === 0) return;
+
+      function getIndex() {
+        var w = track.querySelector('.plans-carousel-slide').offsetWidth;
+        return Math.round(track.scrollLeft / w);
+      }
+      function goTo(i) {
+        i = Math.max(0, Math.min(i, total - 1));
+        var w = track.querySelector('.plans-carousel-slide').offsetWidth;
+        track.scrollTo({ left: w * i, behavior: 'smooth' });
+        updateDots(i);
+      }
+      function updateDots(activeIndex) {
+        if (!dotsContainer) return;
+        dotsContainer.querySelectorAll('.plans-carousel-dot').forEach(function(dot, i) {
+          dot.classList.toggle('is-active', i === activeIndex);
+        });
+      }
+      for (var i = 0; i < total; i++) {
+        var dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'plans-carousel-dot' + (i === 0 ? ' is-active' : '');
+        dot.setAttribute('aria-label', 'Ir al plano ' + (i + 1));
+        dot.addEventListener('click', function() { goTo(parseInt(this.dataset.index, 10)); });
+        dot.dataset.index = i;
+        dotsContainer.appendChild(dot);
+      }
+      track.addEventListener('scroll', function() {
+        updateDots(getIndex());
+      });
+      if (prevBtn) prevBtn.addEventListener('click', function() { goTo(getIndex() - 1); });
+      if (nextBtn) nextBtn.addEventListener('click', function() { goTo(getIndex() + 1); });
+    })();
+
+    (function() {
+      var mapEl = document.getElementById('coverage-map');
+      if (!mapEl || typeof L === 'undefined') return;
+      var map = L.map('coverage-map').setView([40.48, -3.88], 10);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+      var locations = [
+        { name: 'Boadilla del Monte', lat: 40.405, lng: -3.877, img: '../img/boadilla-infinity.png', desc: 'Instalación y construcción de piscinas infinity en Boadilla del Monte. Diseño a medida y acabados de alta gama.' },
+        { name: 'Pozuelo de Alarcón', lat: 40.435, lng: -3.813, img: '../img/pozuelo-infinity.png', desc: 'Piscinas de borde infinito en Pozuelo de Alarcón. Más de 30 años de experiencia en la zona noroeste.' },
+        { name: 'Las Rozas', lat: 40.493, lng: -3.874, img: '../img/lasrozas-infinity.png', desc: 'Proyectos de piscinas infinity en Las Rozas. Asesoramiento técnico y presupuesto sin compromiso.' },
+        { name: 'Majadahonda', lat: 40.472, lng: -3.872, img: '../img/majadahonda-infinity.png', desc: 'Construcción de piscinas infinity en Majadahonda. Integración con el paisaje y vistas privilegiadas.' },
+        { name: 'Torrelodones', lat: 40.577, lng: -3.929, img: '../img/torrelodones-infinity.png', desc: 'Piscinas infinity en Torrelodones y zona de la sierra. Calidad y garantía Cuesa Sport.' },
+        { name: 'Villalba', lat: 40.635, lng: -4.009, img: '../img/villalba-infinity.png', desc: 'Piscinas de desborde infinito en Collado Villalba y alrededores. Obra completa y mantenimiento.' }
+      ];
+      locations.forEach(function(loc) {
+        var popupHtml = '<div class="coverage-popup">' +
+          '<img src="' + loc.img + '" alt="Piscina infinity ' + loc.name + '">' +
+          '<h4>' + loc.name + '</h4>' +
+          '<p>' + loc.desc + '</p>' +
+          '<a href="contacto.html">Solicitar presupuesto &rarr;</a></div>';
+        L.marker([loc.lat, loc.lng]).addTo(map).bindPopup(popupHtml, { maxWidth: 320 });
+      });
+    })();
+  </script>
 </body>
 </html>

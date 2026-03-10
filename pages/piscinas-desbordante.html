@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Piscinas Desbordantes en Madrid | Cuesa Sport</title>
+  <meta name="description" content="Piscinas desbordantes en Madrid: el agua rebosa por el borde en un efecto elegante. Diseño, construcción y asesoramiento. Más de 30 años de experiencia. Presupuesto gratuito.">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <style>
+    .plans-carousel-section { padding: 80px 0 100px; }
+    .plans-carousel-wrapper {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 56px;
+    }
+    .plans-carousel {
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(30,45,61,0.06);
+      background: #fff;
+    }
+    .plans-carousel-track {
+      display: flex;
+      scroll-snap-type: x mandatory;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .plans-carousel-track::-webkit-scrollbar { display: none; }
+    .plans-carousel-slide {
+      flex: 0 0 100%;
+      scroll-snap-align: center;
+      scroll-snap-stop: always;
+    }
+    .plans-carousel-card {
+      position: relative;
+      padding: 24px;
+      background: #fff;
+    }
+    .plans-carousel-card img {
+      width: 100%;
+      height: auto;
+      max-height: 520px;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+    .plans-carousel-label {
+      display: block;
+      text-align: center;
+      margin-top: 16px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--primary-dark, #5A9BC5);
+      letter-spacing: 0.5px;
+    }
+    .plans-carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: none;
+      background: #fff;
+      color: var(--dark, #1E2D3D);
+      box-shadow: 0 4px 20px rgba(30,45,61,0.15);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      z-index: 2;
+    }
+    .plans-carousel-btn:hover {
+      transform: translateY(-50%) scale(1.05);
+      box-shadow: 0 8px 28px rgba(30,45,61,0.2);
+    }
+    .plans-carousel-btn--prev { left: 0; }
+    .plans-carousel-btn--next { right: 0; }
+    .plans-carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 24px;
+    }
+    .plans-carousel-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: none;
+      background: var(--border, #E8EDF2);
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+    .plans-carousel-dot.is-active {
+      background: var(--primary, #7EB5D6);
+      transform: scale(1.2);
+    }
+    .plans-carousel-dot:hover { background: var(--primary-light, #B8D8EB); }
+    .plans-carousel-copy {
+      max-width: 720px;
+      margin: 48px auto 0;
+      text-align: center;
+    }
+    .plans-carousel-copy p {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--text, #4A5568);
+    }
+    @media (max-width: 768px) {
+      .plans-carousel-wrapper { padding: 0 16px; }
+      .plans-carousel-btn { display: none; }
+      .plans-carousel-card { padding: 16px; }
+      .plans-carousel-card img { max-height: 360px; }
+      .plans-carousel-copy { margin-top: 32px; padding: 0 8px; }
+      .plans-carousel-copy p { font-size: 1rem; }
+    }
+    .coverage-map-wrapper { margin-top: 24px; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 32px rgba(30,45,61,0.08); }
+    .coverage-map { width: 100%; height: 560px; background: var(--bg-alt); }
+    .coverage-map-attribution { margin-top: 12px; font-size: 0.75rem; color: var(--text-light); text-align: center; }
+    .coverage-map-attribution a { color: var(--primary); }
+    .coverage-map-actions { margin-top: 24px; text-align: center; }
+    .coverage-map-text { font-size: 1rem; color: var(--text); margin: 0; line-height: 1.6; }
+    .coverage-map-pill {
+      display: inline-block;
+      padding: 8px 20px;
+      margin-left: 4px;
+      font-weight: 600;
+      color: var(--primary-dark);
+      background: var(--primary-pastel);
+      border-radius: 50px;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+    .coverage-map-pill:hover {
+      background: var(--primary);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+    .leaflet-popup-content-wrapper { border-radius: 12px; box-shadow: 0 8px 24px rgba(30,45,61,0.12); }
+    .coverage-popup img { width: 100%; max-width: 280px; height: auto; border-radius: 8px; margin-bottom: 10px; display: block; }
+    .coverage-popup h4 { margin: 0 0 8px; font-size: 1rem; color: var(--dark); }
+    .coverage-popup p { margin: 0; font-size: 0.9rem; line-height: 1.5; color: var(--text); }
+    .coverage-popup a { display: inline-block; margin-top: 10px; font-size: 0.85rem; font-weight: 600; color: var(--primary); }
+    @media (max-width: 768px) {
+      .coverage-map { height: 400px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="preloader">
+    <div class="preloader-logo">Cuesa <span>Sport</span></div>
+    <div class="preloader-bar"></div>
+  </div>
+
+  <header class="header">
+    <div class="container">
+      <a href="../index.html" class="logo">Cuesa <span>Sport</span></a>
+      <nav class="nav">
+        <a href="../index.html" class="nav-link">Inicio</a>
+        <div class="nav-dropdown">
+          <a href="sobre-nosotros.html" class="nav-link">Sobre nosotros <i class="fas fa-chevron-down" style="font-size:0.6em;margin-left:4px"></i></a>
+          <div class="nav-dropdown-menu">
+            <a href="sobre-nosotros.html">Nuestra historia</a>
+            <a href="sobre-nosotros.html#valores">Misión y valores</a>
+            <a href="contacto.html">Trabaja con nosotros</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="servicios.html" class="nav-link">Servicios <i class="fas fa-chevron-down" style="font-size:0.6em;margin-left:4px"></i></a>
+          <div class="nav-dropdown-menu">
+            <a href="servicios.html#construccion">Construcción de piscinas</a>
+            <a href="servicios.html#mantenimiento">Mantenimiento de piscinas</a>
+            <a href="servicios.html#reforma">Reforma de piscinas</a>
+            <a href="servicios.html#climatizacion">Climatización de piscinas</a>
+          </div>
+        </div>
+        <a href="proyectos.html" class="nav-link">Proyectos</a>
+        <a href="sectores.html" class="nav-link">Sectores</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contacto.html" class="nav-link nav-cta">Contacto</a>
+      </nav>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </header>
+
+  <section class="page-header" style="background: linear-gradient(135deg, rgba(30,45,61,0.94) 0%, rgba(42,59,76,0.92) 100%), url('../img/Desbordante-real.png'); background-size: cover; background-position: center;">
+    <div class="container">
+      <div class="page-header-content">
+        <nav class="breadcrumb reveal">
+          <a href="../index.html">Inicio</a>
+          <span><i class="fas fa-chevron-right" style="font-size:0.6em;opacity:0.5"></i></span>
+          <a href="servicios.html">Servicios</a>
+          <span><i class="fas fa-chevron-right" style="font-size:0.6em;opacity:0.5"></i></span>
+          <span>Piscinas Desbordantes</span>
+        </nav>
+        <h1 class="text-reveal reveal"><span>Piscinas Desbordantes</span></h1>
+        <p class="reveal">El agua rebosa por el borde de la piscina en un efecto elegante y contemporáneo. Diseño de coronación perimetral o en un lado para integrar tu piscina con el jardín.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section pool-showcase-section" style="background: #FFFFFF;">
+    <div class="container">
+      <div class="section-header section-header--center reveal">
+        <span class="section-badge"><i class="fas fa-water"></i> Desbordante</span>
+        <h2 class="section-title">Diseño y construcción de <span>piscinas desbordantes</span></h2>
+      </div>
+    </div>
+    <div class="pool-stage" data-direction="left">
+      <div class="pool-stage-sticky">
+        <div class="container pool-stage-inner">
+          <div class="pool-stage-visual">
+            <img class="pool-blueprint" src="../img/Desbordante-plano.png" alt="Plano piscina desbordante">
+            <img class="pool-realistic" src="../img/Desbordante-real.png" alt="Piscina desbordante">
+          </div>
+          <div class="pool-stage-text">
+            <p>Las piscinas desbordantes son aquellas en las que el agua rebosa por uno o varios bordes hacia un canal o rejilla perimetral. El nivel del agua queda al ras del suelo o de la coronación, creando un efecto visual muy limpio y moderno.</p>
+            <p>Pueden ser de desborde perimetral (el agua cae por todo el contorno) o de desborde en un solo lado. El agua se recoge en un canal y se recircula al vaso mediante el sistema de depuración. Es una solución muy demandada en obra nueva y reformas de alto standing.</p>
+            <a href="contacto.html" class="btn btn--primary btn--sm">Solicitar presupuesto <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section plans-carousel-section" style="background: #FFFFFF;">
+    <div class="container">
+      <div class="section-header section-header--center reveal">
+        <span class="section-badge"><i class="fas fa-drafting-compass"></i> Planos de proyecto</span>
+        <h2 class="section-title">Planos de ejecución <span>piscina desbordante</span></h2>
+        <p class="section-subtitle">Planta, alzados y detalles técnicos de un proyecto real. Desliza para ver cada plano.</p>
+      </div>
+      <div class="plans-carousel-wrapper reveal">
+        <div class="plans-carousel" id="plansCarousel">
+          <div class="plans-carousel-track">
+            <div class="plans-carousel-slide">
+              <div class="plans-carousel-card">
+                <img src="../img/Plano1-Desbordante.png" alt="Plano 1 - Planta piscina desbordante">
+                <span class="plans-carousel-label">Planta</span>
+              </div>
+            </div>
+            <div class="plans-carousel-slide">
+              <div class="plans-carousel-card">
+                <img src="../img/Plano2-Desbordante.png" alt="Plano 2 - Alzado y sección piscina desbordante">
+                <span class="plans-carousel-label">Alzado y sección</span>
+              </div>
+            </div>
+            <div class="plans-carousel-slide">
+              <div class="plans-carousel-card">
+                <img src="../img/Plano3-Desbordante.png" alt="Plano 3 - Detalles técnicos piscina desbordante">
+                <span class="plans-carousel-label">Detalles técnicos</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="plans-carousel-btn plans-carousel-btn--prev" aria-label="Planos anterior">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button type="button" class="plans-carousel-btn plans-carousel-btn--next" aria-label="Siguiente plano">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+        <div class="plans-carousel-dots" id="plansCarouselDots"></div>
+      </div>
+      <div class="plans-carousel-copy reveal">
+        <p>En Cuesa Sport nos basamos en la excelencia en cada proyecto. Por eso elaboramos planos de ejecución detallados para tu piscina desbordante: planta, alzados, secciones y detalles técnicos que garantizan una construcción precisa y un resultado de máxima calidad. Nuestros planos no son solo un trámite: son la base de un trabajo bien hecho y la tranquilidad de que tu piscina se construye tal como la has soñado.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-header section-header--center reveal">
+        <span class="section-badge"><i class="fas fa-map-marker-alt"></i> Cobertura</span>
+        <h2 class="section-title">Piscinas desbordantes en <span>Madrid y alrededores</span></h2>
+        <p class="section-subtitle">Construimos piscinas desbordantes en la Comunidad de Madrid: Boadilla, Pozuelo, Las Rozas, Majadahonda, Torrelodones y más localidades.</p>
+      </div>
+      <div class="coverage-map-wrapper reveal">
+        <div id="coverage-map" class="coverage-map"></div>
+      </div>
+      <p class="coverage-map-attribution">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors</p>
+      <div class="coverage-map-actions reveal">
+        <p class="coverage-map-text">Si desea ver todos los tipos de piscinas que hemos construido <a href="proyectos.html" class="coverage-map-pill">pulse aquí</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <h2 class="reveal">¿Quieres una piscina desbordante?</h2>
+      <p class="reveal">Cuéntanos tu proyecto y te enviamos un presupuesto sin compromiso. Especialistas en piscinas de coronación desbordante en Madrid.</p>
+      <a href="contacto.html" class="btn btn--white btn--lg reveal">
+        Solicitar presupuesto <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </section>
+
+  <section class="section" id="contacto">
+    <div class="container">
+      <div class="contact-layout">
+        <div class="contact-info-card reveal-left">
+          <h3>Hablemos de tu piscina desbordante</h3>
+          <p>Indícanos ubicación, medidas aproximadas y tipo de coronación. Te asesoramos sin compromiso.</p>
+          <div class="contact-info-item">
+            <i class="fas fa-phone"></i>
+            <div>
+              <h4>Teléfono</h4>
+              <p><a href="tel:916002054">91 600 20 54</a></p>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <h4>Email</h4>
+              <p><a href="mailto:cuesasport@cuesasport.com">cuesasport@cuesasport.com</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form-card reveal-right">
+          <h3>Envíanos un mensaje</h3>
+          <form>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="name">Nombre *</label>
+                <input type="text" id="name" placeholder="Tu nombre" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Teléfono</label>
+                <input type="tel" id="phone" placeholder="Ej: 612 345 678">
+              </div>
+              <div class="form-group form-group--full">
+                <label for="email">Email *</label>
+                <input type="email" id="email" placeholder="tu@email.com" required>
+              </div>
+              <div class="form-group form-group--full">
+                <label for="message">Tu proyecto (ubicación, tipo de desborde, medidas aproximadas)</label>
+                <textarea id="message" placeholder="Cuéntanos sobre el espacio y lo que buscas..."></textarea>
+              </div>
+              <div class="form-group form-group--full">
+                <div class="form-checkbox">
+                  <input type="checkbox" id="privacy" required>
+                  <label for="privacy">Acepto la <a href="#">Política de Privacidad</a></label>
+                </div>
+              </div>
+              <div class="form-group form-group--full">
+                <button type="submit" class="btn btn--accent btn--lg" style="width:100%;justify-content:center">
+                  Enviar <i class="fas fa-paper-plane"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="logo">Cuesa <span>Sport</span></a>
+          <p>Construcción, mantenimiento y reforma de piscinas en Madrid. Calidad y profesionalidad desde 1986.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4>Servicios</h4>
+          <ul class="footer-links">
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="construccion-piscinas.html">Construcción de piscinas</a></li>
+            <li><a href="piscinas-infinity.html">Piscinas Infinity</a></li>
+            <li><a href="piscinas-desbordante.html">Piscinas Desbordantes</a></li>
+            <li><a href="piscinas-forma.html">Piscinas con forma</a></li>
+            <li><a href="mantenimiento-piscinas.html">Mantenimiento</a></li>
+            <li><a href="reforma-piscinas.html">Reforma</a></li>
+            <li><a href="climatizacion-piscinas.html">Climatización</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Empresa</h4>
+          <ul class="footer-links">
+            <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
+            <li><a href="proyectos.html">Proyectos</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contacto</h4>
+          <div class="footer-contact-item">
+            <i class="fas fa-phone"></i>
+            <span><a href="tel:916002054">91 600 20 54</a></span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-envelope"></i>
+            <span><a href="mailto:cuesasport@cuesasport.com">cuesasport@cuesasport.com</a></span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Cuesa Sport, S.L. Todos los derechos reservados.</span>
+        <div class="footer-bottom-links">
+          <a href="#">Aviso legal</a>
+          <a href="#">Política de cookies</a>
+          <a href="#">Política de privacidad</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="Volver arriba">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <script src="../js/main.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script>
+    (function() {
+      var carousel = document.getElementById('plansCarousel');
+      var track = carousel && carousel.querySelector('.plans-carousel-track');
+      var dotsContainer = document.getElementById('plansCarouselDots');
+      var slides = track ? track.querySelectorAll('.plans-carousel-slide') : [];
+      var prevBtn = document.querySelector('.plans-carousel-btn--prev');
+      var nextBtn = document.querySelector('.plans-carousel-btn--next');
+      var total = slides.length;
+      if (!track || total === 0) return;
+
+      function getIndex() {
+        var w = track.querySelector('.plans-carousel-slide').offsetWidth;
+        return Math.round(track.scrollLeft / w);
+      }
+      function goTo(i) {
+        i = Math.max(0, Math.min(i, total - 1));
+        var w = track.querySelector('.plans-carousel-slide').offsetWidth;
+        track.scrollTo({ left: w * i, behavior: 'smooth' });
+        updateDots(i);
+      }
+      function updateDots(activeIndex) {
+        if (!dotsContainer) return;
+        dotsContainer.querySelectorAll('.plans-carousel-dot').forEach(function(dot, i) {
+          dot.classList.toggle('is-active', i === activeIndex);
+        });
+      }
+      for (var i = 0; i < total; i++) {
+        var dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'plans-carousel-dot' + (i === 0 ? ' is-active' : '');
+        dot.setAttribute('aria-label', 'Ir al plano ' + (i + 1));
+        dot.addEventListener('click', function() { goTo(parseInt(this.dataset.index, 10)); });
+        dot.dataset.index = i;
+        dotsContainer.appendChild(dot);
+      }
+      track.addEventListener('scroll', function() {
+        updateDots(getIndex());
+      });
+      if (prevBtn) prevBtn.addEventListener('click', function() { goTo(getIndex() - 1); });
+      if (nextBtn) nextBtn.addEventListener('click', function() { goTo(getIndex() + 1); });
+    })();
+
+    (function() {
+      var mapEl = document.getElementById('coverage-map');
+      if (!mapEl || typeof L === 'undefined') return;
+      var map = L.map('coverage-map').setView([40.48, -3.88], 10);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+      var locations = [
+        { name: 'Boadilla del Monte', lat: 40.405, lng: -3.877, img: '../img/boadilla-desbordante.png', desc: 'Instalación y construcción de piscinas desbordantes en Boadilla del Monte. Diseño a medida y acabados de alta gama.' },
+        { name: 'Pozuelo de Alarcón', lat: 40.435, lng: -3.813, img: '../img/pozuelo-desbordante.png', desc: 'Piscinas desbordantes en Pozuelo de Alarcón. Más de 30 años de experiencia en la zona noroeste.' },
+        { name: 'Las Rozas', lat: 40.493, lng: -3.874, img: '../img/lasrozas-desbordante.png', desc: 'Proyectos de piscinas desbordantes en Las Rozas. Asesoramiento técnico y presupuesto sin compromiso.' },
+        { name: 'Majadahonda', lat: 40.472, lng: -3.872, img: '../img/majadahonda-desbordante.png', desc: 'Construcción de piscinas desbordantes en Majadahonda. Integración con el paisaje y coronación elegante.' },
+        { name: 'Torrelodones', lat: 40.577, lng: -3.929, img: '../img/torrelodones-desbordante.png', desc: 'Piscinas desbordantes en Torrelodones y zona de la sierra. Calidad y garantía Cuesa Sport.' },
+        { name: 'Villalba', lat: 40.635, lng: -4.009, img: '../img/villalba-desbordante.png', desc: 'Piscinas desbordantes en Collado Villalba y alrededores. Obra completa y mantenimiento.' }
+      ];
+      locations.forEach(function(loc) {
+        var popupHtml = '<div class="coverage-popup">' +
+          '<img src="' + loc.img + '" alt="Piscina desbordante ' + loc.name + '">' +
+          '<h4>' + loc.name + '</h4>' +
+          '<p>' + loc.desc + '</p>' +
+          '<a href="contacto.html">Solicitar presupuesto &rarr;</a></div>';
+        L.marker([loc.lat, loc.lng]).addTo(map).bindPopup(popupHtml, { maxWidth: 320 });
+      });
+    })();
+  </script>
+</body>
+</html>
