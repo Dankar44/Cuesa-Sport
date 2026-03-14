@@ -46,7 +46,7 @@
     </div>
   </header>
 
-  <section class="page-header" style="background: linear-gradient(135deg, rgba(30,45,61,0.92) 0%, rgba(42,59,76,0.9) 100%), url('https://images.unsplash.com/photo-1551524559-8af4e6624178?w=1920&q=80'); background-size: cover; background-position: center;">
+  <section class="page-header">
     <div class="container">
       <div class="page-header-content">
         <nav class="breadcrumb reveal">
@@ -63,6 +63,12 @@
   </section>
 
   <section class="galeria-editorial-section" id="galeria">
+    <div class="galeria-search-wrap">
+      <div class="galeria-search-inner">
+        <i class="fas fa-search galeria-search-icon" aria-hidden="true"></i>
+        <input type="search" id="galeriaSearch" class="galeria-search-input" placeholder="Buscar proyectos" autocomplete="off" aria-label="Buscar en obras destacadas">
+      </div>
+    </div>
     <div class="galeria-editorial-wrap">
       <div class="galeria-editorial-left">
         <span class="galeria-editorial-badge">Portfolio</span>
@@ -155,49 +161,58 @@
         { id: 17, title: "Chalet Sierra", location: "Villalba", category: "Desbordante", img: "../img/galeria-proyectos/galeria-17.png" },
         { id: 18, title: "Obra Pública Parque", location: "Alcorcón", category: "Obra Pública", img: "../img/galeria-proyectos/galeria-18.png" },
         { id: 19, title: "Ático Terraza", location: "Madrid", category: "Minipiscina Infinity", img: "../img/galeria-proyectos/galeria-19.png" },
-        { id: 20, title: "Residencial Verde", location: "Boadilla", category: "Con forma", img: "../img/galeria-proyectos/galeria-20.png" }
+        { id: 20, title: "Residencial Verde", location: "Boadilla", category: "Con forma", img: "../img/galeria-proyectos/galeria-20.png" },
+        { id: 21, title: "Reforma con gres porcelánico", location: "Boadilla del Monte", category: "Revestimiento", img: "../img/reformas-destacadas/reforma-destacada-01.png", page: "proyecto-reforma-01.html" },
+        { id: 22, title: "Reforma completa y climatización", location: "Pozuelo de Alarcón", category: "Integral", img: "../img/reformas-destacadas/reforma-destacada-02.png", page: "proyecto-reforma-02.html" },
+        { id: 23, title: "Nuevo sistema de depuración", location: "Las Rozas", category: "Filtración", img: "../img/reformas-destacadas/reforma-destacada-03.png", page: "proyecto-reforma-03.html" },
+        { id: 24, title: "Reforma con gresite", location: "Alcobendas", category: "Revestimiento", img: "../img/reformas-destacadas/reforma-destacada-04.png", page: "proyecto-reforma-04.html" },
+        { id: 25, title: "Renovación de bordillo y solado", location: "Majadahonda", category: "Integral", img: "../img/reformas-destacadas/reforma-destacada-05.png", page: "proyecto-reforma-05.html" },
+        { id: 26, title: "Reforma y cubierta térmica", location: "Tres Cantos", category: "Climatización", img: "../img/reformas-destacadas/reforma-destacada-06.png", page: "proyecto-reforma-06.html" }
       ];
       function pad(n) { return (n < 10 ? '0' : '') + n; }
-      function projectUrl(p) { return 'proyecto-' + pad(p.id) + '.html'; }
+      function projectUrl(p) { return (p.page || ('proyecto-' + pad(p.id) + '.html')); }
+      function renderCard(p) {
+        return '<a href="' + projectUrl(p) + '" class="galeria-editorial-card galeria-editorial-card--reveal galeria-editorial-card--visible">' +
+          '<div class="galeria-editorial-card-img-wrap">' +
+            '<img src="' + p.img + '" alt="' + p.title + '">' +
+            '<div class="galeria-editorial-card-overlay"></div>' +
+          '</div>' +
+          '<div class="galeria-editorial-card-info">' +
+            '<div><h3 class="galeria-editorial-card-title">' + p.title + '</h3>' +
+            '<p class="galeria-editorial-card-loc"><i class="fas fa-map-marker-alt"></i> ' + p.location + '</p></div>' +
+            '<div class="galeria-editorial-card-actions">' +
+              '<span class="galeria-editorial-card-tag">' + p.category + '</span>' +
+              '<span class="galeria-editorial-card-arrow"><i class="fas fa-arrow-right"></i></span>' +
+            '</div>' +
+          '</div></a>';
+      }
+      function filterProjects(query) {
+        var q = (query || '').trim().toLowerCase();
+        if (!q) return projects;
+        return projects.filter(function(p) {
+          return (p.title && p.title.toLowerCase().indexOf(q) !== -1) ||
+                 (p.location && p.location.toLowerCase().indexOf(q) !== -1) ||
+                 (p.category && p.category.toLowerCase().indexOf(q) !== -1);
+        });
+      }
 
       var editorialCount = document.getElementById('galeriaEditorialCount');
       var editorialList = document.getElementById('galeriaEditorialList');
-      if (editorialCount) editorialCount.textContent = projects.length + ' proyectos en muestra';
-      if (editorialList) {
-        editorialList.innerHTML = projects.map(function(p) {
-          return '<a href="' + projectUrl(p) + '" class="galeria-editorial-card galeria-editorial-card--reveal">' +
-            '<div class="galeria-editorial-card-img-wrap">' +
-              '<img src="' + p.img + '" alt="' + p.title + '">' +
-              '<div class="galeria-editorial-card-overlay"></div>' +
-            '</div>' +
-            '<div class="galeria-editorial-card-info">' +
-              '<div><h3 class="galeria-editorial-card-title">' + p.title + '</h3>' +
-              '<p class="galeria-editorial-card-loc"><i class="fas fa-map-marker-alt"></i> ' + p.location + '</p></div>' +
-              '<div class="galeria-editorial-card-actions">' +
-                '<span class="galeria-editorial-card-tag">' + p.category + '</span>' +
-                '<span class="galeria-editorial-card-arrow"><i class="fas fa-arrow-right"></i></span>' +
-              '</div>' +
-            '</div></a>';
-        }).join('');
+      var searchInput = document.getElementById('galeriaSearch');
+
+      function updateList(filtered) {
+        var list = filtered || projects;
+        if (editorialCount) editorialCount.textContent = list.length + ' proyectos en muestra';
+        if (editorialList) editorialList.innerHTML = list.map(renderCard).join('');
       }
 
-      // Scroll reveal: animar cada tarjeta al entrar en vista (solo suben las fotos)
-      var revealCards = document.querySelectorAll('.galeria-editorial-card--reveal');
-      if (typeof IntersectionObserver !== 'undefined' && revealCards.length) {
-        var observer = new IntersectionObserver(
-          function(entries) {
-            entries.forEach(function(entry) {
-              if (entry.isIntersecting) {
-                entry.target.classList.add('galeria-editorial-card--visible');
-                observer.unobserve(entry.target);
-              }
-            });
-          },
-          { root: null, rootMargin: '0px', threshold: 0.15 }
-        );
-        revealCards.forEach(function(card) { observer.observe(card); });
-      } else {
-        revealCards.forEach(function(card) { card.classList.add('galeria-editorial-card--visible'); });
+      updateList(projects);
+
+      if (searchInput) {
+        searchInput.addEventListener('input', function() {
+          var filtered = filterProjects(this.value);
+          updateList(filtered);
+        });
       }
     })();
   </script>

@@ -7,8 +7,9 @@
   <meta name="description" content="Especialistas en reforma y renovación de piscinas en Madrid. Presupuesto gratuito. Revestimientos, filtración, climatización y diseño integral. Más de 30 años de experiencia.">
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 </head>
-<body>
+<body class="page-reforma-piscinas">
 
   <!-- Preloader -->
   <div class="preloader">
@@ -49,7 +50,7 @@
   </header>
 
   <!-- Page Header -->
-  <section class="page-header" style="background-image: linear-gradient(135deg, rgba(30,45,61,0.92) 0%, rgba(42,59,76,0.9) 100%), url('https://images.unsplash.com/photo-1519643381401-22c77e60520e?w=1920&q=80'); background-size: cover; background-position: center;">
+  <section class="page-header">
     <div class="container">
       <div class="page-header-content">
         <nav class="breadcrumb reveal">
@@ -65,73 +66,103 @@
     </div>
   </section>
 
-  <!-- Why Renovate -->
-  <section class="section">
-    <div class="container">
-      <div class="section-header section-header--center reveal">
-        <span class="section-badge"><i class="fas fa-question-circle"></i> Razones</span>
-        <h2 class="section-title">¿Por qué <span>reformar</span> su piscina?</h2>
-        <p class="section-subtitle">Una reforma puede devolver a su instalación el aspecto y el rendimiento de una piscina nueva, con una inversión controlada.</p>
+  <!-- Por qué reformar: cabecera + layout 3 columnas (tarjetas | imagen | tarjetas) -->
+  <section class="reforma-razones-hero" id="por-que-reformar">
+    <div class="reforma-razones-hero-bg-text" aria-hidden="true">Reformamos</div>
+    <div class="reforma-razones-hero-inner">
+      <div class="reforma-razones-header">
+        <span class="reforma-razones-badge"><i class="fas fa-question-circle"></i> Razones</span>
+        <h2 class="reforma-razones-title">¿Por qué <span class="reforma-razones-title-accent">reformar</span> su piscina?</h2>
+        <p class="reforma-razones-subtitle">Una reforma puede devolver a su instalación el aspecto y el rendimiento de una piscina nueva, con una inversión controlada.</p>
       </div>
-      <div class="features-grid stagger">
-        <div class="feature-card reveal">
-          <div class="feature-card-icon feature-card-icon--blue"><i class="fas fa-sync-alt"></i></div>
-          <h3>Modernización</h3>
-          <p>Actualice el diseño, los acabados y las funcionalidades de su piscina para que se adapte a las tendencias y necesidades actuales.</p>
+
+      <div class="reforma-razones-layout reveal" id="reformaRazonesLayout">
+        <div class="reforma-razones-col reforma-razones-col--left">
+          <div class="reforma-razon-card reforma-razon-card--up reforma-razon-card--delay-0">
+            <span class="reforma-razon-card-num">01</span>
+            <h3 class="reforma-razon-card-title">Modernización</h3>
+            <p class="reforma-razon-card-desc">Actualice el diseño, los acabados y las funcionalidades de su piscina para que se adapte a las tendencias y necesidades actuales, dotándola de la última tecnología.</p>
+          </div>
+          <div class="reforma-razon-card reforma-razon-card--down reforma-razon-card--delay-1">
+            <span class="reforma-razon-card-num">02</span>
+            <h3 class="reforma-razon-card-title">Eficiencia</h3>
+            <p class="reforma-razon-card-desc">Sistemas de filtración y depuración más eficientes reducen el consumo energético y el mantenimiento a largo plazo, cuidando tanto su bolsillo como el medio ambiente.</p>
+          </div>
         </div>
-        <div class="feature-card reveal">
-          <div class="feature-card-icon feature-card-icon--teal"><i class="fas fa-bolt"></i></div>
-          <h3>Eficiencia</h3>
-          <p>Sistemas de filtración y depuración más eficientes reducen el consumo energético y el mantenimiento a largo plazo.</p>
+
+        <div class="reforma-razones-image-wrap">
+          <div class="reforma-razones-image-bg" aria-hidden="true"></div>
+          <div class="reforma-razones-image-inner">
+            <img src="../img/reforma-persona-cambiando-azulejos.png" alt="Técnico sustituyendo azulejos en una piscina durante una reforma">
+            <div class="reforma-razones-image-gradient"></div>
+          </div>
         </div>
-        <div class="feature-card reveal">
-          <div class="feature-card-icon feature-card-icon--coral"><i class="fas fa-palette"></i></div>
-          <h3>Estética</h3>
-          <p>Gresite nuevo, azulejos o gres porcelánico transforman por completo el aspecto de su piscina y su entorno.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-card-icon feature-card-icon--lavender"><i class="fas fa-chart-line"></i></div>
-          <h3>Revalorización</h3>
-          <p>Una piscina reformada incrementa el valor de su propiedad y mejora la experiencia de uso para toda la familia.</p>
+
+        <div class="reforma-razones-col reforma-razones-col--right">
+          <div class="reforma-razon-card reforma-razon-card--up reforma-razon-card--delay-2">
+            <span class="reforma-razon-card-num">03</span>
+            <h3 class="reforma-razon-card-title">Estética</h3>
+            <p class="reforma-razon-card-desc">Gresite nuevo, azulejos o gres porcelánico transforman por completo el aspecto de su piscina y su entorno, creando un verdadero oasis visual en su hogar.</p>
+          </div>
+          <div class="reforma-razon-card reforma-razon-card--down reforma-razon-card--delay-3">
+            <span class="reforma-razon-card-num">04</span>
+            <h3 class="reforma-razon-card-title">Revalorización</h3>
+            <p class="reforma-razon-card-desc">Una piscina reformada incrementa drásticamente el valor inmobiliario de su propiedad y mejora la experiencia de uso y confort para toda la familia y sus invitados.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Process -->
-  <section class="section section--alt">
+  <!-- Nuestro proceso de reforma — timeline con barra de progreso y tarjeta 50/50 -->
+  <div class="reforma-process-block">
+  <section class="section reforma-process-section">
     <div class="container">
       <div class="section-header section-header--center reveal">
         <span class="section-badge"><i class="fas fa-tasks"></i> Metodología</span>
         <h2 class="section-title">Nuestro proceso de <span>reforma</span></h2>
         <p class="section-subtitle">Un método claro y transparente en cada etapa del proyecto.</p>
       </div>
-      <div class="reasons-grid stagger">
-        <div class="reason-card reveal">
-          <div class="reason-card-icon" style="background: var(--primary-pastel); color: var(--primary-dark); font-weight: 700; font-size: 1.3rem">1</div>
-          <h4>Inspección</h4>
-          <p>Visitamos su piscina, analizamos su estado actual y detectamos las necesidades de mejora para elaborar un diagnóstico detallado.</p>
+
+      <div class="reforma-timeline reveal" id="reformaTimeline">
+        <!-- Barra de progreso superior -->
+        <div class="reforma-timeline-bar-wrap">
+          <div class="reforma-timeline-bar-bg"></div>
+          <div class="reforma-timeline-bar-fill" id="reformaTimelineBarFill"></div>
+          <div class="reforma-timeline-nodes">
+            <button type="button" class="reforma-timeline-node is-active" data-index="0" aria-label="Ir a fase 1: Inspección"><span>1</span></button>
+            <button type="button" class="reforma-timeline-node" data-index="1" aria-label="Ir a fase 2: Propuesta"><span>2</span></button>
+            <button type="button" class="reforma-timeline-node" data-index="2" aria-label="Ir a fase 3: Ejecución"><span>3</span></button>
+            <button type="button" class="reforma-timeline-node" data-index="3" aria-label="Ir a fase 4: Entrega"><span>4</span></button>
+          </div>
+          <div class="reforma-timeline-labels">
+            <span class="reforma-timeline-label">FASE 01</span>
+            <span class="reforma-timeline-label">FASE 02</span>
+            <span class="reforma-timeline-label">FASE 03</span>
+            <span class="reforma-timeline-label">FASE 04</span>
+          </div>
         </div>
-        <div class="reason-card reveal">
-          <div class="reason-card-icon" style="background: var(--accent-pastel); color: var(--accent-dark); font-weight: 700; font-size: 1.3rem">2</div>
-          <h4>Propuesta</h4>
-          <p>Le presentamos un presupuesto personalizado y sin compromiso con las mejores opciones de materiales, acabados y plazos.</p>
-        </div>
-        <div class="reason-card reveal">
-          <div class="reason-card-icon" style="background: var(--teal-pastel); color: var(--teal); font-weight: 700; font-size: 1.3rem">3</div>
-          <h4>Ejecución</h4>
-          <p>Nuestro equipo cualificado ejecuta las obras con rigor, cumpliendo plazos y minimizando las molestias en su uso.</p>
-        </div>
-        <div class="reason-card reveal">
-          <div class="reason-card-icon" style="background: var(--lavender-light); color: var(--lavender); font-weight: 700; font-size: 1.3rem">4</div>
-          <h4>Entrega</h4>
-          <p>Le entregamos su piscina reformada lista para disfrutar, con todas las indicaciones de uso y mantenimiento.</p>
+
+        <!-- Tarjeta contenido: texto + imagen -->
+        <div class="reforma-timeline-card">
+          <div class="reforma-timeline-card-text">
+            <p class="reforma-timeline-phase" id="reformaTimelinePhase">FASE 01</p>
+            <h3 class="reforma-timeline-title" id="reformaTimelineTitle">Inspección</h3>
+            <p class="reforma-timeline-desc" id="reformaTimelineDesc">Visitamos su piscina, analizamos su estado actual y detectamos las necesidades de mejora para elaborar un diagnóstico detallado.</p>
+          </div>
+          <div class="reforma-timeline-card-img">
+            <img src="../img/proceso-reforma/proceso-reforma-inspeccion.png" alt="Inspección" class="reforma-timeline-img is-active" data-index="0">
+            <img src="../img/proceso-reforma/proceso-reforma-propuesta.png" alt="Propuesta" class="reforma-timeline-img" data-index="1">
+            <img src="../img/proceso-reforma/proceso-reforma-ejecucion.png" alt="Ejecución" class="reforma-timeline-img" data-index="2">
+            <img src="../img/proceso-reforma/proceso-reforma-entrega.png?v=2" alt="Entrega" class="reforma-timeline-img" data-index="3">
+          </div>
         </div>
       </div>
     </div>
   </section>
+  </div>
 
-  <!-- Types of renovation -->
+  <!-- Types of renovation — tarjetas 50% imagen / 50% texto -->
   <section class="section">
     <div class="container">
       <div class="section-header section-header--center reveal">
@@ -139,85 +170,105 @@
         <h2 class="section-title">Soluciones a <span>su medida</span></h2>
         <p class="section-subtitle">Ofrecemos múltiples opciones de renovación según sus necesidades y presupuesto.</p>
       </div>
-      <div class="about-layout stagger">
-        <div class="about-text reveal-left">
-          <h3 class="section-title" style="font-size: 1.4rem; margin-bottom: 20px">Revestimientos</h3>
-          <p>Renovación completa del interior de la piscina con los materiales más duraderos y estéticos:</p>
-          <ul style="color: var(--text); margin: 16px 0 24px; padding-left: 24px; line-height: 2;">
-            <li><strong>Gresite</strong> — Acabado clásico, resistente y económico</li>
-            <li><strong>Azulejo</strong> — Estética elegante y fácil limpieza</li>
-            <li><strong>Gres porcelánico</strong> — Máxima resistencia y diseño contemporáneo</li>
-          </ul>
-          <h3 class="section-title" style="font-size: 1.4rem; margin: 32px 0 20px">Sistemas de filtración</h3>
-          <p>Sustitución o mejora de bombas, filtros y equipos de depuración para un agua más cristalina y un menor consumo.</p>
-        </div>
-        <div class="about-img-wrapper reveal-right">
-          <div class="about-img">
-            <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?w=700&q=80" alt="Piscina reformada con gres porcelánico">
+      <div class="reforma-tipos-cards">
+        <article class="reforma-tipo-card reforma-tipo-card--text-first reveal">
+          <div class="reforma-tipo-card-text">
+            <h2 class="reforma-tipo-card-title reforma-tipo-card-title--main">Revestimientos</h2>
+            <p class="reforma-tipo-card-intro">Renovación completa del interior de tu piscina con los materiales más duraderos y estéticos del mercado. Calidad que se ve y se siente.</p>
+            <ul class="reforma-tipo-list">
+              <li class="reforma-tipo-list-item">
+                <div class="reforma-tipo-list-icon"><i class="fas fa-check"></i></div>
+                <div>
+                  <span class="reforma-tipo-list-name">Gresite</span>
+                  <span class="reforma-tipo-list-desc">Acabado clásico, altamente resistente y económico.</span>
+                </div>
+              </li>
+              <li class="reforma-tipo-list-item">
+                <div class="reforma-tipo-list-icon"><i class="fas fa-check"></i></div>
+                <div>
+                  <span class="reforma-tipo-list-name">Azulejo</span>
+                  <span class="reforma-tipo-list-desc">Estética elegante y gran facilidad de limpieza.</span>
+                </div>
+              </li>
+              <li class="reforma-tipo-list-item">
+                <div class="reforma-tipo-list-icon"><i class="fas fa-check"></i></div>
+                <div>
+                  <span class="reforma-tipo-list-name">Gres porcelánico</span>
+                  <span class="reforma-tipo-list-desc">Máxima resistencia con un diseño contemporáneo y lujoso.</span>
+                </div>
+              </li>
+            </ul>
+            <a href="revestimiento.html" class="btn btn--primary">
+              Saber más <i class="fas fa-arrow-right"></i>
+            </a>
           </div>
-          <div class="about-img-accent"></div>
-        </div>
-      </div>
-      <div class="about-layout stagger" style="margin-top: 80px;">
-        <div class="about-img-wrapper reveal-left">
-          <div class="about-img">
-            <img src="https://images.unsplash.com/photo-1551524559-8af4e6624178?w=700&q=80" alt="Piscina climatizada reformada">
+          <div class="reforma-tipo-card-img reforma-tipo-card-img--rounded">
+            <img src="../img/reforma/reforma-revestimientos-filtracion.png?v=2" alt="Revestimientos en piscina reformada">
           </div>
-          <div class="about-img-accent"></div>
-          <div class="about-floating-card reveal">
-            <div class="number" data-counter="500" data-suffix="+">0</div>
-            <div class="label">Reformas<br>realizadas</div>
+        </article>
+        <article class="reforma-tipo-card reforma-tipo-card--has-badge reveal">
+          <div class="reforma-tipo-card-img reforma-tipo-card-img--rounded">
+            <img src="../img/reforma/reforma-climatizacion-piscina.jpg" alt="Piscina climatizada, temporada de uso ampliada">
           </div>
-        </div>
-        <div class="about-text reveal-right">
-          <h3 class="section-title" style="font-size: 1.4rem; margin-bottom: 20px">Climatización</h3>
-          <p>Instalación o renovación de sistemas de calefacción para ampliar la temporada de uso y disfrutar de su piscina más meses al año.</p>
-          <h3 class="section-title" style="font-size: 1.4rem; margin: 32px 0 20px">Diseño integral</h3>
-          <p>Reforma completa que incluye revestimientos, filtración, climatización, bordillos y entorno. Una piscina completamente renovada.</p>
-          <a href="contacto.html" class="btn btn--primary mt-40 reveal">
-            Solicitar presupuesto gratuito <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
+          <div class="reforma-tipo-card-badge">
+            <div class="reforma-tipo-card-badge-icon">+</div>
+            <div class="reforma-tipo-card-badge-content">
+              <span class="reforma-tipo-card-badge-number">500</span>
+              <span class="reforma-tipo-card-badge-label">Reformas realizadas</span>
+            </div>
+          </div>
+          <div class="reforma-tipo-card-text">
+            <h2 class="reforma-tipo-card-title reforma-tipo-card-title--main">Climatización</h2>
+            <p class="reforma-tipo-card-intro">Instalación o renovación de sistemas de calefacción avanzados para ampliar la temporada de uso y disfrutar de tu piscina durante más meses al año.</p>
+            <div class="reforma-tipo-card-box">
+              <h3 class="reforma-tipo-card-title"><i class="fas fa-sparkles reforma-tipo-card-title-icon"></i> Diseño integral</h3>
+              <p>Reforma completa que incluye revestimientos, filtración, climatización, bordillos y entorno. Una piscina completamente renovada, desde la estructura hasta el último detalle estético.</p>
+              <a href="contacto.html" class="btn btn--primary btn--block">
+                Solicitar presupuesto gratuito <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
   <!-- Project Showcase -->
-  <section class="section section--primary">
-    <div class="container">
-      <div class="section-header section-header--center reveal">
-        <span class="section-badge" style="background: rgba(255,255,255,0.2); color: var(--white)"><i class="fas fa-images"></i> Proyectos</span>
-        <h2 class="section-title" style="color: var(--white)">Reformas <span style="color: var(--primary-light)">destacadas</span></h2>
-        <p class="section-subtitle" style="color: rgba(255,255,255,0.85)">Algunos de nuestros proyectos de reforma más representativos.</p>
+  <section class="section section--primary section--reformas-destacadas-bg" id="reformas-destacadas">
+    <div class="container container--reformas-wide">
+      <div class="section-header section-header--center reveal section-header--reformas-destacadas">
+        <span class="section-badge" style="background: var(--white); color: var(--dark)"><i class="fas fa-images"></i> Proyectos</span>
+        <h2 class="section-title">Reformas <span style="color: var(--primary)">destacadas</span></h2>
+        <p class="section-subtitle section-subtitle--dark">Algunos de nuestros proyectos de reforma más representativos.</p>
       </div>
       <div class="projects-grid stagger">
-        <div class="project-card reveal">
-          <div class="project-card-img" style="background-image:url('https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&q=80')"></div>
+        <a href="proyecto-reforma-01.html" class="project-card reveal">
+          <div class="project-card-img" style="background-image:url('../img/reformas-destacadas/reforma-destacada-01.png')"></div>
           <div class="project-card-overlay"></div>
           <div class="project-card-content">
             <span class="project-card-tag">Revestimiento</span>
             <h3>Reforma con gres porcelánico</h3>
             <p>Piscina particular — Boadilla del Monte</p>
           </div>
-        </div>
-        <div class="project-card reveal">
-          <div class="project-card-img" style="background-image:url('https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=600&q=80')"></div>
+        </a>
+        <a href="proyecto-reforma-02.html" class="project-card reveal">
+          <div class="project-card-img" style="background-image:url('../img/reformas-destacadas/reforma-destacada-02.png')"></div>
           <div class="project-card-overlay"></div>
           <div class="project-card-content">
             <span class="project-card-tag">Integral</span>
             <h3>Reforma completa y climatización</h3>
             <p>Urbanización — Pozuelo de Alarcón</p>
           </div>
-        </div>
-        <div class="project-card reveal">
-          <div class="project-card-img" style="background-image:url('https://images.unsplash.com/photo-1540518614846-7eded433c457?w=600&q=80')"></div>
+        </a>
+        <a href="proyecto-reforma-03.html" class="project-card reveal">
+          <div class="project-card-img" style="background-image:url('../img/reformas-destacadas/reforma-destacada-03.png')"></div>
           <div class="project-card-overlay"></div>
           <div class="project-card-content">
             <span class="project-card-tag">Filtración</span>
             <h3>Nuevo sistema de depuración</h3>
             <p>Piscina comunitaria — Las Rozas</p>
           </div>
-        </div>
+        </a>
       </div>
       <div class="text-center mt-40 reveal">
         <a href="proyectos.html" class="btn btn--white btn--lg">
@@ -227,30 +278,87 @@
     </div>
   </section>
 
-  <!-- Locations -->
-  <section class="section" id="localidades">
+  <!-- Dónde trabajamos: mapa como en Ubicaciones -->
+  <section class="section section--alt map-section--full" id="localidades">
     <div class="container">
       <div class="section-header section-header--center reveal">
         <span class="section-badge"><i class="fas fa-map-marker-alt"></i> Cobertura</span>
         <h2 class="section-title">Dónde <span>trabajamos</span></h2>
         <p class="section-subtitle">Realizamos reformas de piscinas en las principales localidades de la Comunidad de Madrid.</p>
       </div>
-      <div class="locations-grid stagger reveal">
-        <a href="contacto.html" class="location-card"><i class="fas fa-map-pin"></i> Boadilla del Monte</a>
-        <a href="contacto.html" class="location-card"><i class="fas fa-map-pin"></i> Pozuelo de Alarcón</a>
-        <a href="contacto.html" class="location-card"><i class="fas fa-map-pin"></i> Las Rozas</a>
-        <a href="contacto.html" class="location-card"><i class="fas fa-map-pin"></i> Majadahonda</a>
-        <a href="contacto.html" class="location-card"><i class="fas fa-map-pin"></i> Torrelodones</a>
-        <a href="contacto.html" class="location-card"><i class="fas fa-map-pin"></i> Villalba</a>
-        <a href="contacto.html" class="location-card"><i class="fas fa-map-pin"></i> Villaviciosa de Odón</a>
-        <a href="contacto.html" class="location-card"><i class="fas fa-map-pin"></i> Móstoles</a>
-        <a href="contacto.html" class="location-card"><i class="fas fa-map-pin"></i> Getafe</a>
-        <a href="contacto.html" class="location-card"><i class="fas fa-map-pin"></i> Alcorcón</a>
-        <a href="contacto.html" class="location-card"><i class="fas fa-map-pin"></i> Fuenlabrada</a>
-        <a href="contacto.html" class="location-card"><i class="fas fa-map-pin"></i> Pinto</a>
-        <a href="contacto.html" class="location-card"><i class="fas fa-map-pin"></i> Leganés</a>
+    </div>
+    <div class="map-full-wrap reveal">
+      <aside class="map-search map-search--sidebar">
+        <div class="map-search-bar">
+          <i class="fas fa-search map-search-icon"></i>
+          <input type="text" id="mapSearchInputReforma" class="map-search-input" placeholder="Buscar por nombre o localidad…" autocomplete="off">
+          <button type="button" class="map-search-clear" id="mapSearchClearReforma" title="Limpiar búsqueda"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="map-filters map-filters--collapsible">
+          <details class="map-filter-group">
+            <summary class="map-filter-label"><i class="fas fa-water"></i> Tipo de piscina</summary>
+            <div class="map-filter-chips" id="filterTipoReforma">
+              <button type="button" class="map-chip active" data-value="all">Todos</button>
+              <button type="button" class="map-chip" data-value="infinity">Infinity</button>
+              <button type="button" class="map-chip" data-value="desbordante">Desbordante</button>
+              <button type="button" class="map-chip" data-value="forma">Con forma</button>
+            </div>
+          </details>
+          <details class="map-filter-group">
+            <summary class="map-filter-label"><i class="fas fa-palette"></i> Revestimiento</summary>
+            <div class="map-filter-chips" id="filterRevestReforma">
+              <button type="button" class="map-chip active" data-value="all">Todos</button>
+              <button type="button" class="map-chip" data-value="gresite">Gresite</button>
+              <button type="button" class="map-chip" data-value="porcelanico">Porcelánico</button>
+              <button type="button" class="map-chip" data-value="liner">Liner</button>
+              <button type="button" class="map-chip" data-value="microcemento">Microcemento</button>
+            </div>
+          </details>
+          <details class="map-filter-group">
+            <summary class="map-filter-label"><i class="fas fa-th-large"></i> Tipo de baldosa</summary>
+            <div class="map-filter-chips" id="filterBaldosaReforma">
+              <button type="button" class="map-chip active" data-value="all">Todos</button>
+              <button type="button" class="map-chip" data-value="lisa">Lisa</button>
+              <button type="button" class="map-chip" data-value="mosaico">Mosaico</button>
+              <button type="button" class="map-chip" data-value="piedra">Efecto piedra</button>
+              <button type="button" class="map-chip" data-value="hidraulica">Hidráulica</button>
+            </div>
+          </details>
+          <details class="map-filter-group">
+            <summary class="map-filter-label"><i class="fas fa-tools"></i> Tipo de trabajo</summary>
+            <div class="map-filter-chips" id="filterTrabajoReforma">
+              <button type="button" class="map-chip active" data-value="all">Todos</button>
+              <button type="button" class="map-chip" data-value="construccion">Construcción</button>
+              <button type="button" class="map-chip" data-value="mantenimiento">Mantenimiento</button>
+              <button type="button" class="map-chip" data-value="reforma">Reforma</button>
+              <button type="button" class="map-chip" data-value="climatizacion">Climatización</button>
+            </div>
+          </details>
+          <details class="map-filter-group">
+            <summary class="map-filter-label"><i class="fas fa-building"></i> Uso</summary>
+            <div class="map-filter-chips" id="filterUsoReforma">
+              <button type="button" class="map-chip active" data-value="all">Todos</button>
+              <button type="button" class="map-chip" data-value="privada">Privada</button>
+              <button type="button" class="map-chip" data-value="publica">Pública</button>
+            </div>
+          </details>
+        </div>
+        <div class="map-search-status" id="mapSearchStatusReforma">
+          <span id="mapResultCountReforma">18</span> piscinas encontradas
+        </div>
+        <div class="map-search-more">
+          <a href="ubicaciones.html" class="map-search-pill">Ver mapa completo</a>
+        </div>
+      </aside>
+      <div class="map-full-bg">
+        <div id="coverage-map-reforma" class="coverage-map"></div>
+        <div class="map-legend" id="mapLegendReforma">
+          <div class="map-legend-item"><span class="map-legend-dot map-legend-dot--blue"></span><span>Proyectos construidos, reformados o llevados por nosotros</span></div>
+          <div class="map-legend-item"><span class="map-legend-dot map-legend-dot--orange"></span><span>Nuestra sede (Cuesa Sport)</span></div>
+        </div>
       </div>
     </div>
+    <p class="coverage-map-attribution coverage-map-attribution--full"><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap</a> contributors</p>
   </section>
 
   <!-- Counters -->
@@ -339,5 +447,182 @@
   </footer>
   <button class="back-to-top"><i class="fas fa-chevron-up"></i></button>
   <script src="../js/main.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script>
+    (function() {
+      var steps = [
+        { phase: "FASE 01", title: "Inspección", desc: "Visitamos su piscina, analizamos su estado actual y detectamos las necesidades de mejora para elaborar un diagnóstico detallado." },
+        { phase: "FASE 02", title: "Propuesta", desc: "Elaboramos un diseño 3D y un presupuesto detallado y transparente, ajustado a sus necesidades y preferencias estéticas." },
+        { phase: "FASE 03", title: "Ejecución", desc: "Nuestro equipo técnico especializado lleva a cabo la obra cumpliendo estrictamente los plazos acordados y minimizando las molestias." },
+        { phase: "FASE 04", title: "Entrega", desc: "Realizamos una revisión exhaustiva final, la puesta en marcha de los equipos y le entregamos su piscina lista para disfrutar." }
+      ];
+      var activeStep = 0;
+      var barFill = document.getElementById('reformaTimelineBarFill');
+      var phaseEl = document.getElementById('reformaTimelinePhase');
+      var titleEl = document.getElementById('reformaTimelineTitle');
+      var descEl = document.getElementById('reformaTimelineDesc');
+      var nodes = document.querySelectorAll('.reforma-timeline-node');
+      var labels = document.querySelectorAll('.reforma-timeline-label');
+      var imgs = document.querySelectorAll('.reforma-timeline-img');
+      var total = steps.length;
+
+      function setActiveStep(i) {
+        activeStep = Math.max(0, Math.min(i, total - 1));
+        if (barFill) barFill.style.width = 'calc(' + ((activeStep / (total - 1)) * 100) + '% - 3rem)';
+        nodes.forEach(function(node, idx) {
+          node.classList.toggle('is-active', idx <= activeStep);
+        });
+        labels.forEach(function(label, idx) {
+          label.classList.toggle('is-active', idx <= activeStep);
+        });
+        if (phaseEl) phaseEl.textContent = steps[activeStep].phase;
+        if (titleEl) titleEl.textContent = steps[activeStep].title;
+        if (descEl) descEl.textContent = steps[activeStep].desc;
+        imgs.forEach(function(img, idx) {
+          img.classList.toggle('is-active', idx === activeStep);
+        });
+      }
+
+      nodes.forEach(function(node) {
+        node.addEventListener('click', function() {
+          setActiveStep(parseInt(this.dataset.index, 10));
+        });
+      });
+    })();
+
+    (function() {
+      var mapEl = document.getElementById('coverage-map-reforma');
+      if (!mapEl || typeof L === 'undefined') return;
+      var map = L.map('coverage-map-reforma').setView([40.48, -3.88], 10);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+      var empresaCoords = [40.2812, -3.7918];
+      var orangeIcon = L.divIcon({
+        className: 'map-marker-empresa',
+        html: '<div style="width:0;height:0;border-left:12px solid transparent;border-right:12px solid transparent;border-bottom:24px solid #e67e22;border-top:0;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));margin-top:2px;"></div>',
+        iconSize: [24, 24],
+        iconAnchor: [12, 24]
+      });
+      var empresaPopup = '<div class="coverage-popup"><h4><i class="fas fa-building" style="color:#e67e22;margin-right:6px"></i>Cuesa Sport</h4><p class="popup-loc"><i class="fas fa-map-marker-alt" style="color:#e67e22;margin-right:4px"></i>Calle Olmo, 13-15<br>Pol. Ind. Niño del Remedio<br>28942 – Fuenlabrada (Madrid)</p><a href="contacto.html">Cómo llegar / Contacto &rarr;</a></div>';
+      L.marker(empresaCoords, { icon: orangeIcon }).bindPopup(empresaPopup, { maxWidth: 320 }).addTo(map);
+      var tipoLabels = { infinity: 'Infinity', desbordante: 'Desbordante', forma: 'Con forma' };
+      var revestLabels = { gresite: 'Gresite', porcelanico: 'Porcelánico', liner: 'Liner', microcemento: 'Microcemento' };
+      var usoLabels = { privada: 'Privada', publica: 'Pública' };
+      var pools = [
+        { name: 'Piscina El Mirador', localidad: 'Boadilla del Monte', lat: 40.405, lng: -3.877, tipo: 'infinity', revestimiento: 'gresite', uso: 'privada', tipoTrabajo: 'construccion', img: '../img/ubicaciones/boadilla-infinity.png', desc: 'Piscina infinity con borde infinito y vistas panorámicas. Acabados en gresite azul cobalto.' },
+        { name: 'Piscina Villa Jardín', localidad: 'Boadilla del Monte', lat: 40.402, lng: -3.872, tipo: 'desbordante', revestimiento: 'porcelanico', uso: 'privada', tipoTrabajo: 'reforma', img: '../img/ubicaciones/boadilla-desbordante.png', desc: 'Piscina desbordante perimetral con revestimiento porcelánico de alta gama.' },
+        { name: 'Piscina Los Olivos', localidad: 'Boadilla del Monte', lat: 40.408, lng: -3.880, tipo: 'forma', revestimiento: 'liner', uso: 'privada', tipoTrabajo: 'construccion', img: '../img/ubicaciones/boadilla-rinon.png', desc: 'Piscina con forma de riñón adaptada al jardín. Revestimiento en liner de alta resistencia.' },
+        { name: 'Piscina Atalaya', localidad: 'Pozuelo de Alarcón', lat: 40.435, lng: -3.813, tipo: 'infinity', revestimiento: 'porcelanico', uso: 'privada', tipoTrabajo: 'climatizacion', img: '../img/ubicaciones/pozuelo-infinity.png', desc: 'Infinity pool con acabado porcelánico y sistema de iluminación LED integrado.' },
+        { name: 'Piscina Monte Real', localidad: 'Pozuelo de Alarcón', lat: 40.438, lng: -3.808, tipo: 'desbordante', revestimiento: 'gresite', uso: 'publica', tipoTrabajo: 'mantenimiento', img: '../img/ubicaciones/pozuelo-desbordante.png', desc: 'Piscina de desborde comunitaria con gresite vítreo y canal perimetral de recogida.' },
+        { name: 'Piscina La Encina', localidad: 'Pozuelo de Alarcón', lat: 40.432, lng: -3.818, tipo: 'forma', revestimiento: 'microcemento', uso: 'privada', tipoTrabajo: 'reforma', img: '../img/ubicaciones/pozuelo-rinon.png', desc: 'Diseño orgánico en forma libre con microcemento para un acabado contemporáneo.' },
+        { name: 'Piscina El Pinar', localidad: 'Las Rozas', lat: 40.493, lng: -3.874, tipo: 'infinity', revestimiento: 'gresite', uso: 'privada', tipoTrabajo: 'construccion', img: '../img/ubicaciones/lasrozas-infinity.png', desc: 'Piscina infinity entre pinos con gresite en tonos verdes que integra el paisaje.' },
+        { name: 'Piscina Monteclaro', localidad: 'Las Rozas', lat: 40.497, lng: -3.869, tipo: 'desbordante', revestimiento: 'liner', uso: 'publica', tipoTrabajo: 'mantenimiento', img: '../img/ubicaciones/lasrozas-desbordante.png', desc: 'Desbordante comunitaria de líneas rectas con liner armado de alta durabilidad.' },
+        { name: 'Piscina Las Matas', localidad: 'Las Rozas', lat: 40.490, lng: -3.880, tipo: 'forma', revestimiento: 'gresite', uso: 'privada', tipoTrabajo: 'reforma', img: '../img/ubicaciones/lasrozas-rinon.png', desc: 'Piscina en forma de riñón con gresite mosaico y zona de playa.' },
+        { name: 'Piscina El Bosque', localidad: 'Majadahonda', lat: 40.472, lng: -3.872, tipo: 'infinity', revestimiento: 'microcemento', uso: 'privada', tipoTrabajo: 'construccion', img: '../img/ubicaciones/majadahonda-infinity.png', desc: 'Infinity con acabado en microcemento blanco y rebosadero frontal.' },
+        { name: 'Piscina Cerro Alarcón', localidad: 'Majadahonda', lat: 40.475, lng: -3.867, tipo: 'desbordante', revestimiento: 'porcelanico', uso: 'publica', tipoTrabajo: 'climatizacion', img: '../img/ubicaciones/majadahonda-desbordante.png', desc: 'Piscina desbordante comunitaria con porcelánico efecto piedra.' },
+        { name: 'Piscina Vía Verde', localidad: 'Majadahonda', lat: 40.469, lng: -3.878, tipo: 'forma', revestimiento: 'liner', uso: 'privada', tipoTrabajo: 'mantenimiento', img: '../img/ubicaciones/majadahonda-rinon.png', desc: 'Forma orgánica integrada en el paisaje con liner gris antracita.' },
+        { name: 'Piscina La Sierra', localidad: 'Torrelodones', lat: 40.577, lng: -3.929, tipo: 'infinity', revestimiento: 'porcelanico', uso: 'privada', tipoTrabajo: 'construccion', img: '../img/ubicaciones/torrelodones-infinity.png', desc: 'Infinity con vistas a la sierra de Guadarrama y revestimiento porcelánico.' },
+        { name: 'Piscina El Gasco', localidad: 'Torrelodones', lat: 40.580, lng: -3.924, tipo: 'desbordante', revestimiento: 'gresite', uso: 'privada', tipoTrabajo: 'reforma', img: '../img/ubicaciones/torrelodones-desbordante.png', desc: 'Piscina desbordante con gresite azul celeste y cascada decorativa.' },
+        { name: 'Piscina Los Peñascales', localidad: 'Torrelodones', lat: 40.574, lng: -3.934, tipo: 'forma', revestimiento: 'microcemento', uso: 'publica', tipoTrabajo: 'mantenimiento', img: '../img/ubicaciones/torrelodones-rinon.png', desc: 'Piscina comunitaria en forma de riñón con microcemento gris natural.' },
+        { name: 'Piscina Collado Sol', localidad: 'Villalba', lat: 40.635, lng: -4.009, tipo: 'infinity', revestimiento: 'liner', uso: 'privada', tipoTrabajo: 'climatizacion', img: '../img/ubicaciones/villalba-infinity.png', desc: 'Infinity de montaña con liner reforzado y sistema de climatización solar.' },
+        { name: 'Piscina Peñalba', localidad: 'Villalba', lat: 40.638, lng: -4.004, tipo: 'desbordante', revestimiento: 'microcemento', uso: 'publica', tipoTrabajo: 'construccion', img: '../img/ubicaciones/villalba-desbordante.png', desc: 'Desbordante comunitaria en microcemento con zona wet deck y jacuzzi integrado.' },
+        { name: 'Piscina Los Valles', localidad: 'Villalba', lat: 40.632, lng: -4.014, tipo: 'forma', revestimiento: 'gresite', uso: 'privada', tipoTrabajo: 'reforma', img: '../img/ubicaciones/villalba-rinon.png', desc: 'Forma libre con gresite mosaico azul y escalera de obra romana.' }
+      ];
+      var markers = [];
+      pools.forEach(function(p) {
+        var popupHtml = '<div class="coverage-popup">' +
+          '<img src="' + p.img + '" alt="' + p.name + '">' +
+          '<h4>' + p.name + '</h4>' +
+          '<p class="popup-loc"><i class="fas fa-map-marker-alt" style="color:var(--primary);margin-right:4px"></i>' + p.localidad + '</p>' +
+          '<p>' + p.desc + '</p>' +
+          '<div class="popup-tags">' +
+            '<span class="popup-tag popup-tag--tipo">' + tipoLabels[p.tipo] + '</span>' +
+            '<span class="popup-tag popup-tag--revest">' + revestLabels[p.revestimiento] + '</span>' +
+            '<span class="popup-tag popup-tag--uso">' + usoLabels[p.uso] + '</span>' +
+          '</div>' +
+          '<a href="contacto.html">Solicitar presupuesto &rarr;</a></div>';
+        var marker = L.marker([p.lat, p.lng]).bindPopup(popupHtml, { maxWidth: 320 });
+        marker._poolData = p;
+        markers.push(marker);
+        marker.addTo(map);
+      });
+      map.on('popupopen', function(e) {
+        var popup = e.popup;
+        var popupEl = popup.getElement ? popup.getElement() : (popup._container || null);
+        if (!popupEl) return;
+        setTimeout(function() {
+          var mapContainer = map.getContainer();
+          var containerRect = mapContainer.getBoundingClientRect();
+          var popupRect = popupEl.getBoundingClientRect();
+          var popupCenterX = popupRect.left + popupRect.width / 2;
+          var popupCenterY = popupRect.top + popupRect.height / 2;
+          var containerCenterX = containerRect.left + containerRect.width / 2;
+          var containerCenterY = containerRect.top + containerRect.height / 2;
+          var offsetX = containerCenterX - popupCenterX;
+          var offsetY = containerCenterY - popupCenterY;
+          map.panBy([-offsetX, -offsetY], { animate: true, duration: 0.25 });
+        }, 80);
+      });
+      var activeTipo = 'all', activeRevest = 'all', activeBaldosa = 'all', activeTrabajo = 'all', activeUso = 'all', searchQuery = '';
+      var searchInput = document.getElementById('mapSearchInputReforma');
+      var clearBtn = document.getElementById('mapSearchClearReforma');
+      var countEl = document.getElementById('mapResultCountReforma');
+      var tipoChips = document.querySelectorAll('#filterTipoReforma .map-chip');
+      var revestChips = document.querySelectorAll('#filterRevestReforma .map-chip');
+      var baldosaChips = document.querySelectorAll('#filterBaldosaReforma .map-chip');
+      var trabajoChips = document.querySelectorAll('#filterTrabajoReforma .map-chip');
+      var usoChips = document.querySelectorAll('#filterUsoReforma .map-chip');
+      function normalize(str) { return str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
+      function applyFilters() {
+        var q = normalize(searchQuery);
+        var visible = 0;
+        markers.forEach(function(m) {
+          var p = m._poolData;
+          var matchTipo = activeTipo === 'all' || p.tipo === activeTipo;
+          var matchRevest = activeRevest === 'all' || p.revestimiento === activeRevest;
+          var matchBaldosa = activeBaldosa === 'all' || (p.baldosa && p.baldosa === activeBaldosa);
+          var matchTrabajo = activeTrabajo === 'all' || (p.tipoTrabajo && p.tipoTrabajo === activeTrabajo);
+          var matchUso = activeUso === 'all' || p.uso === activeUso;
+          var matchSearch = !q || normalize(p.name).indexOf(q) !== -1 || normalize(p.localidad).indexOf(q) !== -1;
+          if (matchTipo && matchRevest && matchBaldosa && matchTrabajo && matchUso && matchSearch) {
+            if (!map.hasLayer(m)) m.addTo(map);
+            visible++;
+          } else {
+            if (map.hasLayer(m)) map.removeLayer(m);
+          }
+        });
+        if (countEl) countEl.textContent = visible;
+      }
+      function setChipActive(container, value) {
+        if (!container) return;
+        container.querySelectorAll('.map-chip').forEach(function(c) { c.classList.toggle('active', c.dataset.value === value); });
+      }
+      tipoChips.forEach(function(chip) {
+        chip.addEventListener('click', function() { activeTipo = this.dataset.value; setChipActive(document.getElementById('filterTipoReforma'), activeTipo); applyFilters(); });
+      });
+      revestChips.forEach(function(chip) {
+        chip.addEventListener('click', function() { activeRevest = this.dataset.value; setChipActive(document.getElementById('filterRevestReforma'), activeRevest); applyFilters(); });
+      });
+      baldosaChips.forEach(function(chip) {
+        chip.addEventListener('click', function() { activeBaldosa = this.dataset.value; setChipActive(document.getElementById('filterBaldosaReforma'), activeBaldosa); applyFilters(); });
+      });
+      trabajoChips.forEach(function(chip) {
+        chip.addEventListener('click', function() { activeTrabajo = this.dataset.value; setChipActive(document.getElementById('filterTrabajoReforma'), activeTrabajo); applyFilters(); });
+      });
+      usoChips.forEach(function(chip) {
+        chip.addEventListener('click', function() { activeUso = this.dataset.value; setChipActive(document.getElementById('filterUsoReforma'), activeUso); applyFilters(); });
+      });
+      if (searchInput) searchInput.addEventListener('input', function() {
+        searchQuery = this.value.trim();
+        if (clearBtn) clearBtn.classList.toggle('visible', searchQuery.length > 0);
+        applyFilters();
+      });
+      if (clearBtn) clearBtn.addEventListener('click', function() {
+        if (searchInput) { searchInput.value = ''; searchInput.focus(); }
+        searchQuery = ''; clearBtn.classList.remove('visible'); applyFilters();
+      });
+    })();
+  </script>
 </body>
 </html>

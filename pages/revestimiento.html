@@ -49,7 +49,7 @@
   </header>
 
   <!-- Page Header -->
-  <section class="page-header" style="background: linear-gradient(135deg, rgba(30,45,61,0.94) 0%, rgba(42,59,76,0.92) 100%), url('https://images.unsplash.com/photo-1572331165267-854da2b021b1?w=1920&q=80'); background-size: cover; background-position: center;">
+  <section class="page-header">
     <div class="container">
       <div class="page-header-content">
         <nav class="breadcrumb reveal">
@@ -67,42 +67,126 @@
     </div>
   </section>
 
-  <!-- Intro -->
-  <section class="section">
+  <!-- ¿Por qué es importante el revestimiento? — Disposición superpuesta (cajas + imagen) -->
+  <section class="section revestimiento-porque revestimiento-porque--overlay">
+    <div class="revestimiento-porque-container">
+      <!-- Header introductorio -->
+      <header class="revestimiento-porque-header reveal">
+        <h2 class="revestimiento-porque-title">¿Por qué es importante el <span>revestimiento</span>?</h2>
+        <p class="revestimiento-porque-intro">Si vas a construir una nueva piscina o llega el buen tiempo y estás pensando en renovar o darle un aspecto diferente al que llevas años viendo, el tipo de revestimiento para tu piscina es fundamental por dos motivos.</p>
+      </header>
+
+      <!-- Layout: capas superpuestas — tarjetas a la izquierda con -mr para pisar la imagen -->
+      <div class="revestimiento-porque-layout">
+        <div class="revestimiento-porque-cards">
+          <!-- Caja 1: Estética (dentro: 01, barra, título, texto) -->
+          <div class="revestimiento-porque-card reveal">
+            <span class="revestimiento-porque-card-num" aria-hidden="true">01</span>
+            <div class="revestimiento-porque-card-inner">
+              <h3 class="revestimiento-porque-card-title">Estética</h3>
+              <p>El revestimiento es el «toque final» que marcará la diferencia. Visualiza cómo interactuará con el entorno de tu jardín.</p>
+            </div>
+          </div>
+          <!-- Caja 2: Durabilidad -->
+          <div class="revestimiento-porque-card revestimiento-porque-card--offset reveal">
+            <span class="revestimiento-porque-card-num" aria-hidden="true">02</span>
+            <div class="revestimiento-porque-card-inner">
+              <h3 class="revestimiento-porque-card-title">Durabilidad</h3>
+              <p>Igual de importante: elige según tus necesidades y preferencias, pensando siempre en el futuro de tu piscina.</p>
+            </div>
+          </div>
+        </div>
+        <div class="revestimiento-porque-img-wrap">
+          <img src="../img/revestimiento/revestimiento-porque-piscina.jpg" alt="Piscina de lujo en jardín" class="revestimiento-porque-img">
+        </div>
+      </div>
+
+      <p class="revestimiento-editorial-cta reveal">En <strong>Cuesa Sport</strong> te ayudamos a elegir el mejor revestimiento. A continuación, los más comunes con los que trabajamos.</p>
+    </div>
+  </section>
+
+  <!-- Tipos de revestimiento: materiales (acordeón) -->
+  <section class="section section--materiales-bg">
+    <div class="section-bg-texture" aria-hidden="true">materiales</div>
     <div class="container">
       <div class="section-header section-header--center reveal">
-        <h2 class="section-title">¿Por qué es importante el <span>revestimiento</span>?</h2>
-        <p class="section-subtitle">Si vas a construir una nueva piscina o llega el buen tiempo y estás pensando en renovar o darle un aspecto diferente al que llevas años viendo, el tipo de revestimiento para tu piscina es fundamental por dos motivos.</p>
+        <span class="section-badge">Materiales</span>
+        <h2 class="section-title">Tipos de <span>revestimiento</span></h2>
       </div>
-      <div class="revestimiento-motivos">
-        <div class="feature-card reveal">
-          <div class="feature-card-icon feature-card-icon--blue"><i class="fas fa-palette"></i></div>
-          <h3>Estética</h3>
-          <p>El revestimiento es el «toque final», por lo que esta variable será sin duda la que marque la diferencia.</p>
+
+      <p class="revestimiento-materiales-intro reveal">Conoce los tres materiales con los que más trabajamos para el revestimiento del vaso. Haz clic en cada tarjeta para ver sus características y ventajas.</p>
+
+      <div class="sacc sacc--compact reveal" id="revestimientoMaterialesAccordion">
+        <div class="sacc-panel sacc-panel--active" id="panel-gresite">
+          <img class="sacc-bg" src="../img/revestimiento/material-gresite.png" alt="Revestimiento gresite">
+          <div class="sacc-overlay"></div>
+          <div class="sacc-border"></div>
+          <div class="sacc-content">
+            <div class="sacc-head">
+              <div class="sacc-head-text">
+                <span class="sacc-tag">Material</span>
+                <h3>Gresite</h3>
+              </div>
+            </div>
+            <div class="sacc-body">
+              <p>Azulejo vítreo de pequeño tamaño con fibra de vidrio. Facilidad de instalación, gran variedad de diseños y colores, fácil limpieza y mayor resistencia a cambios de temperatura. Incluso dibujos a medida en el fondo.</p>
+              <a href="contacto.html" class="sacc-btn">Saber más del material</a>
+            </div>
+          </div>
+          <span class="sacc-vertical" aria-hidden="true">Gresite</span>
+          <span class="sacc-chevron" aria-hidden="true"></span>
         </div>
-        <div class="feature-card reveal">
-          <div class="feature-card-icon feature-card-icon--blue"><i class="fas fa-shield-alt"></i></div>
-          <h3>Durabilidad</h3>
-          <p>Este elemento es igual o más importante. Tienes que barajar lo que más se ajusta a tus deseos y necesidades según tus preferencias, sin dejar de lado la vista a largo plazo, pensando siempre en el futuro de tu piscina.</p>
+        <div class="sacc-panel" id="panel-azulejo">
+          <img class="sacc-bg" src="../img/revestimiento/material-azulejo.png" alt="Revestimiento azulejo">
+          <div class="sacc-overlay"></div>
+          <div class="sacc-border"></div>
+          <div class="sacc-content">
+            <div class="sacc-head">
+              <div class="sacc-head-text">
+                <span class="sacc-tag">Material</span>
+                <h3>Azulejo</h3>
+              </div>
+            </div>
+            <div class="sacc-body">
+              <p>Azulejo vítreo de mayores dimensiones. Gran impermeabilidad e ideal para piscinas grandes (15–20 m) por su rapidez de colocación. Estética y adaptación al entorno destacables.</p>
+              <a href="contacto.html" class="sacc-btn">Saber más del material</a>
+            </div>
+          </div>
+          <span class="sacc-vertical" aria-hidden="true">Azulejo</span>
+          <span class="sacc-chevron" aria-hidden="true"></span>
         </div>
-      </div>
-      <div class="content-block reveal">
-        <p>Por experiencia sabemos que el tipo de revestimiento no solo influye en la estética o durabilidad. Aspectos como la hermeticidad, la capacidad para detectar fugas en la misma y repararlas, o la limpieza en la piscina, influyen en mayor medida en el revestimiento escogido. En <strong>Cuesa Sport</strong> te ayudaremos a decidirte y establecer el mejor revestimiento para tu piscina. Veamos los más comunes y con los que a menudo trabajamos.</p>
+        <div class="sacc-panel" id="panel-gres-porcelanico">
+          <img class="sacc-bg" src="../img/revestimiento/material-gres-porcelanico.png" alt="Revestimiento gres porcelánico">
+          <div class="sacc-overlay"></div>
+          <div class="sacc-border"></div>
+          <div class="sacc-content">
+            <div class="sacc-head">
+              <div class="sacc-head-text">
+                <span class="sacc-tag">Material</span>
+                <h3>Gres porcelánico</h3>
+              </div>
+            </div>
+            <div class="sacc-body">
+              <p>Material por excelencia para vaso y coronación. Pasta muy dura, escasa absorción del agua y gran variedad de diseños. Trabajamos con ROSAGRES.</p>
+              <a href="contacto.html" class="sacc-btn">Saber más del material</a>
+            </div>
+          </div>
+          <span class="sacc-vertical" aria-hidden="true">Gres porcelánico</span>
+          <span class="sacc-chevron" aria-hidden="true"></span>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Tipos: Gresite, Azulejo, Gres porcelánico -->
-  <section class="section section--alt">
+  <!-- Galería de simulación -->
+  <section class="section" id="galeria-simulacion">
     <div class="container">
       <div class="section-header section-header--center reveal">
-        <span class="section-badge"><i class="fas fa-layer-group"></i> Materiales</span>
-        <h2 class="section-title">Tipos de <span>revestimiento</span></h2>
+        <span class="section-badge"><i class="fas fa-images"></i> Simulador</span>
+        <h2 class="section-title">Galería de <span>simulación</span></h2>
+        <p class="section-subtitle">Simula cómo se vería la misma piscina con cada tipo de revestimiento. Elige material y variante.</p>
       </div>
-
-      <!-- Simulador: barra de filtros (estilo React) + imagen -->
       <div class="revestimiento-simulador reveal">
-        <p class="revestimiento-simulador-intro">Simula cómo se vería la misma piscina con cada tipo de revestimiento. Elige material y variante.</p>
         <div class="revestimiento-simulador-wrap">
           <div class="revestimiento-filtros-bar">
             <div class="filtros-bar-item filtros-material">
@@ -160,33 +244,6 @@
             <img id="simuladorPoolImg" src="../img/revestimiento/piscina-simulador-revestimiento.png" alt="Piscina con revestimiento">
           </div>
         </div>
-      </div>
-
-      <div class="revestimiento-tipo reveal" id="gresite">
-        <h3 class="revestimiento-tipo-title">Gresite</h3>
-        <p>Es un material destinado a la construcción, conocido como azulejo vítreo o azulejo de gres cuando su tamaño es pequeño. Caracterizado además por estar compuesto de fibra de vidrio en su fabricación. Son muchas las ventajas que tiene este azulejo una vez queda revestido el vaso (interior de la piscina):</p>
-        <ul>
-          <li>Facilidad de instalación y colocación</li>
-          <li>Gran variedad de diseños y colores</li>
-          <li>Ofrece gran facilidad para su limpieza y mantenimiento</li>
-          <li>Mayor resistencia al azulejo clásico (más grande), más aún si su piscina soporta bruscos cambios de temperatura anuales</li>
-        </ul>
-        <p><strong>Dibujo en gresite:</strong> Es una modalidad a petición única y exclusiva del cliente. Se trata de pintar un dibujo en el fondo de la piscina; original es, desde luego. Hemos pintado desde animales (peces, delfines), hasta escudos de equipos de fútbol. Las opciones son totalmente infinitas. Siempre recomendamos seguir la estética del entorno y revestimiento, claro está.</p>
-      </div>
-
-      <div class="revestimiento-tipo reveal" id="azulejo">
-        <h3 class="revestimiento-tipo-title">Azulejo</h3>
-        <p>Es también un azulejo vítreo, pero esta vez hablamos de mayores dimensiones. Se caracteriza por su gran impermeabilidad, pero también por su escasa resistencia a bruscos cambios de temperatura y, sobre todo, a los años de vida. Este tipo de azulejo suele ser destinado a piscinas de un tamaño superior a los 15 o 20 metros de largo por 5 o 10 de ancho, ya que ofrece una rapidez de colocación mayor a la de cualquier otro. No obstante, la estética y adaptación al entorno son claramente destacables.</p>
-      </div>
-
-      <div class="revestimiento-tipo reveal" id="gres-porcelanico">
-        <h3 class="revestimiento-tipo-title">Gres porcelánico</h3>
-        <p>Presentamos uno de los materiales por excelencia tanto en revestimiento de piscinas (interior del vaso), como en coronación de esta (alrededor de la piscina), puesto que el mismo material puede ser empleado en ambos casos. Es un material de cerámica compuesto por una pasta muy dura, y se caracteriza principalmente por dos motivos:</p>
-        <ul>
-          <li>Escasa absorción del agua (repelente)</li>
-          <li>Estética y variedad de diseños que ofrece</li>
-        </ul>
-        <p>Cabe destacar que para este tipo de material, nuestra empresa de referencia es <strong>ROSAGRES</strong>, que nos proporciona multitud de diseños que ofrecemos a nuestros clientes a su gusto.</p>
       </div>
     </div>
   </section>
@@ -401,6 +458,19 @@
       });
 
       actualizarImagenSimulador();
+    })();
+
+    // Acordeón materiales (mismo comportamiento que servicios)
+    (function() {
+      var accordion = document.getElementById('revestimientoMaterialesAccordion');
+      if (!accordion) return;
+      var panels = accordion.querySelectorAll('.sacc-panel');
+      panels.forEach(function(panel) {
+        panel.addEventListener('click', function() {
+          panels.forEach(function(p) { p.classList.remove('sacc-panel--active'); });
+          panel.classList.add('sacc-panel--active');
+        });
+      });
     })();
   </script>
 </body>

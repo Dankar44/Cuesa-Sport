@@ -7,6 +7,7 @@
   <meta name="description" content="Servicio integral de mantenimiento de piscinas 365 días al año en Madrid. Profesionales cualificados, asesoramiento experto y máxima calidad. Piscinas públicas y privadas.">
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 </head>
 <body>
 
@@ -49,7 +50,7 @@
   </header>
 
   <!-- Page Header -->
-  <section class="page-header" style="background-image: linear-gradient(135deg, rgba(30,45,61,0.92) 0%, rgba(42,59,76,0.9) 100%), url('https://images.unsplash.com/photo-1504309092620-4d0ec726efa4?w=1920&q=80'); background-size: cover; background-position: center;">
+  <section class="page-header">
     <div class="container">
       <div class="page-header-content">
         <nav class="breadcrumb reveal">
@@ -65,46 +66,13 @@
     </div>
   </section>
 
-  <!-- Features -->
+  <!-- 1. Piscinas públicas: texto izquierda (1), imagen derecha (2) — fondo blanco -->
   <section class="section">
     <div class="container">
-      <div class="section-header section-header--center reveal">
-        <span class="section-badge"><i class="fas fa-tools"></i> Nuestro servicio</span>
-        <h2 class="section-title">Mantenimiento de piscinas con <span>máxima garantía</span></h2>
-        <p class="section-subtitle">Cuidamos cada detalle para que disfrute de su piscina sin preocupaciones durante todo el año.</p>
-      </div>
-      <div class="features-grid stagger">
-        <div class="feature-card reveal">
-          <div class="feature-card-icon feature-card-icon--blue"><i class="fas fa-check-double"></i></div>
-          <h3>Integral y Total</h3>
-          <p>Control de agua, limpieza de fondos, depuración, dosificación de productos y revisión de instalaciones. Un servicio completo que abarca todas las necesidades.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-card-icon feature-card-icon--teal"><i class="fas fa-calendar-check"></i></div>
-          <h3>Servicio 365</h3>
-          <p>Estamos a su disposición todo el año. Mantenimiento periódico en las fechas acordadas para garantizar el perfecto estado de su instalación.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-card-icon feature-card-icon--coral"><i class="fas fa-comments"></i></div>
-          <h3>Asesoramiento</h3>
-          <p>Nuestros técnicos cualificados le aconsejan sobre el mejor tratamiento, productos y prácticas para optimizar el rendimiento de su piscina.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-card-icon feature-card-icon--lavender"><i class="fas fa-medal"></i></div>
-          <h3>Máxima Calidad</h3>
-          <p>Utilizamos productos de primera calidad y seguimos protocolos rigurosos que cumplen con todas las normativas vigentes.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Public Pools -->
-  <section class="section section--alt">
-    <div class="container">
-      <div class="about-layout stagger">
-        <div class="about-img-wrapper reveal-left">
+      <div class="about-layout about-layout--image-first about-layout--pub stagger">
+        <div class="about-img-wrapper reveal-right">
           <div class="about-img">
-            <img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=700&q=80" alt="Mantenimiento de piscina pública">
+            <img src="../img/mantenimiento-piscina-publica-trabajadores.png" alt="Trabajadores manteniendo piscina pública">
           </div>
           <div class="about-img-accent"></div>
           <div class="about-floating-card reveal">
@@ -112,7 +80,7 @@
             <div class="label">Días de<br>servicio</div>
           </div>
         </div>
-        <div class="about-text reveal-right">
+        <div class="about-text reveal-left">
           <span class="section-badge"><i class="fas fa-university"></i> Sector público</span>
           <h2 class="section-title">Mantenimiento de piscinas <span>públicas</span></h2>
           <p>Gestionamos el mantenimiento de piscinas municipales, de comunidades, instalaciones deportivas y recintos de uso público en toda la Comunidad de Madrid. Cumplimos estrictamente con la normativa de seguridad y salubridad.</p>
@@ -123,19 +91,25 @@
             <li>Gestión documental y certificaciones</li>
             <li>Personal cualificado disponible todo el año</li>
           </ul>
-          <a href="contacto.html" class="btn btn--primary mt-40 reveal">
-            Solicitar presupuesto <i class="fas fa-arrow-right"></i>
+          <a href="mantenimiento-publicas.html" class="btn btn--primary mt-20 reveal">
+            Saber más <i class="fas fa-arrow-right"></i>
           </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Private Pools -->
+  <!-- 2. Piscinas particulares: imagen izquierda (1), texto derecha (2) -->
   <section class="section">
     <div class="container">
-      <div class="about-layout stagger">
-        <div class="about-text reveal-left">
+      <div class="about-layout about-layout--image-first about-layout--part stagger">
+        <div class="about-img-wrapper reveal-left">
+          <div class="about-img">
+            <img src="../img/mantenimiento-piscina-privada-trabajadores.png" alt="Técnico manteniendo piscina particular">
+          </div>
+          <div class="about-img-accent"></div>
+        </div>
+        <div class="about-text reveal-right">
           <span class="section-badge"><i class="fas fa-home"></i> Sector privado</span>
           <h2 class="section-title">Mantenimiento de piscinas <span>particulares</span></h2>
           <p>Ofrecemos un servicio personalizado para piscinas de viviendas unifamiliares, urbanizaciones y comunidades de vecinos. Un técnico asignado conoce su instalación y acude en las frecuencias pactadas.</p>
@@ -146,77 +120,198 @@
             <li>Revisión de equipos de depuración</li>
             <li>Asesoramiento en productos y ahorro energético</li>
           </ul>
-          <a href="contacto.html" class="btn btn--primary mt-40 reveal">
-            Contactar <i class="fas fa-arrow-right"></i>
+          <a href="mantenimiento-privadas.html" class="btn btn--primary mt-20 reveal">
+            Saber más <i class="fas fa-arrow-right"></i>
           </a>
         </div>
-        <div class="about-img-wrapper reveal-right">
-          <div class="about-img">
-            <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=700&q=80" alt="Mantenimiento de piscina privada">
-          </div>
-          <div class="about-img-accent"></div>
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- How we work -->
-  <section class="section section--primary">
+  <!-- 3. Mantenimiento de piscinas con máxima garantía (acordeón) — fondo gris claro, acordeón en blanco -->
+  <section class="section section--outline section--accordion section--alt section--mantenimiento-bg">
+    <div class="section-bg-texture section-bg-texture--white" aria-hidden="true">Mantenimiento</div>
     <div class="container">
       <div class="section-header section-header--center reveal">
-        <span class="section-badge" style="background: rgba(255,255,255,0.2); color: var(--white)"><i class="fas fa-route"></i> Cómo trabajamos</span>
-        <h2 class="section-title" style="color: var(--white)">Nuestro <span style="color: var(--primary-light)">proceso</span></h2>
-        <p class="section-subtitle" style="color: rgba(255,255,255,0.85)">Un método probado que garantiza la excelencia en cada actuación.</p>
+        <span class="section-badge">A nuestro servicio</span>
+        <h2 class="section-title">Mantenimiento de piscinas con <span>máxima garantía</span></h2>
+        <p class="section-subtitle">Pasa el ratón por los paneles para ver los detalles de nuestro servicio.</p>
       </div>
-      <div class="reasons-grid stagger">
-        <div class="reason-card reveal" style="background: var(--white)">
-          <div class="reason-card-icon" style="background: var(--primary-pastel); color: var(--primary-dark)"><i class="fas fa-clipboard-list"></i></div>
-          <h4>1. Revisión integral</h4>
-          <p>Analizamos su instalación, el estado del agua y los equipos para definir el plan de mantenimiento más adecuado.</p>
+      <div class="accordion" id="accordion-mantenimiento" data-hovered="">
+        <div class="accordion-panel">
+          <div class="accordion-panel-vertical">
+            <h2 class="accordion-title-vertical text-outline">Integral.</h2>
+          </div>
+          <div class="accordion-panel-content">
+            <div class="accordion-panel-img">
+              <img src="../img/acordeon-integral.png" alt="Servicio integral de mantenimiento">
+            </div>
+            <div class="accordion-bar"></div>
+            <h2 class="accordion-title-expanded">Integral.</h2>
+            <p class="accordion-desc">Control de agua, limpieza de fondos, depuración, dosificación de productos y revisión de instalaciones. Un servicio completo que abarca todas las necesidades.</p>
+          </div>
         </div>
-        <div class="reason-card reveal" style="background: var(--white)">
-          <div class="reason-card-icon" style="background: var(--accent-pastel); color: var(--accent-dark)"><i class="fas fa-file-contract"></i></div>
-          <h4>2. Documentación</h4>
-          <p>Nos encargamos de toda la documentación técnica, certificados y registros que requiera la normativa vigente.</p>
+        <div class="accordion-panel">
+          <div class="accordion-panel-vertical">
+            <h2 class="accordion-title-vertical text-outline">Anual.</h2>
+          </div>
+          <div class="accordion-panel-content">
+            <div class="accordion-panel-img">
+              <img src="../img/acordeon-anual.png" alt="Mantenimiento anual">
+            </div>
+            <div class="accordion-bar"></div>
+            <h2 class="accordion-title-expanded">Anual.</h2>
+            <p class="accordion-desc">Estamos a su disposición todo el año. Mantenimiento periódico en las fechas acordadas para garantizar el perfecto estado de su instalación.</p>
+          </div>
         </div>
-        <div class="reason-card reveal" style="background: var(--white)">
-          <div class="reason-card-icon" style="background: var(--teal-pastel); color: var(--teal)"><i class="fas fa-user-tie"></i></div>
-          <h4>3. Personal cualificado</h4>
-          <p>Asignamos profesionales titulados con amplia experiencia en mantenimiento de instalaciones acuáticas.</p>
+        <div class="accordion-panel">
+          <div class="accordion-panel-vertical">
+            <h2 class="accordion-title-vertical text-outline">Asesoría.</h2>
+          </div>
+          <div class="accordion-panel-content">
+            <div class="accordion-panel-img">
+              <img src="../img/acordeon-asesoria.png" alt="Asesoría técnica">
+            </div>
+            <div class="accordion-bar"></div>
+            <h2 class="accordion-title-expanded">Asesoría.</h2>
+            <p class="accordion-desc">Nuestros técnicos cualificados le aconsejan sobre el mejor tratamiento, productos y prácticas para optimizar el rendimiento de su piscina.</p>
+          </div>
         </div>
-        <div class="reason-card reveal" style="background: var(--white)">
-          <div class="reason-card-icon" style="background: var(--lavender-light); color: var(--lavender)"><i class="fas fa-shopping-cart"></i></div>
-          <h4>4. Productos óptimos</h4>
-          <p>Utilizamos los mejores productos del mercado, con los que trabajamos habitualmente y de los que conocemos su rendimiento.</p>
+        <div class="accordion-panel">
+          <div class="accordion-panel-vertical">
+            <h2 class="accordion-title-vertical text-outline">Calidad.</h2>
+          </div>
+          <div class="accordion-panel-content">
+            <div class="accordion-panel-img">
+              <img src="../img/acordeon-calidad.png" alt="Calidad y protocolos">
+            </div>
+            <div class="accordion-bar"></div>
+            <h2 class="accordion-title-expanded">Calidad.</h2>
+            <p class="accordion-desc">Utilizamos productos de primera calidad y seguimos protocolos rigurosos que cumplen con todas las normativas vigentes en seguridad y sanidad.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Locations -->
-  <section class="section" id="localidades">
+  <!-- Nuestro proceso: 4 fases (estilo opciones) -->
+  <section class="section section--primary section--process-bg">
+    <div class="container">
+      <div class="section-header section-header--center reveal">
+        <span class="section-badge" style="background: var(--white); color: var(--dark)"><i class="fas fa-route"></i> Cómo trabajamos</span>
+        <h2 class="section-title" style="color: var(--dark)">Nuestro <span style="color: var(--primary)">proceso</span></h2>
+        <p class="section-subtitle" style="color: var(--dark)">Un método probado que garantiza la excelencia en cada actuación.</p>
+      </div>
+      <div class="process-steps-grid stagger">
+        <div class="process-step-card reveal">
+          <div class="process-step-icon" style="background: #60a5fa;"><i class="fas fa-clipboard-check"></i></div>
+          <span class="process-step-phase">FASE 01</span>
+          <h3 class="process-step-title">Revisión integral</h3>
+          <p class="process-step-desc">Analizamos su instalación, el estado del agua y los equipos para definir el plan de mantenimiento más adecuado.</p>
+        </div>
+        <div class="process-step-card reveal">
+          <div class="process-step-icon" style="background: #818cf8;"><i class="fas fa-file-lines"></i></div>
+          <span class="process-step-phase">FASE 02</span>
+          <h3 class="process-step-title">Documentación</h3>
+          <p class="process-step-desc">Nos encargamos de toda la documentación técnica, certificados y registros que requiera la normativa vigente.</p>
+        </div>
+        <div class="process-step-card reveal">
+          <div class="process-step-icon" style="background: #22d3ee;"><i class="fas fa-user-check"></i></div>
+          <span class="process-step-phase">FASE 03</span>
+          <h3 class="process-step-title">Personal cualificado</h3>
+          <p class="process-step-desc">Asignamos profesionales titulados con amplia experiencia en mantenimiento de instalaciones acuáticas.</p>
+        </div>
+        <div class="process-step-card reveal">
+          <div class="process-step-icon" style="background: #2dd4bf;"><i class="fas fa-box"></i></div>
+          <span class="process-step-phase">FASE 04</span>
+          <h3 class="process-step-title">Productos óptimos</h3>
+          <p class="process-step-desc">Utilizamos los mejores productos del mercado, con los que trabajamos habitualmente y de los que conocemos su rendimiento.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dónde estamos: mapa con barra lateral (como en Ubicaciones) -->
+  <section class="section section--alt map-section--full" id="localidades">
     <div class="container">
       <div class="section-header section-header--center reveal">
         <span class="section-badge"><i class="fas fa-map-marker-alt"></i> Cobertura</span>
         <h2 class="section-title">Dónde <span>estamos</span></h2>
         <p class="section-subtitle">Ofrecemos mantenimiento de piscinas en las principales localidades de la zona oeste y sur de Madrid.</p>
       </div>
-      <div class="locations-grid stagger reveal">
-        <a href="contacto.html" class="location-card"><i class="fas fa-map-pin"></i> Boadilla del Monte</a>
-        <a href="contacto.html" class="location-card"><i class="fas fa-map-pin"></i> Pozuelo de Alarcón</a>
-        <a href="contacto.html" class="location-card"><i class="fas fa-map-pin"></i> Las Rozas</a>
-        <a href="contacto.html" class="location-card"><i class="fas fa-map-pin"></i> Majadahonda</a>
-        <a href="contacto.html" class="location-card"><i class="fas fa-map-pin"></i> Torrelodones</a>
-        <a href="contacto.html" class="location-card"><i class="fas fa-map-pin"></i> Villalba</a>
-        <a href="contacto.html" class="location-card"><i class="fas fa-map-pin"></i> Villaviciosa de Odón</a>
-        <a href="contacto.html" class="location-card"><i class="fas fa-map-pin"></i> Móstoles</a>
-        <a href="contacto.html" class="location-card"><i class="fas fa-map-pin"></i> Getafe</a>
-        <a href="contacto.html" class="location-card"><i class="fas fa-map-pin"></i> Alcorcón</a>
-        <a href="contacto.html" class="location-card"><i class="fas fa-map-pin"></i> Fuenlabrada</a>
-        <a href="contacto.html" class="location-card"><i class="fas fa-map-pin"></i> Pinto</a>
-        <a href="contacto.html" class="location-card"><i class="fas fa-map-pin"></i> Leganés</a>
+    </div>
+    <div class="map-full-wrap reveal">
+      <aside class="map-search map-search--sidebar">
+        <div class="map-search-bar">
+          <i class="fas fa-search map-search-icon"></i>
+          <input type="text" id="mapSearchInputMantenimiento" class="map-search-input" placeholder="Buscar por nombre o localidad…" autocomplete="off">
+          <button type="button" class="map-search-clear" id="mapSearchClearMantenimiento" title="Limpiar búsqueda"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="map-filters map-filters--collapsible">
+          <details class="map-filter-group">
+            <summary class="map-filter-label"><i class="fas fa-water"></i> Tipo de piscina</summary>
+            <div class="map-filter-chips" id="filterTipoMantenimiento">
+              <button type="button" class="map-chip active" data-value="all">Todos</button>
+              <button type="button" class="map-chip" data-value="infinity">Infinity</button>
+              <button type="button" class="map-chip" data-value="desbordante">Desbordante</button>
+              <button type="button" class="map-chip" data-value="forma">Con forma</button>
+            </div>
+          </details>
+          <details class="map-filter-group">
+            <summary class="map-filter-label"><i class="fas fa-palette"></i> Revestimiento</summary>
+            <div class="map-filter-chips" id="filterRevestMantenimiento">
+              <button type="button" class="map-chip active" data-value="all">Todos</button>
+              <button type="button" class="map-chip" data-value="gresite">Gresite</button>
+              <button type="button" class="map-chip" data-value="porcelanico">Porcelánico</button>
+              <button type="button" class="map-chip" data-value="liner">Liner</button>
+              <button type="button" class="map-chip" data-value="microcemento">Microcemento</button>
+            </div>
+          </details>
+          <details class="map-filter-group">
+            <summary class="map-filter-label"><i class="fas fa-th-large"></i> Tipo de baldosa</summary>
+            <div class="map-filter-chips" id="filterBaldosaMantenimiento">
+              <button type="button" class="map-chip active" data-value="all">Todos</button>
+              <button type="button" class="map-chip" data-value="lisa">Lisa</button>
+              <button type="button" class="map-chip" data-value="mosaico">Mosaico</button>
+              <button type="button" class="map-chip" data-value="piedra">Efecto piedra</button>
+              <button type="button" class="map-chip" data-value="hidraulica">Hidráulica</button>
+            </div>
+          </details>
+          <details class="map-filter-group">
+            <summary class="map-filter-label"><i class="fas fa-tools"></i> Tipo de trabajo</summary>
+            <div class="map-filter-chips" id="filterTrabajoMantenimiento">
+              <button type="button" class="map-chip active" data-value="all">Todos</button>
+              <button type="button" class="map-chip" data-value="construccion">Construcción</button>
+              <button type="button" class="map-chip" data-value="mantenimiento">Mantenimiento</button>
+              <button type="button" class="map-chip" data-value="reforma">Reforma</button>
+              <button type="button" class="map-chip" data-value="climatizacion">Climatización</button>
+            </div>
+          </details>
+          <details class="map-filter-group">
+            <summary class="map-filter-label"><i class="fas fa-building"></i> Uso</summary>
+            <div class="map-filter-chips" id="filterUsoMantenimiento">
+              <button type="button" class="map-chip active" data-value="all">Todos</button>
+              <button type="button" class="map-chip" data-value="privada">Privada</button>
+              <button type="button" class="map-chip" data-value="publica">Pública</button>
+            </div>
+          </details>
+        </div>
+        <div class="map-search-status" id="mapSearchStatusMantenimiento">
+          <span id="mapResultCountMantenimiento">18</span> piscinas encontradas
+        </div>
+        <div class="map-search-more">
+          <a href="contacto.html" class="map-search-pill">Ver más</a>
+        </div>
+      </aside>
+      <div class="map-full-bg">
+        <div id="coverage-map-mantenimiento" class="coverage-map"></div>
+        <div class="map-legend" id="mapLegendMantenimiento">
+          <div class="map-legend-item"><span class="map-legend-dot map-legend-dot--blue"></span><span>Proyectos construidos, reformados o llevados por nosotros</span></div>
+          <div class="map-legend-item"><span class="map-legend-dot map-legend-dot--orange"></span><span>Nuestra sede (Cuesa Sport)</span></div>
+        </div>
       </div>
     </div>
+    <p class="coverage-map-attribution coverage-map-attribution--full"><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap</a> contributors</p>
   </section>
 
   <!-- CTA -->
@@ -369,5 +464,158 @@
   </footer>
   <button class="back-to-top"><i class="fas fa-chevron-up"></i></button>
   <script src="../js/main.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script>
+    (function() {
+      var accordion = document.getElementById('accordion-mantenimiento');
+      if (!accordion) return;
+      var panels = accordion.querySelectorAll('.accordion-panel');
+      panels.forEach(function(panel, i) {
+        panel.addEventListener('mouseenter', function() {
+          accordion.setAttribute('data-hovered', String(i));
+          panel.classList.add('is-hovered');
+        });
+        panel.addEventListener('mouseleave', function() {
+          accordion.removeAttribute('data-hovered');
+          panels.forEach(function(p) { p.classList.remove('is-hovered'); });
+        });
+      });
+    })();
+  </script>
+  <script>
+    (function() {
+      var mapEl = document.getElementById('coverage-map-mantenimiento');
+      if (!mapEl || typeof L === 'undefined') return;
+      var map = L.map('coverage-map-mantenimiento').setView([40.48, -3.88], 10);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+      var empresaCoords = [40.2812, -3.7918];
+      var orangeIcon = L.divIcon({
+        className: 'map-marker-empresa',
+        html: '<div style="width:0;height:0;border-left:12px solid transparent;border-right:12px solid transparent;border-bottom:24px solid #e67e22;border-top:0;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));margin-top:2px;"></div>',
+        iconSize: [24, 24],
+        iconAnchor: [12, 24]
+      });
+      var empresaPopup = '<div class="coverage-popup"><h4><i class="fas fa-building" style="color:#e67e22;margin-right:6px"></i>Cuesa Sport</h4><p class="popup-loc"><i class="fas fa-map-marker-alt" style="color:#e67e22;margin-right:4px"></i>Calle Olmo, 13-15<br>Pol. Ind. Niño del Remedio<br>28942 – Fuenlabrada (Madrid)</p><a href="contacto.html">Cómo llegar / Contacto &rarr;</a></div>';
+      L.marker(empresaCoords, { icon: orangeIcon }).bindPopup(empresaPopup, { maxWidth: 320 }).addTo(map);
+      var tipoLabels = { infinity: 'Infinity', desbordante: 'Desbordante', forma: 'Con forma' };
+      var revestLabels = { gresite: 'Gresite', porcelanico: 'Porcelánico', liner: 'Liner', microcemento: 'Microcemento' };
+      var usoLabels = { privada: 'Privada', publica: 'Pública' };
+      var pools = [
+        { name: 'Piscina El Mirador', localidad: 'Boadilla del Monte', lat: 40.405, lng: -3.877, tipo: 'infinity', revestimiento: 'gresite', uso: 'privada', tipoTrabajo: 'construccion', img: '../img/ubicaciones/boadilla-infinity.png', desc: 'Piscina infinity con borde infinito y vistas panorámicas. Acabados en gresite azul cobalto.' },
+        { name: 'Piscina Villa Jardín', localidad: 'Boadilla del Monte', lat: 40.402, lng: -3.872, tipo: 'desbordante', revestimiento: 'porcelanico', uso: 'privada', tipoTrabajo: 'reforma', img: '../img/ubicaciones/boadilla-desbordante.png', desc: 'Piscina desbordante perimetral con revestimiento porcelánico de alta gama.' },
+        { name: 'Piscina Los Olivos', localidad: 'Boadilla del Monte', lat: 40.408, lng: -3.880, tipo: 'forma', revestimiento: 'liner', uso: 'privada', tipoTrabajo: 'construccion', img: '../img/ubicaciones/boadilla-rinon.png', desc: 'Piscina con forma de riñón adaptada al jardín. Revestimiento en liner de alta resistencia.' },
+        { name: 'Piscina Atalaya', localidad: 'Pozuelo de Alarcón', lat: 40.435, lng: -3.813, tipo: 'infinity', revestimiento: 'porcelanico', uso: 'privada', tipoTrabajo: 'climatizacion', img: '../img/ubicaciones/pozuelo-infinity.png', desc: 'Infinity pool con acabado porcelánico y sistema de iluminación LED integrado.' },
+        { name: 'Piscina Monte Real', localidad: 'Pozuelo de Alarcón', lat: 40.438, lng: -3.808, tipo: 'desbordante', revestimiento: 'gresite', uso: 'publica', tipoTrabajo: 'mantenimiento', img: '../img/ubicaciones/pozuelo-desbordante.png', desc: 'Piscina de desborde comunitaria con gresite vítreo y canal perimetral de recogida.' },
+        { name: 'Piscina La Encina', localidad: 'Pozuelo de Alarcón', lat: 40.432, lng: -3.818, tipo: 'forma', revestimiento: 'microcemento', uso: 'privada', tipoTrabajo: 'reforma', img: '../img/ubicaciones/pozuelo-rinon.png', desc: 'Diseño orgánico en forma libre con microcemento para un acabado contemporáneo.' },
+        { name: 'Piscina El Pinar', localidad: 'Las Rozas', lat: 40.493, lng: -3.874, tipo: 'infinity', revestimiento: 'gresite', uso: 'privada', tipoTrabajo: 'construccion', img: '../img/ubicaciones/lasrozas-infinity.png', desc: 'Piscina infinity entre pinos con gresite en tonos verdes que integra el paisaje.' },
+        { name: 'Piscina Monteclaro', localidad: 'Las Rozas', lat: 40.497, lng: -3.869, tipo: 'desbordante', revestimiento: 'liner', uso: 'publica', tipoTrabajo: 'mantenimiento', img: '../img/ubicaciones/lasrozas-desbordante.png', desc: 'Desbordante comunitaria de líneas rectas con liner armado de alta durabilidad.' },
+        { name: 'Piscina Las Matas', localidad: 'Las Rozas', lat: 40.490, lng: -3.880, tipo: 'forma', revestimiento: 'gresite', uso: 'privada', tipoTrabajo: 'reforma', img: '../img/ubicaciones/lasrozas-rinon.png', desc: 'Piscina en forma de riñón con gresite mosaico y zona de playa.' },
+        { name: 'Piscina El Bosque', localidad: 'Majadahonda', lat: 40.472, lng: -3.872, tipo: 'infinity', revestimiento: 'microcemento', uso: 'privada', tipoTrabajo: 'construccion', img: '../img/ubicaciones/majadahonda-infinity.png', desc: 'Infinity con acabado en microcemento blanco y rebosadero frontal.' },
+        { name: 'Piscina Cerro Alarcón', localidad: 'Majadahonda', lat: 40.475, lng: -3.867, tipo: 'desbordante', revestimiento: 'porcelanico', uso: 'publica', tipoTrabajo: 'climatizacion', img: '../img/ubicaciones/majadahonda-desbordante.png', desc: 'Piscina desbordante comunitaria con porcelánico efecto piedra.' },
+        { name: 'Piscina Vía Verde', localidad: 'Majadahonda', lat: 40.469, lng: -3.878, tipo: 'forma', revestimiento: 'liner', uso: 'privada', tipoTrabajo: 'mantenimiento', img: '../img/ubicaciones/majadahonda-rinon.png', desc: 'Forma orgánica integrada en el paisaje con liner gris antracita.' },
+        { name: 'Piscina La Sierra', localidad: 'Torrelodones', lat: 40.577, lng: -3.929, tipo: 'infinity', revestimiento: 'porcelanico', uso: 'privada', tipoTrabajo: 'construccion', img: '../img/ubicaciones/torrelodones-infinity.png', desc: 'Infinity con vistas a la sierra de Guadarrama y revestimiento porcelánico.' },
+        { name: 'Piscina El Gasco', localidad: 'Torrelodones', lat: 40.580, lng: -3.924, tipo: 'desbordante', revestimiento: 'gresite', uso: 'privada', tipoTrabajo: 'reforma', img: '../img/ubicaciones/torrelodones-desbordante.png', desc: 'Piscina desbordante con gresite azul celeste y cascada decorativa.' },
+        { name: 'Piscina Los Peñascales', localidad: 'Torrelodones', lat: 40.574, lng: -3.934, tipo: 'forma', revestimiento: 'microcemento', uso: 'publica', tipoTrabajo: 'mantenimiento', img: '../img/ubicaciones/torrelodones-rinon.png', desc: 'Piscina comunitaria en forma de riñón con microcemento gris natural.' },
+        { name: 'Piscina Collado Sol', localidad: 'Villalba', lat: 40.635, lng: -4.009, tipo: 'infinity', revestimiento: 'liner', uso: 'privada', tipoTrabajo: 'climatizacion', img: '../img/ubicaciones/villalba-infinity.png', desc: 'Infinity de montaña con liner reforzado y sistema de climatización solar.' },
+        { name: 'Piscina Peñalba', localidad: 'Villalba', lat: 40.638, lng: -4.004, tipo: 'desbordante', revestimiento: 'microcemento', uso: 'publica', tipoTrabajo: 'construccion', img: '../img/ubicaciones/villalba-desbordante.png', desc: 'Desbordante comunitaria en microcemento con zona wet deck y jacuzzi integrado.' },
+        { name: 'Piscina Los Valles', localidad: 'Villalba', lat: 40.632, lng: -4.014, tipo: 'forma', revestimiento: 'gresite', uso: 'privada', tipoTrabajo: 'reforma', img: '../img/ubicaciones/villalba-rinon.png', desc: 'Forma libre con gresite mosaico azul y escalera de obra romana.' }
+      ];
+      var markers = [];
+      pools.forEach(function(p) {
+        var popupHtml = '<div class="coverage-popup">' +
+          '<img src="' + p.img + '" alt="' + p.name + '">' +
+          '<h4>' + p.name + '</h4>' +
+          '<p class="popup-loc"><i class="fas fa-map-marker-alt" style="color:var(--primary);margin-right:4px"></i>' + p.localidad + '</p>' +
+          '<p>' + p.desc + '</p>' +
+          '<div class="popup-tags">' +
+            '<span class="popup-tag popup-tag--tipo">' + tipoLabels[p.tipo] + '</span>' +
+            '<span class="popup-tag popup-tag--revest">' + revestLabels[p.revestimiento] + '</span>' +
+            '<span class="popup-tag popup-tag--uso">' + usoLabels[p.uso] + '</span>' +
+          '</div>' +
+          '<a href="contacto.html">Solicitar presupuesto &rarr;</a></div>';
+        var marker = L.marker([p.lat, p.lng]).bindPopup(popupHtml, { maxWidth: 320 });
+        marker._poolData = p;
+        markers.push(marker);
+        marker.addTo(map);
+      });
+      map.on('popupopen', function(e) {
+        var popup = e.popup;
+        var popupEl = popup.getElement ? popup.getElement() : (popup._container || null);
+        if (!popupEl) return;
+        setTimeout(function() {
+          var mapContainer = map.getContainer();
+          var containerRect = mapContainer.getBoundingClientRect();
+          var popupRect = popupEl.getBoundingClientRect();
+          var popupCenterX = popupRect.left + popupRect.width / 2;
+          var popupCenterY = popupRect.top + popupRect.height / 2;
+          var containerCenterX = containerRect.left + containerRect.width / 2;
+          var containerCenterY = containerRect.top + containerRect.height / 2;
+          var offsetX = containerCenterX - popupCenterX;
+          var offsetY = containerCenterY - popupCenterY;
+          map.panBy([-offsetX, -offsetY], { animate: true, duration: 0.25 });
+        }, 80);
+      });
+      var activeTipo = 'all', activeRevest = 'all', activeBaldosa = 'all', activeTrabajo = 'all', activeUso = 'all', searchQuery = '';
+      var searchInput = document.getElementById('mapSearchInputMantenimiento');
+      var clearBtn = document.getElementById('mapSearchClearMantenimiento');
+      var countEl = document.getElementById('mapResultCountMantenimiento');
+      var tipoChips = document.querySelectorAll('#filterTipoMantenimiento .map-chip');
+      var revestChips = document.querySelectorAll('#filterRevestMantenimiento .map-chip');
+      var baldosaChips = document.querySelectorAll('#filterBaldosaMantenimiento .map-chip');
+      var trabajoChips = document.querySelectorAll('#filterTrabajoMantenimiento .map-chip');
+      var usoChips = document.querySelectorAll('#filterUsoMantenimiento .map-chip');
+      function normalize(str) { return str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
+      function applyFilters() {
+        var q = normalize(searchQuery);
+        var visible = 0;
+        markers.forEach(function(m) {
+          var p = m._poolData;
+          var matchTipo = activeTipo === 'all' || p.tipo === activeTipo;
+          var matchRevest = activeRevest === 'all' || p.revestimiento === activeRevest;
+          var matchBaldosa = activeBaldosa === 'all' || (p.baldosa && p.baldosa === activeBaldosa);
+          var matchTrabajo = activeTrabajo === 'all' || (p.tipoTrabajo && p.tipoTrabajo === activeTrabajo);
+          var matchUso = activeUso === 'all' || p.uso === activeUso;
+          var matchSearch = !q || normalize(p.name).indexOf(q) !== -1 || normalize(p.localidad).indexOf(q) !== -1;
+          if (matchTipo && matchRevest && matchBaldosa && matchTrabajo && matchUso && matchSearch) {
+            if (!map.hasLayer(m)) m.addTo(map);
+            visible++;
+          } else {
+            if (map.hasLayer(m)) map.removeLayer(m);
+          }
+        });
+        if (countEl) countEl.textContent = visible;
+      }
+      function setChipActive(container, value) {
+        if (!container) return;
+        container.querySelectorAll('.map-chip').forEach(function(c) { c.classList.toggle('active', c.dataset.value === value); });
+      }
+      tipoChips.forEach(function(chip) {
+        chip.addEventListener('click', function() { activeTipo = this.dataset.value; setChipActive(document.getElementById('filterTipoMantenimiento'), activeTipo); applyFilters(); });
+      });
+      revestChips.forEach(function(chip) {
+        chip.addEventListener('click', function() { activeRevest = this.dataset.value; setChipActive(document.getElementById('filterRevestMantenimiento'), activeRevest); applyFilters(); });
+      });
+      baldosaChips.forEach(function(chip) {
+        chip.addEventListener('click', function() { activeBaldosa = this.dataset.value; setChipActive(document.getElementById('filterBaldosaMantenimiento'), activeBaldosa); applyFilters(); });
+      });
+      trabajoChips.forEach(function(chip) {
+        chip.addEventListener('click', function() { activeTrabajo = this.dataset.value; setChipActive(document.getElementById('filterTrabajoMantenimiento'), activeTrabajo); applyFilters(); });
+      });
+      usoChips.forEach(function(chip) {
+        chip.addEventListener('click', function() { activeUso = this.dataset.value; setChipActive(document.getElementById('filterUsoMantenimiento'), activeUso); applyFilters(); });
+      });
+      if (searchInput) searchInput.addEventListener('input', function() {
+        searchQuery = this.value.trim();
+        if (clearBtn) clearBtn.classList.toggle('visible', searchQuery.length > 0);
+        applyFilters();
+      });
+      if (clearBtn) clearBtn.addEventListener('click', function() {
+        if (searchInput) { searchInput.value = ''; searchInput.focus(); }
+        searchQuery = ''; clearBtn.classList.remove('visible'); applyFilters();
+      });
+    })();
+  </script>
 </body>
 </html>
