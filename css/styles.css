@@ -172,6 +172,34 @@ ul { list-style: none; }
   z-index: 1;
 }
 
+/* Servicios: CTA con palabra "Servicios" de fondo (como Reformamos en reforma) */
+.section--servicios-cta {
+  position: relative;
+  overflow: hidden;
+}
+.servicios-cta-bg-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(5rem, 16vw, 18rem);
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.35);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  user-select: none;
+}
+.section--servicios-cta .container {
+  position: relative;
+  z-index: 1;
+}
+
 /* Fondo sutil en sección Nuestro proceso: textura muy suave sobre el azul */
 .section--process-bg {
   position: relative;
@@ -1434,6 +1462,16 @@ ul { list-style: none; }
 .section--mantenimiento-bg .container {
   position: relative;
   z-index: 1;
+}
+
+/* Menos espacio entre bloque públicas y particulares en mantenimiento-piscinas */
+.section--mantenimiento-privadas {
+  padding-top: 40px;
+}
+@media (max-width: 991px) {
+  .section--mantenimiento-privadas {
+    padding-top: 32px;
+  }
 }
 
 .accordion {
