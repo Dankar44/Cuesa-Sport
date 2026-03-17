@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-<body>
+<body class="page-sectores">
 
   <!-- Preloader -->
   <div class="preloader">
@@ -27,16 +27,16 @@
           <div class="nav-dropdown-menu">
             <a href="sobre-nosotros.html">Nuestra historia</a>
             <a href="sobre-nosotros.html#valores">Misión y valores</a>
-            <a href="contacto.html">Trabaja con nosotros</a>
+            <a href="trabaja-con-nosotros.html">Trabaja con nosotros</a>
           </div>
         </div>
         <div class="nav-dropdown">
           <a href="servicios.html" class="nav-link">Servicios <i class="fas fa-chevron-down" style="font-size:0.6em;margin-left:4px"></i></a>
           <div class="nav-dropdown-menu">
-            <a href="servicios.html#construccion">Construcción de piscinas</a>
-            <a href="servicios.html#mantenimiento">Mantenimiento de piscinas</a>
-            <a href="servicios.html#reforma">Reforma de piscinas</a>
-            <a href="servicios.html#climatizacion">Climatización de piscinas</a>
+            <a href="construccion-piscinas.html">Construcción de piscinas</a>
+            <a href="mantenimiento-piscinas.html">Mantenimiento de piscinas</a>
+            <a href="reforma-piscinas.html">Reforma de piscinas</a>
+            <a href="climatizacion-piscinas.html">Climatización de piscinas</a>
           </div>
         </div>
         <a href="proyectos.html" class="nav-link">Proyectos</a>
@@ -63,68 +63,127 @@
     </div>
   </section>
 
-  <!-- Sectors Grid -->
-  <section class="section">
-    <div class="container">
-      <div class="sectors-grid stagger">
-        <a href="sector-chalets.html" class="sector-card reveal-scale">
-          <div class="sector-card-bg" style="background-image: url('../img/sectores/sector-chalets.jpg');"></div>
-          <div class="sector-card-content">
-            <h3>Piscinas para Chalets</h3>
-          </div>
-          <div class="sector-card-arrow"><i class="fas fa-chevron-right"></i></div>
-        </a>
-        <a href="sector-comunidades.html" class="sector-card reveal-scale">
-          <div class="sector-card-bg" style="background-image: url('../img/sectores/sector-comunidades.jpg');"></div>
-          <div class="sector-card-content">
-            <h3>Piscinas para Comunidades</h3>
-          </div>
-          <div class="sector-card-arrow"><i class="fas fa-chevron-right"></i></div>
-        </a>
-        <a href="sector-polideportivos.html" class="sector-card reveal-scale">
-          <div class="sector-card-bg" style="background-image: url('../img/sectores/sector-polideportivos.jpg');"></div>
-          <div class="sector-card-content">
-            <h3>Piscinas para Polideportivos</h3>
-          </div>
-          <div class="sector-card-arrow"><i class="fas fa-chevron-right"></i></div>
-        </a>
-        <a href="sector-gimnasios.html" class="sector-card reveal-scale">
-          <div class="sector-card-bg" style="background-image: url('../img/sectores/sector-gimnasios.jpg');"></div>
-          <div class="sector-card-content">
-            <h3>Piscinas para Gimnasios</h3>
-          </div>
-          <div class="sector-card-arrow"><i class="fas fa-chevron-right"></i></div>
-        </a>
-        <a href="sector-colegios.html" class="sector-card reveal-scale">
-          <div class="sector-card-bg" style="background-image: url('../img/sectores/sector-colegios.jpg');"></div>
-          <div class="sector-card-content">
-            <h3>Piscinas para Colegios</h3>
-          </div>
-          <div class="sector-card-arrow"><i class="fas fa-chevron-right"></i></div>
-        </a>
-        <a href="sector-obras-publicas.html" class="sector-card reveal-scale">
-          <div class="sector-card-bg" style="background-image: url('../img/sectores/sector-obras-publicas.jpg');"></div>
-          <div class="sector-card-content">
-            <h3>Piscinas para Obras Públicas</h3>
-          </div>
-          <div class="sector-card-arrow"><i class="fas fa-chevron-right"></i></div>
-        </a>
+  <!-- Sectores — Bloques alternos imagen / texto -->
+  <section class="section sectores-alt">
+    <div class="sectores-alt-bg-text" aria-hidden="true">Especialización</div>
+    <div class="container sectores-alt-container">
+      <div class="section-header section-header--center reveal">
+        <span class="section-badge"><i class="fas fa-briefcase"></i> Especialización</span>
+        <h2 class="section-title">Nuestros <span>Sectores</span></h2>
+        <p class="section-subtitle">Descubra los diferentes ámbitos en los que aplicamos nuestra experiencia en construcción y mantenimiento.</p>
       </div>
+    </div>
+    <div class="container sectores-alt-list-wrap">
+    <div class="sectores-alt-list">
+      <article class="sectores-alt-item">
+        <a href="sector-chalets.html" class="sectores-alt-link">
+          <div class="sectores-alt-img-wrap">
+            <img src="../img/sectores/sector-chalets.jpg" alt="Piscinas para Chalets">
+          </div>
+          <div class="sectores-alt-content">
+            <h2>Piscinas para Chalets</h2>
+            <div class="sectores-alt-hidden">
+              <p>Diseñamos piscinas privadas que transforman tu jardín en un oasis personal, adaptándonos a tu entorno y necesidades.</p>
+              <span class="btn btn--white">Saber más <i class="fas fa-arrow-right"></i></span>
+            </div>
+          </div>
+        </a>
+      </article>
+      <article class="sectores-alt-item">
+        <a href="sector-comunidades.html" class="sectores-alt-link">
+          <div class="sectores-alt-img-wrap">
+            <img src="../img/sectores/sector-comunidades.jpg" alt="Piscinas para Comunidades">
+          </div>
+          <div class="sectores-alt-content">
+            <h2>Piscinas para Comunidades</h2>
+            <div class="sectores-alt-hidden">
+              <p>Piscinas comunitarias con sistemas de filtración de alto rendimiento, diseñadas para el disfrute y la máxima durabilidad.</p>
+              <span class="btn btn--white">Saber más <i class="fas fa-arrow-right"></i></span>
+            </div>
+          </div>
+        </a>
+      </article>
+      <article class="sectores-alt-item">
+        <a href="sector-polideportivos.html" class="sectores-alt-link">
+          <div class="sectores-alt-img-wrap">
+            <img src="../img/sectores/sector-polideportivos.jpg" alt="Piscinas para Polideportivos">
+          </div>
+          <div class="sectores-alt-content">
+            <h2>Piscinas para Polideportivos</h2>
+            <div class="sectores-alt-hidden">
+              <p>Instalaciones deportivas que cumplen con las normativas más exigentes. Ingeniería acuática de precisión.</p>
+              <span class="btn btn--white">Saber más <i class="fas fa-arrow-right"></i></span>
+            </div>
+          </div>
+        </a>
+      </article>
+      <article class="sectores-alt-item">
+        <a href="sector-gimnasios.html" class="sectores-alt-link">
+          <div class="sectores-alt-img-wrap">
+            <img src="../img/sectores/sector-gimnasios.jpg" alt="Piscinas para Gimnasios">
+          </div>
+          <div class="sectores-alt-content">
+            <h2>Piscinas para Gimnasios</h2>
+            <div class="sectores-alt-hidden">
+              <p>Circuitos termales, carriles de nado contracorriente y zonas de hidroterapia adaptadas a tu espacio.</p>
+              <span class="btn btn--white">Saber más <i class="fas fa-arrow-right"></i></span>
+            </div>
+          </div>
+        </a>
+      </article>
+      <article class="sectores-alt-item">
+        <a href="sector-colegios.html" class="sectores-alt-link">
+          <div class="sectores-alt-img-wrap">
+            <img src="../img/sectores/sector-colegios.jpg" alt="Piscinas para Colegios">
+          </div>
+          <div class="sectores-alt-content">
+            <h2>Piscinas para Colegios</h2>
+            <div class="sectores-alt-hidden">
+              <p>Control térmico absoluto y profundidad regulada para un aprendizaje acuático totalmente seguro.</p>
+              <span class="btn btn--white">Saber más <i class="fas fa-arrow-right"></i></span>
+            </div>
+          </div>
+        </a>
+      </article>
+      <article class="sectores-alt-item">
+        <a href="sector-obras-publicas.html" class="sectores-alt-link">
+          <div class="sectores-alt-img-wrap">
+            <img src="../img/sectores/sector-obras-publicas.jpg" alt="Piscinas para Obras Públicas">
+          </div>
+          <div class="sectores-alt-content">
+            <h2>Piscinas para Obras Públicas</h2>
+            <div class="sectores-alt-hidden">
+              <p>Macroproyectos municipales e intervenciones urbanas a gran escala con garantía estructural.</p>
+              <span class="btn btn--white">Saber más <i class="fas fa-arrow-right"></i></span>
+            </div>
+          </div>
+        </a>
+      </article>
+    </div>
     </div>
   </section>
 
-  <!-- Versatility Section -->
-  <section class="section section--primary">
+  <!-- Versatility Section: texto izquierda, imagen derecha + imagen de fondo con filtro azul -->
+  <section class="section section--primary section--versatilidad-bg">
     <div class="container">
-      <div class="section-header section-header--center">
-        <span class="section-badge reveal"><i class="fas fa-shield-alt"></i> Experiencia multicanal</span>
-        <h2 class="section-title reveal">Nuestra versatilidad nos define</h2>
-        <p class="section-subtitle reveal">
-          Desde la piscina de un chalet privado hasta grandes instalaciones deportivas municipales, 
-          en Cuesa Sport adaptamos cada proyecto a las necesidades concretas del sector. 
-          Ya sea para uso residencial, comunitario, educativo o público, contamos con la experiencia 
-          y los equipos necesarios para entregar soluciones de máxima calidad y durabilidad.
-        </p>
+      <div class="about-layout about-layout--image-first about-layout--pub stagger">
+        <div class="about-text reveal-left">
+          <span class="section-badge reveal"><i class="fas fa-shield-alt"></i> Experiencia multicanal</span>
+          <h2 class="section-title reveal">Nuestra versatilidad <span>nos define</span></h2>
+          <p>Desde la piscina de un chalet privado hasta grandes instalaciones deportivas municipales, en Cuesa Sport adaptamos cada proyecto a las necesidades concretas del sector.</p>
+          <p>Ya sea para uso residencial, comunitario, educativo o público, contamos con la experiencia y los equipos necesarios para entregar soluciones de máxima calidad y durabilidad.</p>
+          <a href="contacto.html" class="btn btn--primary reveal">Saber más <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="about-img-wrapper reveal-right">
+          <div class="about-img">
+            <img src="../img/sectores/versatilidad-sectores.jpg" alt="Cuesa Sport: piscinas para todos los sectores">
+          </div>
+          <div class="about-img-accent"></div>
+          <div class="about-floating-card reveal">
+            <div class="number" data-counter="6" data-suffix="">0</div>
+            <div class="label">Sectores<br>atendidos</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>

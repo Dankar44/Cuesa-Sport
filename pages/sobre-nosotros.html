@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-<body>
+<body id="nosotros">
 
   <!-- Preloader -->
   <div class="preloader">
@@ -27,16 +27,16 @@
           <div class="nav-dropdown-menu">
             <a href="sobre-nosotros.html">Nuestra historia</a>
             <a href="sobre-nosotros.html#valores">Misión y valores</a>
-            <a href="contacto.html">Trabaja con nosotros</a>
+            <a href="trabaja-con-nosotros.html">Trabaja con nosotros</a>
           </div>
         </div>
         <div class="nav-dropdown">
           <a href="servicios.html" class="nav-link">Servicios <i class="fas fa-chevron-down" style="font-size:0.6em;margin-left:4px"></i></a>
           <div class="nav-dropdown-menu">
-            <a href="servicios.html#construccion">Construcción de piscinas</a>
-            <a href="servicios.html#mantenimiento">Mantenimiento de piscinas</a>
-            <a href="servicios.html#reforma">Reforma de piscinas</a>
-            <a href="servicios.html#climatizacion">Climatización de piscinas</a>
+            <a href="construccion-piscinas.html">Construcción de piscinas</a>
+            <a href="mantenimiento-piscinas.html">Mantenimiento de piscinas</a>
+            <a href="reforma-piscinas.html">Reforma de piscinas</a>
+            <a href="climatizacion-piscinas.html">Climatización de piscinas</a>
           </div>
         </div>
         <a href="proyectos.html" class="nav-link">Proyectos</a>
@@ -118,7 +118,6 @@
           <p>Construir, mantener y reformar recintos acuáticos polivalentes ofreciendo la mejor relación <strong>calidad-precio</strong> del mercado. Trabajamos para que cada cliente disfrute de su piscina con total tranquilidad y satisfacción.</p>
         </div>
       </div>
-      <div class="mv-divider"></div>
       <div class="mv-pane mv-pane--vision reveal-right">
         <span class="mv-pane-bg-letter" aria-hidden="true">V</span>
         <div class="mv-pane-content">
@@ -130,86 +129,78 @@
     </div>
   </section>
 
-  <!-- Values — carrusel vertical tipo "palabras que se mueven" -->
-  <section class="section section--alt values-section" id="valores">
+  <!-- Values — tarjetas de principios -->
+  <section class="section section--alt values-section values-section--bg-text" id="valores">
+    <div class="values-section-bg-text" aria-hidden="true">Principios</div>
     <div class="container">
-      <div class="section-header section-header--center reveal">
-        <span class="section-badge"><i class="fas fa-heart"></i> Los pilares de Cuesa Sport</span>
-        <h2 class="section-title">Nuestros <span>valores</span></h2>
-        <p class="section-subtitle">Principios que guían nuestro día a día y definen nuestra forma de trabajar.</p>
-      </div>
-
-      <div class="values-carousel-layout reveal">
-        <div class="values-words-col">
-          <div class="values-words-viewport">
-            <div class="values-words-track" id="valuesWordsTrack">
-              <div class="values-word-item" data-index="0">Compromiso</div>
-              <div class="values-word-item" data-index="1">Responsabilidad</div>
-              <div class="values-word-item" data-index="2">Visión</div>
-              <div class="values-word-item" data-index="3">Profesionalidad</div>
-            </div>
-          </div>
+      <div class="values-cards-wrap reveal">
+        <div class="values-cards-header">
+          <h4 class="values-cards-badge">Filosofía Corporativa</h4>
+          <h2 class="section-title values-cards-title">Nuestros <span>principios</span></h2>
+          <p class="section-subtitle" style="margin-top: 10px;">La base de nuestro trabajo diario: calidad, transparencia y compromiso con cada cliente.</p>
         </div>
-        <div class="values-content-col">
-          <div class="values-content-text">
-            <div class="values-description">
-              <p id="valuesDescription">Asumimos cada proyecto con responsabilidad total hacia el cliente, cumpliendo plazos y garantizando la máxima calidad en cada detalle.</p>
-            </div>
-            <div class="values-barrita" id="valuesBarrita" aria-hidden="true">
-              <span class="values-barrita-track"></span>
-              <span class="values-barrita-thumb"></span>
-            </div>
-          </div>
-          <div class="values-nav">
-            <button type="button" class="values-nav-btn values-nav-prev" aria-label="Valor anterior" id="valuesPrev">
-              <i class="fas fa-arrow-left"></i>
-            </button>
-            <button type="button" class="values-nav-btn values-nav-next" aria-label="Siguiente valor" id="valuesNext">
-              <i class="fas fa-arrow-right"></i>
-            </button>
+        <div class="reveal values-cards-grid-reveal">
+          <div class="values-cards-grid">
+          <article class="value-card">
+            <span class="value-card-number" aria-hidden="true">01</span>
+            <h3 class="value-card-title">Compromiso</h3>
+            <p class="value-card-desc">Asumimos cada proyecto con responsabilidad total hacia el cliente, cumpliendo plazos y garantizando la máxima calidad en cada detalle.</p>
+          </article>
+          <article class="value-card">
+            <span class="value-card-number" aria-hidden="true">02</span>
+            <h3 class="value-card-title">Responsabilidad</h3>
+            <p class="value-card-desc">Actuamos con integridad, cumpliendo normativas vigentes y ofreciendo transparencia en cada fase del proyecto y en nuestra relación con clientes y proveedores.</p>
+          </article>
+          <article class="value-card">
+            <span class="value-card-number" aria-hidden="true">03</span>
+            <h3 class="value-card-title">Visión</h3>
+            <p class="value-card-desc">Miramos al futuro con optimismo, incorporando nuevas tecnologías y métodos de trabajo que nos permiten ofrecer soluciones más eficientes y sostenibles.</p>
+          </article>
+          <article class="value-card">
+            <span class="value-card-number" aria-hidden="true">04</span>
+            <h3 class="value-card-title">Profesionalidad</h3>
+            <p class="value-card-desc">Contamos con equipos multidisciplinares formados por técnicos cualificados que velan por la excelencia en cada actuación.</p>
+          </article>
           </div>
         </div>
       </div>
-
-      <!-- Datos de cada valor (ocultos, para JS) -->
-      <script type="application/json" id="valuesData">
-        [
-          {"title":"Compromiso","description":"Asumimos cada proyecto con responsabilidad total hacia el cliente, cumpliendo plazos y garantizando la máxima calidad en cada detalle."},
-          {"title":"Responsabilidad","description":"Actuamos con integridad, cumpliendo normativas vigentes y ofreciendo transparencia en cada fase del proyecto y en nuestra relación con clientes y proveedores."},
-          {"title":"Visión","description":"Miramos al futuro con optimismo, incorporando nuevas tecnologías y métodos de trabajo que nos permiten ofrecer soluciones más eficientes y sostenibles."},
-          {"title":"Profesionalidad","description":"Contamos con equipos multidisciplinares formados por técnicos cualificados que velan por la excelencia en cada actuación."}
-        ]
-      </script>
     </div>
   </section>
 
   <!-- Quality Policy -->
-  <section class="section section--primary">
+  <section class="section section--calidad-bg" id="politica-calidad">
     <div class="container">
       <div class="about-layout">
         <div class="reveal-left" style="display:flex;align-items:center;">
           <div>
-            <span class="section-badge" style="background:rgba(255,255,255,0.2);color:var(--white)"><i class="fas fa-award"></i> Política de calidad</span>
-            <h2 class="section-title" style="color:var(--white);margin-top:16px">Calidad certificada y <span style="color:var(--primary-light)">normativas cumplidas</span></h2>
-            <p style="color:rgba(255,255,255,0.9);margin-bottom:24px">Trabajamos bajo estrictos estándares de calidad y cumplimiento normativo. Colaboramos con las principales constructoras del país y velamos por la seguridad y durabilidad de cada instalación.</p>
-            <ul style="color:rgba(255,255,255,0.85);list-style:none;padding:0">
-              <li style="margin-bottom:12px;display:flex;align-items:center;gap:10px"><i class="fas fa-check-circle" style="color:var(--teal-light)"></i> Cumplimiento de normativas vigentes</li>
-              <li style="margin-bottom:12px;display:flex;align-items:center;gap:10px"><i class="fas fa-check-circle" style="color:var(--teal-light)"></i> Materiales de primera calidad</li>
-              <li style="margin-bottom:12px;display:flex;align-items:center;gap:10px"><i class="fas fa-check-circle" style="color:var(--teal-light)"></i> Procesos certificados</li>
-              <li style="display:flex;align-items:center;gap:10px"><i class="fas fa-check-circle" style="color:var(--teal-light)"></i> Colaboración con constructoras de prestigio</li>
+            <span class="section-badge section-badge--calidad"><i class="fas fa-award"></i> Política de calidad</span>
+            <h2 class="section-title section-title--calidad">Calidad certificada y <span class="section-title--calidad-accent">normativas cumplidas</span></h2>
+            <p class="calidad-intro">Trabajamos bajo estrictos estándares de calidad y cumplimiento normativo. Colaboramos con las principales constructoras del país y velamos por la seguridad y durabilidad de cada instalación.</p>
+            <ul class="calidad-list">
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i> Cumplimiento de normativas vigentes</li>
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i> Materiales de primera calidad</li>
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i> Procesos certificados</li>
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i> Colaboración con constructoras de prestigio</li>
             </ul>
           </div>
         </div>
-        <div class="reveal-right">
-          <div style="background:rgba(255,255,255,0.15);border-radius:var(--radius-lg);padding:48px;border:1px solid rgba(255,255,255,0.2);backdrop-filter:blur(10px)">
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;text-align:center">
-              <div>
-                <div class="number" data-counter="500" data-suffix="+" style="font-size:2.5rem;color:var(--white)">0</div>
-                <div class="label" style="color:rgba(255,255,255,0.8);font-size:0.85rem">Proyectos realizados</div>
+        <div class="reveal-right calidad-right-col">
+          <div class="calidad-img-wrap">
+            <img src="../img/sobre-nosotros/calidad-certificada-normativas.jpg" alt="Calidad certificada y normativas cumplidas en construcción de piscinas" class="calidad-img" width="600" height="400">
+            <div class="calidad-stats-cards">
+              <div class="calidad-stat-card">
+                <div class="calidad-stat-card-icon" aria-hidden="true"><i class="fas fa-plus"></i></div>
+                <div class="calidad-stat-card-content">
+                  <div class="number" data-counter="500" data-suffix="+">0</div>
+                  <div class="calidad-stat-card-label">Proyectos realizados</div>
+                </div>
               </div>
-              <div>
-                <div class="number" data-counter="13" data-suffix="" style="font-size:2.5rem;color:var(--white)">0</div>
-                <div class="label" style="color:rgba(255,255,255,0.8);font-size:0.85rem">Localidades</div>
+              <div class="calidad-stat-card">
+                <div class="calidad-stat-card-icon" aria-hidden="true"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="calidad-stat-card-content">
+                  <div class="number" data-counter="13" data-suffix="">0</div>
+                  <div class="calidad-stat-card-label">Localidades</div>
+                </div>
               </div>
             </div>
           </div>
@@ -287,7 +278,7 @@
             <li><a href="proyectos.html">Proyectos</a></li>
             <li><a href="blog.html">Blog</a></li>
             <li><a href="contacto.html">Contacto</a></li>
-            <li><a href="contacto.html">Trabaja con nosotros</a></li>
+            <li><a href="trabaja-con-nosotros.html">Trabaja con nosotros</a></li>
           </ul>
         </div>
         <div>

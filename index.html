@@ -28,16 +28,16 @@
           <div class="nav-dropdown-menu">
             <a href="pages/sobre-nosotros.html">Nuestra historia</a>
             <a href="pages/sobre-nosotros.html#valores">Misión y valores</a>
-            <a href="pages/contacto.html">Trabaja con nosotros</a>
+            <a href="pages/trabaja-con-nosotros.html">Trabaja con nosotros</a>
           </div>
         </div>
         <div class="nav-dropdown">
           <a href="pages/servicios.html" class="nav-link">Servicios <i class="fas fa-chevron-down" style="font-size:0.6em;margin-left:4px"></i></a>
           <div class="nav-dropdown-menu">
-            <a href="pages/servicios.html#construccion">Construcción de piscinas</a>
-            <a href="pages/servicios.html#mantenimiento">Mantenimiento de piscinas</a>
-            <a href="pages/servicios.html#reforma">Reforma de piscinas</a>
-            <a href="pages/servicios.html#climatizacion">Climatización de piscinas</a>
+            <a href="pages/construccion-piscinas.html">Construcción de piscinas</a>
+            <a href="pages/mantenimiento-piscinas.html">Mantenimiento de piscinas</a>
+            <a href="pages/reforma-piscinas.html">Reforma de piscinas</a>
+            <a href="pages/climatizacion-piscinas.html">Climatización de piscinas</a>
           </div>
         </div>
         <a href="pages/proyectos.html" class="nav-link">Proyectos</a>
@@ -224,8 +224,8 @@
     </div>
   </section>
 
-  <!-- About / Why Us -->
-  <section class="section" id="nosotros">
+  <!-- About / Why Us (mismo estilo que Nuestro proceso en mantenimiento-piscinas) -->
+  <section class="section section--primary section--process-bg" id="nosotros">
     <div class="container">
       <div class="about-layout">
         <div class="about-img-wrapper reveal-left">
@@ -289,7 +289,7 @@
     </div>
   </section>
 
-  <!-- Why Us -->
+  <!-- Why Us: rueda (izq) + tarjeta minimalista (derecha) -->
   <section class="section" id="ventajas">
     <div class="container">
       <div class="section-header section-header--center reveal">
@@ -297,10 +297,8 @@
         <h2 class="section-title">¿Por qué elegir <span>Cuesa Sport</span>?</h2>
         <p class="section-subtitle">Razones de peso que nos convierten en la mejor opción para su proyecto acuático.</p>
       </div>
-      <!-- Ventajas Hub: imagen centrada → slide izquierda → pops → texto derecha -->
       <div class="vhub" id="ventajasHub">
         <div class="vhub-row">
-          <!-- Lado izquierdo: escena con imagen + pills -->
           <div class="vhub-left">
             <div class="vhub-scene">
               <div class="vhub-dashed" aria-hidden="true"></div>
@@ -315,9 +313,8 @@
               <button type="button" class="vhub-pill vhub-pill--5" data-idx="5" data-icon="fa-briefcase" data-title="Empleo de Calidad" data-text="Creemos en el empleo estable y bien hecho. Nuestro equipo trabaja en condiciones seguras, con formación adecuada y con los medios necesarios para realizar cada tarea con calidad. Ese compromiso con las personas se traduce en obras más cuidadas, plazos respetados y un trato profesional en cada contacto. Invertir en nuestro equipo es invertir en su proyecto."><i class="fas fa-briefcase"></i><span>Empleo</span></button>
             </div>
           </div>
-          <!-- Lado derecho: panel de texto -->
           <div class="vhub-right" id="ventajasHubPanel">
-            <div class="vhub-info" id="ventajasHubPanelInner"></div>
+            <div class="vhub-info ventaja-card-panel" id="ventajasHubPanelInner"></div>
           </div>
         </div>
       </div>
@@ -405,71 +402,78 @@
     })();
   </script>
 
-  <!-- Locations -->
-  <section class="section" id="localidades">
+  <!-- Dónde estamos (igual que ubicaciones.html) -->
+  <section class="section section--alt map-section--full" id="localidades">
     <div class="container">
       <div class="section-header section-header--center reveal">
         <span class="section-badge"><i class="fas fa-map-marker-alt"></i> Cobertura</span>
         <h2 class="section-title">Dónde <span>estamos</span></h2>
         <p class="section-subtitle">Ofrecemos nuestros servicios en las principales localidades de la Comunidad de Madrid.</p>
       </div>
-      <div class="map-layout reveal">
-        <!-- Search & Filters (izquierda) -->
-        <div class="map-search">
-          <div class="map-search-bar">
-            <i class="fas fa-search map-search-icon"></i>
-            <input type="text" id="mapSearchInput" class="map-search-input" placeholder="Buscar por nombre o localidad…" autocomplete="off">
-            <button type="button" class="map-search-clear" id="mapSearchClear" title="Limpiar búsqueda"><i class="fas fa-times"></i></button>
-          </div>
-          <div class="map-filters">
-            <div class="map-filter-group">
-              <span class="map-filter-label"><i class="fas fa-water"></i> Tipo</span>
-              <div class="map-filter-chips" id="filterTipo">
-                <button type="button" class="map-chip active" data-value="all">Todos</button>
-                <button type="button" class="map-chip" data-value="infinity">Infinity</button>
-                <button type="button" class="map-chip" data-value="desbordante">Desbordante</button>
-                <button type="button" class="map-chip" data-value="forma">Con forma</button>
-              </div>
-            </div>
-            <div class="map-filter-group">
-              <span class="map-filter-label"><i class="fas fa-palette"></i> Revestimiento</span>
-              <div class="map-filter-chips" id="filterRevest">
-                <button type="button" class="map-chip active" data-value="all">Todos</button>
-                <button type="button" class="map-chip" data-value="gresite">Gresite</button>
-                <button type="button" class="map-chip" data-value="porcelanico">Porcelánico</button>
-                <button type="button" class="map-chip" data-value="liner">Liner</button>
-                <button type="button" class="map-chip" data-value="microcemento">Microcemento</button>
-              </div>
-            </div>
-            <div class="map-filter-group">
-              <span class="map-filter-label"><i class="fas fa-building"></i> Uso</span>
-              <div class="map-filter-chips" id="filterUso">
-                <button type="button" class="map-chip active" data-value="all">Todos</button>
-                <button type="button" class="map-chip" data-value="privada">Privada</button>
-                <button type="button" class="map-chip" data-value="publica">Pública</button>
-              </div>
-            </div>
-          </div>
-          <div class="map-search-status" id="mapSearchStatus">
-            <span id="mapResultCount">18</span> piscinas encontradas
-          </div>
-          <div class="map-search-more">
-            <a href="pages/proyectos.html" class="map-search-pill">Ver más</a>
-          </div>
+    </div>
+    <div class="map-full-wrap reveal">
+      <div class="map-categories-pill-wrap">
+        <button type="button" class="map-categories-pill" aria-expanded="false" aria-controls="mapFiltersPanelIndex">
+          <i class="fas fa-th-large"></i>
+          <span>Categorías</span>
+        </button>
+      </div>
+      <div class="map-filters-overlay" aria-hidden="true"></div>
+      <aside class="map-search map-search--sidebar" id="mapFiltersPanelIndex">
+        <div class="map-search-drawer-header">
+          <h2 class="map-search-drawer-title">Categorías</h2>
+          <button type="button" class="map-search-drawer-close" aria-label="Cerrar filtros"><i class="fas fa-times"></i></button>
         </div>
-        <!-- Mapa (derecha) -->
-        <div class="map-layout-right">
-          <div class="coverage-map-wrapper">
-            <div id="coverage-map" class="coverage-map"></div>
-            <div class="map-legend" id="mapLegend">
-              <div class="map-legend-item"><span class="map-legend-dot map-legend-dot--blue"></span><span>Proyectos construidos, reformados o llevados por nosotros</span></div>
-              <div class="map-legend-item"><span class="map-legend-dot map-legend-dot--orange"></span><span>Nuestra sede (Cuesa Sport)</span></div>
+        <div class="map-search-bar">
+          <i class="fas fa-search map-search-icon"></i>
+          <input type="text" id="mapSearchInput" class="map-search-input" placeholder="Buscar por nombre o localidad…" autocomplete="off">
+          <button type="button" class="map-search-clear" id="mapSearchClear" title="Limpiar búsqueda"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="map-filters map-filters--collapsible">
+          <details class="map-filter-group">
+            <summary class="map-filter-label"><i class="fas fa-water"></i> Tipo de piscina</summary>
+            <div class="map-filter-chips" id="filterTipo">
+              <button type="button" class="map-chip active" data-value="all">Todos</button>
+              <button type="button" class="map-chip" data-value="infinity">Infinity</button>
+              <button type="button" class="map-chip" data-value="desbordante">Desbordante</button>
+              <button type="button" class="map-chip" data-value="forma">Con forma</button>
             </div>
-          </div>
-          <p class="coverage-map-attribution">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors</p>
+          </details>
+          <details class="map-filter-group">
+            <summary class="map-filter-label"><i class="fas fa-palette"></i> Revestimiento</summary>
+            <div class="map-filter-chips" id="filterRevest">
+              <button type="button" class="map-chip active" data-value="all">Todos</button>
+              <button type="button" class="map-chip" data-value="gresite">Gresite</button>
+              <button type="button" class="map-chip" data-value="porcelanico">Porcelánico</button>
+              <button type="button" class="map-chip" data-value="liner">Liner</button>
+              <button type="button" class="map-chip" data-value="microcemento">Microcemento</button>
+            </div>
+          </details>
+          <details class="map-filter-group">
+            <summary class="map-filter-label"><i class="fas fa-building"></i> Uso</summary>
+            <div class="map-filter-chips" id="filterUso">
+              <button type="button" class="map-chip active" data-value="all">Todos</button>
+              <button type="button" class="map-chip" data-value="privada">Privada</button>
+              <button type="button" class="map-chip" data-value="publica">Pública</button>
+            </div>
+          </details>
+        </div>
+        <div class="map-search-status" id="mapSearchStatus">
+          <span id="mapResultCount">18</span> piscinas encontradas
+        </div>
+        <div class="map-search-more">
+          <a href="pages/ubicaciones.html" class="map-search-pill">Ver más</a>
+        </div>
+      </aside>
+      <div class="map-full-bg">
+        <div id="coverage-map" class="coverage-map"></div>
+        <div class="map-legend" id="mapLegend">
+          <div class="map-legend-item"><span class="map-legend-dot map-legend-dot--blue"></span><span>Proyectos construidos, reformados o llevados por nosotros</span></div>
+          <div class="map-legend-item"><span class="map-legend-dot map-legend-dot--orange"></span><span>Nuestra sede (Cuesa Sport)</span></div>
         </div>
       </div>
     </div>
+    <p class="coverage-map-attribution coverage-map-attribution--full"><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap</a> contributors</p>
   </section>
 
   <!-- Testimonial -->
@@ -479,13 +483,31 @@
         <span class="section-badge"><i class="fas fa-quote-left"></i> Testimonios</span>
         <h2 class="section-title">Lo que dicen <span>nuestros clientes</span></h2>
       </div>
-      <div class="testimonial-card reveal-scale">
-        <div class="testimonial-stars">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+      <div class="testimonial-grid">
+        <div class="testimonial-card reveal-scale">
+          <div class="testimonial-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"Cuesa Sport transformó nuestro jardín en un auténtico oasis. La profesionalidad del equipo, la calidad de los materiales y el cumplimiento de los plazos fue impecable. Sin duda, la mejor decisión que tomamos."</p>
+          <p class="testimonial-author">Carlos M.</p>
+          <p class="testimonial-role">Cliente particular — Boadilla del Monte</p>
         </div>
-        <p class="testimonial-text">"Cuesa Sport transformó nuestro jardín en un auténtico oasis. La profesionalidad del equipo, la calidad de los materiales y el cumplimiento de los plazos fue impecable. Sin duda, la mejor decisión que tomamos."</p>
-        <p class="testimonial-author">Carlos M.</p>
-        <p class="testimonial-role">Cliente particular — Boadilla del Monte</p>
+        <div class="testimonial-card reveal-scale">
+          <div class="testimonial-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"Contratamos el mantenimiento anual y la verdad es que la piscina está impecable todo el año. Muy profesionales, puntuales y con un trato excelente. Los recomendamos sin dudar."</p>
+          <p class="testimonial-author">María L.</p>
+          <p class="testimonial-role">Comunidad de vecinos — Las Rozas</p>
+        </div>
+        <div class="testimonial-card reveal-scale">
+          <div class="testimonial-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"Nos hicieron una reforma integral de la piscina y el resultado superó todas las expectativas. Presupuesto claro, plazos cumplidos y un acabado de primera. Muy contentos."</p>
+          <p class="testimonial-author">Antonio R.</p>
+          <p class="testimonial-role">Cliente particular — Pozuelo de Alarcón</p>
+        </div>
       </div>
     </div>
   </section>
@@ -619,7 +641,7 @@
             <li><a href="pages/proyectos.html">Proyectos</a></li>
             <li><a href="pages/blog.html">Blog</a></li>
             <li><a href="pages/contacto.html">Contacto</a></li>
-            <li><a href="pages/contacto.html">Trabaja con nosotros</a></li>
+            <li><a href="pages/trabaja-con-nosotros.html">Trabaja con nosotros</a></li>
           </ul>
         </div>
         <div>

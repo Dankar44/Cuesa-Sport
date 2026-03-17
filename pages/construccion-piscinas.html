@@ -28,16 +28,16 @@
           <div class="nav-dropdown-menu">
             <a href="sobre-nosotros.html">Nuestra historia</a>
             <a href="sobre-nosotros.html#valores">Misión y valores</a>
-            <a href="contacto.html">Trabaja con nosotros</a>
+            <a href="trabaja-con-nosotros.html">Trabaja con nosotros</a>
           </div>
         </div>
         <div class="nav-dropdown">
           <a href="servicios.html" class="nav-link">Servicios <i class="fas fa-chevron-down" style="font-size:0.6em;margin-left:4px"></i></a>
           <div class="nav-dropdown-menu">
-            <a href="servicios.html#construccion">Construcción de piscinas</a>
-            <a href="servicios.html#mantenimiento">Mantenimiento de piscinas</a>
-            <a href="servicios.html#reforma">Reforma de piscinas</a>
-            <a href="servicios.html#climatizacion">Climatización de piscinas</a>
+            <a href="construccion-piscinas.html">Construcción de piscinas</a>
+            <a href="mantenimiento-piscinas.html">Mantenimiento de piscinas</a>
+            <a href="reforma-piscinas.html">Reforma de piscinas</a>
+            <a href="climatizacion-piscinas.html">Climatización de piscinas</a>
           </div>
         </div>
         <a href="proyectos.html" class="nav-link">Proyectos</a>
@@ -369,69 +369,98 @@
     })();
   </script>
 
-  <!-- Dónde construimos: mapa de cobertura -->
-  <section class="section section--alt" id="localidades">
+  <!-- Dónde construimos: mismo mapa que ubicaciones.html (ancho completo + sidebar filtros) -->
+  <section class="section section--alt map-section--full" id="localidades">
     <div class="container">
       <div class="section-header section-header--center reveal">
         <span class="section-badge"><i class="fas fa-map-marker-alt"></i> Cobertura</span>
         <h2 class="section-title">Dónde <span>construimos</span></h2>
         <p class="section-subtitle">Ofrecemos construcción de piscinas en las principales localidades de la Comunidad de Madrid.</p>
       </div>
-      <div class="map-layout reveal">
-        <div class="map-search">
-          <div class="map-search-bar">
-            <i class="fas fa-search map-search-icon"></i>
-            <input type="text" id="mapSearchInputConstruccion" class="map-search-input" placeholder="Buscar por nombre o localidad…" autocomplete="off">
-            <button type="button" class="map-search-clear" id="mapSearchClearConstruccion" title="Limpiar búsqueda"><i class="fas fa-times"></i></button>
-          </div>
-          <div class="map-filters">
-            <div class="map-filter-group">
-              <span class="map-filter-label"><i class="fas fa-water"></i> Tipo</span>
-              <div class="map-filter-chips" id="filterTipoConstruccion">
-                <button type="button" class="map-chip active" data-value="all">Todos</button>
-                <button type="button" class="map-chip" data-value="infinity">Infinity</button>
-                <button type="button" class="map-chip" data-value="desbordante">Desbordante</button>
-                <button type="button" class="map-chip" data-value="forma">Con forma</button>
-              </div>
-            </div>
-            <div class="map-filter-group">
-              <span class="map-filter-label"><i class="fas fa-palette"></i> Revestimiento</span>
-              <div class="map-filter-chips" id="filterRevestConstruccion">
-                <button type="button" class="map-chip active" data-value="all">Todos</button>
-                <button type="button" class="map-chip" data-value="gresite">Gresite</button>
-                <button type="button" class="map-chip" data-value="porcelanico">Porcelánico</button>
-                <button type="button" class="map-chip" data-value="liner">Liner</button>
-                <button type="button" class="map-chip" data-value="microcemento">Microcemento</button>
-              </div>
-            </div>
-            <div class="map-filter-group">
-              <span class="map-filter-label"><i class="fas fa-building"></i> Uso</span>
-              <div class="map-filter-chips" id="filterUsoConstruccion">
-                <button type="button" class="map-chip active" data-value="all">Todos</button>
-                <button type="button" class="map-chip" data-value="privada">Privada</button>
-                <button type="button" class="map-chip" data-value="publica">Pública</button>
-              </div>
-            </div>
-          </div>
-          <div class="map-search-status" id="mapSearchStatusConstruccion">
-            <span id="mapResultCountConstruccion">18</span> piscinas encontradas
-          </div>
-          <div class="map-search-more">
-            <a href="proyectos.html" class="map-search-pill">Ver más</a>
-          </div>
+    </div>
+    <div class="map-full-wrap reveal">
+      <div class="map-categories-pill-wrap">
+        <button type="button" class="map-categories-pill" aria-expanded="false" aria-controls="mapFiltersPanelConstruccion">
+          <i class="fas fa-th-large"></i>
+          <span>Categorías</span>
+        </button>
+      </div>
+      <div class="map-filters-overlay" aria-hidden="true"></div>
+      <aside class="map-search map-search--sidebar" id="mapFiltersPanelConstruccion">
+        <div class="map-search-drawer-header">
+          <h2 class="map-search-drawer-title">Categorías</h2>
+          <button type="button" class="map-search-drawer-close" aria-label="Cerrar filtros"><i class="fas fa-times"></i></button>
         </div>
-        <div class="map-layout-right">
-          <div class="coverage-map-wrapper">
-            <div id="coverage-map-construccion" class="coverage-map"></div>
-            <div class="map-legend" id="mapLegendConstruccion">
-              <div class="map-legend-item"><span class="map-legend-dot map-legend-dot--blue"></span><span>Proyectos construidos, reformados o llevados por nosotros</span></div>
-              <div class="map-legend-item"><span class="map-legend-dot map-legend-dot--orange"></span><span>Nuestra sede (Cuesa Sport)</span></div>
+        <div class="map-search-bar">
+          <i class="fas fa-search map-search-icon"></i>
+          <input type="text" id="mapSearchInputConstruccion" class="map-search-input" placeholder="Buscar por nombre o localidad…" autocomplete="off">
+          <button type="button" class="map-search-clear" id="mapSearchClearConstruccion" title="Limpiar búsqueda"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="map-filters map-filters--collapsible">
+          <details class="map-filter-group">
+            <summary class="map-filter-label"><i class="fas fa-water"></i> Tipo de piscina</summary>
+            <div class="map-filter-chips" id="filterTipoConstruccion">
+              <button type="button" class="map-chip active" data-value="all">Todos</button>
+              <button type="button" class="map-chip" data-value="infinity">Infinity</button>
+              <button type="button" class="map-chip" data-value="desbordante">Desbordante</button>
+              <button type="button" class="map-chip" data-value="forma">Con forma</button>
             </div>
-          </div>
-          <p class="coverage-map-attribution">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors</p>
+          </details>
+          <details class="map-filter-group">
+            <summary class="map-filter-label"><i class="fas fa-palette"></i> Revestimiento</summary>
+            <div class="map-filter-chips" id="filterRevestConstruccion">
+              <button type="button" class="map-chip active" data-value="all">Todos</button>
+              <button type="button" class="map-chip" data-value="gresite">Gresite</button>
+              <button type="button" class="map-chip" data-value="porcelanico">Porcelánico</button>
+              <button type="button" class="map-chip" data-value="liner">Liner</button>
+              <button type="button" class="map-chip" data-value="microcemento">Microcemento</button>
+            </div>
+          </details>
+          <details class="map-filter-group">
+            <summary class="map-filter-label"><i class="fas fa-th-large"></i> Tipo de baldosa</summary>
+            <div class="map-filter-chips" id="filterBaldosaConstruccion">
+              <button type="button" class="map-chip active" data-value="all">Todos</button>
+              <button type="button" class="map-chip" data-value="lisa">Lisa</button>
+              <button type="button" class="map-chip" data-value="mosaico">Mosaico</button>
+              <button type="button" class="map-chip" data-value="piedra">Efecto piedra</button>
+              <button type="button" class="map-chip" data-value="hidraulica">Hidráulica</button>
+            </div>
+          </details>
+          <details class="map-filter-group">
+            <summary class="map-filter-label"><i class="fas fa-tools"></i> Tipo de trabajo</summary>
+            <div class="map-filter-chips" id="filterTrabajoConstruccion">
+              <button type="button" class="map-chip active" data-value="all">Todos</button>
+              <button type="button" class="map-chip" data-value="construccion">Construcción</button>
+              <button type="button" class="map-chip" data-value="mantenimiento">Mantenimiento</button>
+              <button type="button" class="map-chip" data-value="reforma">Reforma</button>
+              <button type="button" class="map-chip" data-value="climatizacion">Climatización</button>
+            </div>
+          </details>
+          <details class="map-filter-group">
+            <summary class="map-filter-label"><i class="fas fa-building"></i> Uso</summary>
+            <div class="map-filter-chips" id="filterUsoConstruccion">
+              <button type="button" class="map-chip active" data-value="all">Todos</button>
+              <button type="button" class="map-chip" data-value="privada">Privada</button>
+              <button type="button" class="map-chip" data-value="publica">Pública</button>
+            </div>
+          </details>
+        </div>
+        <div class="map-search-status" id="mapSearchStatusConstruccion">
+          <span id="mapResultCountConstruccion">18</span> piscinas encontradas
+        </div>
+        <div class="map-search-more">
+          <a href="contacto.html" class="map-search-pill">Ver más</a>
+        </div>
+      </aside>
+      <div class="map-full-bg">
+        <div id="coverage-map-construccion" class="coverage-map"></div>
+        <div class="map-legend" id="mapLegendConstruccion">
+          <div class="map-legend-item"><span class="map-legend-dot map-legend-dot--blue"></span><span>Proyectos construidos, reformados o llevados por nosotros</span></div>
+          <div class="map-legend-item"><span class="map-legend-dot map-legend-dot--orange"></span><span>Nuestra sede (Cuesa Sport)</span></div>
         </div>
       </div>
     </div>
+    <p class="coverage-map-attribution coverage-map-attribution--full"><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap</a> contributors</p>
   </section>
 
   <!-- Contact CTA -->
@@ -563,7 +592,7 @@
             <li><a href="proyectos.html">Proyectos</a></li>
             <li><a href="blog.html">Blog</a></li>
             <li><a href="contacto.html">Contacto</a></li>
-            <li><a href="contacto.html">Trabaja con nosotros</a></li>
+            <li><a href="trabaja-con-nosotros.html">Trabaja con nosotros</a></li>
           </ul>
         </div>
         <div>
@@ -650,28 +679,45 @@
       });
       var empresaPopup = '<div class="coverage-popup"><h4><i class="fas fa-building" style="color:#e67e22;margin-right:6px"></i>Cuesa Sport</h4><p class="popup-loc"><i class="fas fa-map-marker-alt" style="color:#e67e22;margin-right:4px"></i>Calle Olmo, 13-15<br>Pol. Ind. Niño del Remedio<br>28942 – Fuenlabrada (Madrid)</p><a href="contacto.html">Cómo llegar / Contacto &rarr;</a></div>';
       L.marker(empresaCoords, { icon: orangeIcon }).bindPopup(empresaPopup, { maxWidth: 320 }).addTo(map);
+      map.on('popupopen', function(e) {
+        var popup = e.popup;
+        var popupEl = popup.getElement ? popup.getElement() : (popup._container || null);
+        if (!popupEl) return;
+        setTimeout(function() {
+          var mapContainer = map.getContainer();
+          var containerRect = mapContainer.getBoundingClientRect();
+          var popupRect = popupEl.getBoundingClientRect();
+          var popupCenterX = popupRect.left + popupRect.width / 2;
+          var popupCenterY = popupRect.top + popupRect.height / 2;
+          var containerCenterX = containerRect.left + containerRect.width / 2;
+          var containerCenterY = containerRect.top + containerRect.height / 2;
+          var offsetX = containerCenterX - popupCenterX;
+          var offsetY = containerCenterY - popupCenterY;
+          map.panBy([-offsetX, -offsetY], { animate: true, duration: 0.25 });
+        }, 80);
+      });
       var tipoLabels = { infinity: 'Infinity', desbordante: 'Desbordante', forma: 'Con forma' };
       var revestLabels = { gresite: 'Gresite', porcelanico: 'Porcelánico', liner: 'Liner', microcemento: 'Microcemento' };
       var usoLabels = { privada: 'Privada', publica: 'Pública' };
       var pools = [
-        { name: 'Piscina El Mirador', localidad: 'Boadilla del Monte', lat: 40.405, lng: -3.877, tipo: 'infinity', revestimiento: 'gresite', uso: 'privada', img: '../img/ubicaciones/boadilla-infinity.png', desc: 'Piscina infinity con borde infinito y vistas panorámicas. Acabados en gresite azul cobalto.' },
-        { name: 'Piscina Villa Jardín', localidad: 'Boadilla del Monte', lat: 40.402, lng: -3.872, tipo: 'desbordante', revestimiento: 'porcelanico', uso: 'privada', img: '../img/ubicaciones/boadilla-desbordante.png', desc: 'Piscina desbordante perimetral con revestimiento porcelánico de alta gama.' },
-        { name: 'Piscina Los Olivos', localidad: 'Boadilla del Monte', lat: 40.408, lng: -3.880, tipo: 'forma', revestimiento: 'liner', uso: 'privada', img: '../img/ubicaciones/boadilla-rinon.png', desc: 'Piscina con forma de riñón adaptada al jardín. Revestimiento en liner de alta resistencia.' },
-        { name: 'Piscina Atalaya', localidad: 'Pozuelo de Alarcón', lat: 40.435, lng: -3.813, tipo: 'infinity', revestimiento: 'porcelanico', uso: 'privada', img: '../img/ubicaciones/pozuelo-infinity.png', desc: 'Infinity pool con acabado porcelánico y sistema de iluminación LED integrado.' },
-        { name: 'Piscina Monte Real', localidad: 'Pozuelo de Alarcón', lat: 40.438, lng: -3.808, tipo: 'desbordante', revestimiento: 'gresite', uso: 'publica', img: '../img/ubicaciones/pozuelo-desbordante.png', desc: 'Piscina de desborde comunitaria con gresite vítreo y canal perimetral de recogida.' },
-        { name: 'Piscina La Encina', localidad: 'Pozuelo de Alarcón', lat: 40.432, lng: -3.818, tipo: 'forma', revestimiento: 'microcemento', uso: 'privada', img: '../img/ubicaciones/pozuelo-rinon.png', desc: 'Diseño orgánico en forma libre con microcemento para un acabado contemporáneo.' },
-        { name: 'Piscina El Pinar', localidad: 'Las Rozas', lat: 40.493, lng: -3.874, tipo: 'infinity', revestimiento: 'gresite', uso: 'privada', img: '../img/ubicaciones/lasrozas-infinity.png', desc: 'Piscina infinity entre pinos con gresite en tonos verdes que integra el paisaje.' },
-        { name: 'Piscina Monteclaro', localidad: 'Las Rozas', lat: 40.497, lng: -3.869, tipo: 'desbordante', revestimiento: 'liner', uso: 'publica', img: '../img/ubicaciones/lasrozas-desbordante.png', desc: 'Desbordante comunitaria de líneas rectas con liner armado de alta durabilidad.' },
-        { name: 'Piscina Las Matas', localidad: 'Las Rozas', lat: 40.490, lng: -3.880, tipo: 'forma', revestimiento: 'gresite', uso: 'privada', img: '../img/ubicaciones/lasrozas-rinon.png', desc: 'Piscina en forma de riñón con gresite mosaico y zona de playa.' },
-        { name: 'Piscina El Bosque', localidad: 'Majadahonda', lat: 40.472, lng: -3.872, tipo: 'infinity', revestimiento: 'microcemento', uso: 'privada', img: '../img/ubicaciones/majadahonda-infinity.png', desc: 'Infinity con acabado en microcemento blanco y rebosadero frontal.' },
-        { name: 'Piscina Cerro Alarcón', localidad: 'Majadahonda', lat: 40.475, lng: -3.867, tipo: 'desbordante', revestimiento: 'porcelanico', uso: 'publica', img: '../img/ubicaciones/majadahonda-desbordante.png', desc: 'Piscina desbordante comunitaria con porcelánico efecto piedra.' },
-        { name: 'Piscina Vía Verde', localidad: 'Majadahonda', lat: 40.469, lng: -3.878, tipo: 'forma', revestimiento: 'liner', uso: 'privada', img: '../img/ubicaciones/majadahonda-rinon.png', desc: 'Forma orgánica integrada en el paisaje con liner gris antracita.' },
-        { name: 'Piscina La Sierra', localidad: 'Torrelodones', lat: 40.577, lng: -3.929, tipo: 'infinity', revestimiento: 'porcelanico', uso: 'privada', img: '../img/ubicaciones/torrelodones-infinity.png', desc: 'Infinity con vistas a la sierra de Guadarrama y revestimiento porcelánico.' },
-        { name: 'Piscina El Gasco', localidad: 'Torrelodones', lat: 40.580, lng: -3.924, tipo: 'desbordante', revestimiento: 'gresite', uso: 'privada', img: '../img/ubicaciones/torrelodones-desbordante.png', desc: 'Piscina desbordante con gresite azul celeste y cascada decorativa.' },
-        { name: 'Piscina Los Peñascales', localidad: 'Torrelodones', lat: 40.574, lng: -3.934, tipo: 'forma', revestimiento: 'microcemento', uso: 'publica', img: '../img/ubicaciones/torrelodones-rinon.png', desc: 'Piscina comunitaria en forma de riñón con microcemento gris natural.' },
-        { name: 'Piscina Collado Sol', localidad: 'Villalba', lat: 40.635, lng: -4.009, tipo: 'infinity', revestimiento: 'liner', uso: 'privada', img: '../img/ubicaciones/villalba-infinity.png', desc: 'Infinity de montaña con liner reforzado y sistema de climatización solar.' },
-        { name: 'Piscina Peñalba', localidad: 'Villalba', lat: 40.638, lng: -4.004, tipo: 'desbordante', revestimiento: 'microcemento', uso: 'publica', img: '../img/ubicaciones/villalba-desbordante.png', desc: 'Desbordante comunitaria en microcemento con zona wet deck y jacuzzi integrado.' },
-        { name: 'Piscina Los Valles', localidad: 'Villalba', lat: 40.632, lng: -4.014, tipo: 'forma', revestimiento: 'gresite', uso: 'privada', img: '../img/ubicaciones/villalba-rinon.png', desc: 'Forma libre con gresite mosaico azul y escalera de obra romana.' }
+        { name: 'Piscina El Mirador', localidad: 'Boadilla del Monte', lat: 40.405, lng: -3.877, tipo: 'infinity', revestimiento: 'gresite', uso: 'privada', tipoTrabajo: 'construccion', img: '../img/ubicaciones/boadilla-infinity.png', desc: 'Piscina infinity con borde infinito y vistas panorámicas. Acabados en gresite azul cobalto.' },
+        { name: 'Piscina Villa Jardín', localidad: 'Boadilla del Monte', lat: 40.402, lng: -3.872, tipo: 'desbordante', revestimiento: 'porcelanico', uso: 'privada', tipoTrabajo: 'reforma', img: '../img/ubicaciones/boadilla-desbordante.png', desc: 'Piscina desbordante perimetral con revestimiento porcelánico de alta gama.' },
+        { name: 'Piscina Los Olivos', localidad: 'Boadilla del Monte', lat: 40.408, lng: -3.880, tipo: 'forma', revestimiento: 'liner', uso: 'privada', tipoTrabajo: 'construccion', img: '../img/ubicaciones/boadilla-rinon.png', desc: 'Piscina con forma de riñón adaptada al jardín. Revestimiento en liner de alta resistencia.' },
+        { name: 'Piscina Atalaya', localidad: 'Pozuelo de Alarcón', lat: 40.435, lng: -3.813, tipo: 'infinity', revestimiento: 'porcelanico', uso: 'privada', tipoTrabajo: 'climatizacion', img: '../img/ubicaciones/pozuelo-infinity.png', desc: 'Infinity pool con acabado porcelánico y sistema de iluminación LED integrado.' },
+        { name: 'Piscina Monte Real', localidad: 'Pozuelo de Alarcón', lat: 40.438, lng: -3.808, tipo: 'desbordante', revestimiento: 'gresite', uso: 'publica', tipoTrabajo: 'mantenimiento', img: '../img/ubicaciones/pozuelo-desbordante.png', desc: 'Piscina de desborde comunitaria con gresite vítreo y canal perimetral de recogida.' },
+        { name: 'Piscina La Encina', localidad: 'Pozuelo de Alarcón', lat: 40.432, lng: -3.818, tipo: 'forma', revestimiento: 'microcemento', uso: 'privada', tipoTrabajo: 'reforma', img: '../img/ubicaciones/pozuelo-rinon.png', desc: 'Diseño orgánico en forma libre con microcemento para un acabado contemporáneo.' },
+        { name: 'Piscina El Pinar', localidad: 'Las Rozas', lat: 40.493, lng: -3.874, tipo: 'infinity', revestimiento: 'gresite', uso: 'privada', tipoTrabajo: 'construccion', img: '../img/ubicaciones/lasrozas-infinity.png', desc: 'Piscina infinity entre pinos con gresite en tonos verdes que integra el paisaje.' },
+        { name: 'Piscina Monteclaro', localidad: 'Las Rozas', lat: 40.497, lng: -3.869, tipo: 'desbordante', revestimiento: 'liner', uso: 'publica', tipoTrabajo: 'mantenimiento', img: '../img/ubicaciones/lasrozas-desbordante.png', desc: 'Desbordante comunitaria de líneas rectas con liner armado de alta durabilidad.' },
+        { name: 'Piscina Las Matas', localidad: 'Las Rozas', lat: 40.490, lng: -3.880, tipo: 'forma', revestimiento: 'gresite', uso: 'privada', tipoTrabajo: 'reforma', img: '../img/ubicaciones/lasrozas-rinon.png', desc: 'Piscina en forma de riñón con gresite mosaico y zona de playa.' },
+        { name: 'Piscina El Bosque', localidad: 'Majadahonda', lat: 40.472, lng: -3.872, tipo: 'infinity', revestimiento: 'microcemento', uso: 'privada', tipoTrabajo: 'construccion', img: '../img/ubicaciones/majadahonda-infinity.png', desc: 'Infinity con acabado en microcemento blanco y rebosadero frontal.' },
+        { name: 'Piscina Cerro Alarcón', localidad: 'Majadahonda', lat: 40.475, lng: -3.867, tipo: 'desbordante', revestimiento: 'porcelanico', uso: 'publica', tipoTrabajo: 'climatizacion', img: '../img/ubicaciones/majadahonda-desbordante.png', desc: 'Piscina desbordante comunitaria con porcelánico efecto piedra.' },
+        { name: 'Piscina Vía Verde', localidad: 'Majadahonda', lat: 40.469, lng: -3.878, tipo: 'forma', revestimiento: 'liner', uso: 'privada', tipoTrabajo: 'mantenimiento', img: '../img/ubicaciones/majadahonda-rinon.png', desc: 'Forma orgánica integrada en el paisaje con liner gris antracita.' },
+        { name: 'Piscina La Sierra', localidad: 'Torrelodones', lat: 40.577, lng: -3.929, tipo: 'infinity', revestimiento: 'porcelanico', uso: 'privada', tipoTrabajo: 'construccion', img: '../img/ubicaciones/torrelodones-infinity.png', desc: 'Infinity con vistas a la sierra de Guadarrama y revestimiento porcelánico.' },
+        { name: 'Piscina El Gasco', localidad: 'Torrelodones', lat: 40.580, lng: -3.924, tipo: 'desbordante', revestimiento: 'gresite', uso: 'privada', tipoTrabajo: 'reforma', img: '../img/ubicaciones/torrelodones-desbordante.png', desc: 'Piscina desbordante con gresite azul celeste y cascada decorativa.' },
+        { name: 'Piscina Los Peñascales', localidad: 'Torrelodones', lat: 40.574, lng: -3.934, tipo: 'forma', revestimiento: 'microcemento', uso: 'publica', tipoTrabajo: 'mantenimiento', img: '../img/ubicaciones/torrelodones-rinon.png', desc: 'Piscina comunitaria en forma de riñón con microcemento gris natural.' },
+        { name: 'Piscina Collado Sol', localidad: 'Villalba', lat: 40.635, lng: -4.009, tipo: 'infinity', revestimiento: 'liner', uso: 'privada', tipoTrabajo: 'climatizacion', img: '../img/ubicaciones/villalba-infinity.png', desc: 'Infinity de montaña con liner reforzado y sistema de climatización solar.' },
+        { name: 'Piscina Peñalba', localidad: 'Villalba', lat: 40.638, lng: -4.004, tipo: 'desbordante', revestimiento: 'microcemento', uso: 'publica', tipoTrabajo: 'construccion', img: '../img/ubicaciones/villalba-desbordante.png', desc: 'Desbordante comunitaria en microcemento con zona wet deck y jacuzzi integrado.' },
+        { name: 'Piscina Los Valles', localidad: 'Villalba', lat: 40.632, lng: -4.014, tipo: 'forma', revestimiento: 'gresite', uso: 'privada', tipoTrabajo: 'reforma', img: '../img/ubicaciones/villalba-rinon.png', desc: 'Forma libre con gresite mosaico azul y escalera de obra romana.' }
       ];
       var markers = [];
       pools.forEach(function(p) {
@@ -691,12 +737,14 @@
         markers.push(marker);
         marker.addTo(map);
       });
-      var activeTipo = 'all', activeRevest = 'all', activeUso = 'all', searchQuery = '';
+      var activeTipo = 'all', activeRevest = 'all', activeBaldosa = 'all', activeTrabajo = 'all', activeUso = 'all', searchQuery = '';
       var searchInput = document.getElementById('mapSearchInputConstruccion');
       var clearBtn = document.getElementById('mapSearchClearConstruccion');
       var countEl = document.getElementById('mapResultCountConstruccion');
       var tipoChips = document.querySelectorAll('#filterTipoConstruccion .map-chip');
       var revestChips = document.querySelectorAll('#filterRevestConstruccion .map-chip');
+      var baldosaChips = document.querySelectorAll('#filterBaldosaConstruccion .map-chip');
+      var trabajoChips = document.querySelectorAll('#filterTrabajoConstruccion .map-chip');
       var usoChips = document.querySelectorAll('#filterUsoConstruccion .map-chip');
       function normalize(str) { return str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
       function applyFilters() {
@@ -706,9 +754,11 @@
           var p = m._poolData;
           var matchTipo = activeTipo === 'all' || p.tipo === activeTipo;
           var matchRevest = activeRevest === 'all' || p.revestimiento === activeRevest;
+          var matchBaldosa = activeBaldosa === 'all' || (p.baldosa && p.baldosa === activeBaldosa);
+          var matchTrabajo = activeTrabajo === 'all' || (p.tipoTrabajo && p.tipoTrabajo === activeTrabajo);
           var matchUso = activeUso === 'all' || p.uso === activeUso;
           var matchSearch = !q || normalize(p.name).indexOf(q) !== -1 || normalize(p.localidad).indexOf(q) !== -1;
-          if (matchTipo && matchRevest && matchUso && matchSearch) {
+          if (matchTipo && matchRevest && matchBaldosa && matchTrabajo && matchUso && matchSearch) {
             if (!map.hasLayer(m)) m.addTo(map);
             visible++;
           } else {
@@ -718,6 +768,7 @@
         countEl.textContent = visible;
       }
       function setChipActive(container, value) {
+        if (!container) return;
         container.querySelectorAll('.map-chip').forEach(function(c) { c.classList.toggle('active', c.dataset.value === value); });
       }
       tipoChips.forEach(function(chip) {
@@ -725,6 +776,12 @@
       });
       revestChips.forEach(function(chip) {
         chip.addEventListener('click', function() { activeRevest = this.dataset.value; setChipActive(document.getElementById('filterRevestConstruccion'), activeRevest); applyFilters(); });
+      });
+      baldosaChips.forEach(function(chip) {
+        chip.addEventListener('click', function() { activeBaldosa = this.dataset.value; setChipActive(document.getElementById('filterBaldosaConstruccion'), activeBaldosa); applyFilters(); });
+      });
+      trabajoChips.forEach(function(chip) {
+        chip.addEventListener('click', function() { activeTrabajo = this.dataset.value; setChipActive(document.getElementById('filterTrabajoConstruccion'), activeTrabajo); applyFilters(); });
       });
       usoChips.forEach(function(chip) {
         chip.addEventListener('click', function() { activeUso = this.dataset.value; setChipActive(document.getElementById('filterUsoConstruccion'), activeUso); applyFilters(); });

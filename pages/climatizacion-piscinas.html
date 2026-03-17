@@ -27,16 +27,16 @@
           <div class="nav-dropdown-menu">
             <a href="sobre-nosotros.html">Nuestra historia</a>
             <a href="sobre-nosotros.html#valores">Misión y valores</a>
-            <a href="contacto.html">Trabaja con nosotros</a>
+            <a href="trabaja-con-nosotros.html">Trabaja con nosotros</a>
           </div>
         </div>
         <div class="nav-dropdown">
           <a href="servicios.html" class="nav-link">Servicios <i class="fas fa-chevron-down" style="font-size:0.6em;margin-left:4px"></i></a>
           <div class="nav-dropdown-menu">
-            <a href="servicios.html#construccion">Construcción de piscinas</a>
-            <a href="servicios.html#mantenimiento">Mantenimiento de piscinas</a>
-            <a href="servicios.html#reforma">Reforma de piscinas</a>
-            <a href="servicios.html#climatizacion">Climatización de piscinas</a>
+            <a href="construccion-piscinas.html">Construcción de piscinas</a>
+            <a href="mantenimiento-piscinas.html">Mantenimiento de piscinas</a>
+            <a href="reforma-piscinas.html">Reforma de piscinas</a>
+            <a href="climatizacion-piscinas.html">Climatización de piscinas</a>
           </div>
         </div>
         <a href="proyectos.html" class="nav-link">Proyectos</a>
@@ -71,7 +71,7 @@
       <div class="about-layout stagger">
         <div class="about-img-wrapper reveal-left">
           <div class="about-img">
-            <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?w=700&q=80" alt="Piscina climatizada interior - Cuesa Sport">
+            <img src="../img/climatizacion/climatizacion-piscina-hero.jpg" alt="Piscina climatizada - Extiende la temporada con soluciones de calefacción - Cuesa Sport" width="700">
           </div>
           <div class="about-img-accent"></div>
           <div class="about-floating-card reveal">
@@ -92,66 +92,177 @@
     </div>
   </section>
 
-  <!-- Feature Cards - Sistemas de climatización -->
-  <section class="section section--alt">
+  <!-- Sistemas de climatización — una por pantalla, navegación y Saber más a página detalle -->
+  <section class="section section--alt clima-sistemas-section section--clima-pool-bg" id="sistemas-climatizacion">
     <div class="container">
-      <div class="section-header section-header--center reveal">
-        <span class="section-badge"><i class="fas fa-cogs"></i> Nuestras soluciones</span>
-        <h2 class="section-title">Sistemas de climatización <span>que instalamos</span></h2>
-        <p class="section-subtitle">Elegimos la opción más adecuada según tu presupuesto, ubicación y necesidades específicas.</p>
+      <header class="areas-editorial-header reveal">
+        <span class="areas-editorial-badge">Nuestras soluciones</span>
+        <h2 class="areas-editorial-title">Sistemas de climatización <span>que instalamos</span></h2>
+        <p class="areas-editorial-subtitle">Elegimos la opción más adecuada según tu presupuesto, ubicación y necesidades específicas.</p>
+      </header>
+
+      <div class="clima-catalogo reveal">
+        <div class="clima-catalogo-sidebar">
+          <div class="clima-catalogo-sidebar-head">
+            <span class="clima-catalogo-label">Catálogo</span>
+            <h3 class="clima-catalogo-title">Sistemas de Climatización</h3>
+          </div>
+          <div class="clima-catalogo-buttons">
+            <button type="button" class="clima-catalogo-btn active" data-index="0" aria-pressed="true">
+              <span class="clima-catalogo-btn-icon"><i class="fas fa-fan"></i></span>
+              <span class="clima-catalogo-btn-text">Bomba de calor</span>
+              <i class="fas fa-chevron-right clima-catalogo-btn-chevron"></i>
+            </button>
+            <button type="button" class="clima-catalogo-btn" data-index="1" aria-pressed="false">
+              <span class="clima-catalogo-btn-icon"><i class="fas fa-solar-panel"></i></span>
+              <span class="clima-catalogo-btn-text">Paneles solares</span>
+              <i class="fas fa-chevron-right clima-catalogo-btn-chevron"></i>
+            </button>
+            <button type="button" class="clima-catalogo-btn" data-index="2" aria-pressed="false">
+              <span class="clima-catalogo-btn-icon"><i class="fas fa-exchange-alt"></i></span>
+              <span class="clima-catalogo-btn-text">Intercambiador de calor</span>
+              <i class="fas fa-chevron-right clima-catalogo-btn-chevron"></i>
+            </button>
+            <button type="button" class="clima-catalogo-btn" data-index="3" aria-pressed="false">
+              <span class="clima-catalogo-btn-icon"><i class="fas fa-shield-alt"></i></span>
+              <span class="clima-catalogo-btn-text">Cobertor térmico</span>
+              <i class="fas fa-chevron-right clima-catalogo-btn-chevron"></i>
+            </button>
+          </div>
+          <p class="clima-catalogo-note">* Consulta con nuestros expertos para determinar la solución óptima según tu ubicación y volumen de piscina.</p>
+        </div>
+        <div class="clima-catalogo-content">
+          <div class="clima-catalogo-panel active" data-index="0">
+            <div class="clima-catalogo-img-wrap">
+              <img src="../img/climatizacion/bomba-calor-piscina.jpg" alt="Bomba de calor para piscina">
+              <div class="clima-catalogo-overlay"></div>
+            </div>
+            <div class="clima-catalogo-floating">
+              <span class="clima-catalogo-badge"><i class="fas fa-circle"></i> Información Técnica</span>
+              <h2 class="clima-catalogo-floating-title">Bomba de calor</h2>
+              <p class="clima-catalogo-floating-desc">La solución más eficiente para alargar la temporada de baño. Extrae energía del aire para calentar el agua con un consumo mínimo.</p>
+              <div class="clima-catalogo-actions">
+                <a href="contacto.html" class="btn btn--white">Solicitar presupuesto <i class="fas fa-arrow-right"></i></a>
+                <a href="climatizacion-bomba-calor.html" class="btn btn--outline">Ver especificaciones</a>
+              </div>
+            </div>
+          </div>
+          <div class="clima-catalogo-panel" data-index="1">
+            <div class="clima-catalogo-img-wrap">
+              <img src="../img/climatizacion/paneles-solares-piscina.jpg" alt="Paneles solares para piscina">
+              <div class="clima-catalogo-overlay"></div>
+            </div>
+            <div class="clima-catalogo-floating">
+              <span class="clima-catalogo-badge"><i class="fas fa-circle"></i> Información Técnica</span>
+              <h2 class="clima-catalogo-floating-title">Paneles solares</h2>
+              <p class="clima-catalogo-floating-desc">Calienta tu piscina de forma 100% ecológica. Utiliza la energía gratuita del sol para mantener una temperatura ideal sin costes operativos.</p>
+              <div class="clima-catalogo-actions">
+                <a href="contacto.html" class="btn btn--white">Solicitar presupuesto <i class="fas fa-arrow-right"></i></a>
+                <a href="climatizacion-paneles-solares.html" class="btn btn--outline">Ver especificaciones</a>
+              </div>
+            </div>
+          </div>
+          <div class="clima-catalogo-panel" data-index="2">
+            <div class="clima-catalogo-img-wrap">
+              <img src="../img/climatizacion/intercambiador-calor.jpg" alt="Intercambiador de calor para piscina">
+              <div class="clima-catalogo-overlay"></div>
+            </div>
+            <div class="clima-catalogo-floating">
+              <span class="clima-catalogo-badge"><i class="fas fa-circle"></i> Información Técnica</span>
+              <h2 class="clima-catalogo-floating-title">Intercambiador de calor</h2>
+              <p class="clima-catalogo-floating-desc">Perfecto si ya dispones de caldera de gas o sistema de calefacción. Transfiere el calor de tu instalación existente de forma rápida y segura.</p>
+              <div class="clima-catalogo-actions">
+                <a href="contacto.html" class="btn btn--white">Solicitar presupuesto <i class="fas fa-arrow-right"></i></a>
+                <a href="climatizacion-intercambiador-calor.html" class="btn btn--outline">Ver especificaciones</a>
+              </div>
+            </div>
+          </div>
+          <div class="clima-catalogo-panel" data-index="3">
+            <div class="clima-catalogo-img-wrap">
+              <img src="../img/climatizacion/cobertor-termico-piscina.jpg" alt="Cobertor térmico para piscina">
+              <div class="clima-catalogo-overlay"></div>
+            </div>
+            <div class="clima-catalogo-floating">
+              <span class="clima-catalogo-badge"><i class="fas fa-circle"></i> Información Técnica</span>
+              <h2 class="clima-catalogo-floating-title">Cobertor térmico</h2>
+              <p class="clima-catalogo-floating-desc">Evita la pérdida de calor durante la noche y reduce la evaporación. Una solución sencilla para ahorrar agua y productos químicos.</p>
+              <div class="clima-catalogo-actions">
+                <a href="contacto.html" class="btn btn--white">Solicitar presupuesto <i class="fas fa-arrow-right"></i></a>
+                <a href="climatizacion-cobertor-termico.html" class="btn btn--outline">Ver especificaciones</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="features-grid stagger">
-        <div class="feature-card reveal">
-          <div class="feature-card-icon feature-card-icon--blue"><i class="fas fa-fan"></i></div>
-          <h3>Bomba de calor</h3>
-          <p>La opción más eficiente y versátil. Extrae el calor del aire ambiente y lo transfiere al agua de la piscina. Funciona incluso con temperaturas exteriores de hasta 5°C, consumiendo hasta un 80% menos que los sistemas eléctricos tradicionales.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-card-icon feature-card-icon--coral"><i class="fas fa-solar-panel"></i></div>
-          <h3>Paneles solares</h3>
-          <p>La solución más sostenible. Utilizan la energía del sol para calentar el agua mediante tuberías que circulan por colectores instalados en tejados o superficies cercanas. Ideal para prolongar la temporada sin apenas coste de funcionamiento.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-card-icon feature-card-icon--teal"><i class="fas fa-exchange-alt"></i></div>
-          <h3>Intercambiador de calor</h3>
-          <p>Perfecto cuando ya dispones de caldera de gas o sistema de calefacción. Transfiere el calor de tu instalación existente al circuito de la piscina de forma segura y económica. Calentamiento rápido y eficiente.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-card-icon feature-card-icon--lavender"><i class="fas fa-blanket"></i></div>
-          <h3>Cobertor térmico</h3>
-          <p>Complemento esencial para cualquier sistema. Reduce la pérdida de calor por evaporación hasta un 70%, mantiene el agua más limpia y protege de la caída de hojas. Una inversión mínima con grandes resultados.</p>
-        </div>
-      </div>
+
+      <script>
+        (function() {
+          var btns = document.querySelectorAll('.clima-catalogo-btn');
+          var panels = document.querySelectorAll('.clima-catalogo-panel');
+          if (!btns.length || !panels.length) return;
+          function goTo(i) {
+            var idx = (i % panels.length + panels.length) % panels.length;
+            btns.forEach(function(b, j) {
+              b.classList.toggle('active', j === idx);
+              b.setAttribute('aria-pressed', j === idx ? 'true' : 'false');
+            });
+            panels.forEach(function(p, j) {
+              p.classList.toggle('active', j === idx);
+            });
+          }
+          btns.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+              goTo(parseInt(btn.getAttribute('data-index'), 10));
+            });
+          });
+        })();
+      </script>
     </div>
   </section>
 
-  <!-- Benefits Section -->
-  <section class="section">
-    <div class="container">
-      <div class="section-header section-header--center reveal">
-        <span class="section-badge"><i class="fas fa-star"></i> Beneficios</span>
-        <h2 class="section-title">¿Por qué climatizar tu <span>piscina</span>?</h2>
+  <!-- Por qué climatizar — mismo layout que reforma (imagen central + 4 tarjetas) -->
+  <section class="reforma-razones-hero clima-razones-hero" id="por-que-climatizar">
+    <div class="reforma-razones-hero-bg-text clima-razones-hero-bg-text" aria-hidden="true">Climatizamos</div>
+    <div class="reforma-razones-hero-inner">
+      <div class="reforma-razones-header">
+        <span class="reforma-razones-badge"><i class="fas fa-star"></i> Beneficios</span>
+        <h2 class="reforma-razones-title">¿Por qué climatizar tu <span class="reforma-razones-title-accent">piscina</span>?</h2>
+        <p class="reforma-razones-subtitle">La climatización alarga la temporada de baño con sistemas eficientes: más meses de disfrute, ahorro y confort para toda la familia.</p>
       </div>
-      <div class="reasons-grid stagger">
-        <div class="reason-card reveal">
-          <div class="reason-card-icon" style="background:var(--primary-pastel);color:var(--primary-dark)"><i class="fas fa-calendar-alt"></i></div>
-          <h4>Disfruta todo el año</h4>
-          <p>Pasa de 3-4 meses de baño a disfrutar de tu piscina durante 8 o más meses. Mañanas frescas de primavera y tardes de otoño serán igual de placenteras que en pleno verano.</p>
+
+      <div class="reforma-razones-layout reveal" id="climaRazonesLayout">
+        <div class="reforma-razones-col reforma-razones-col--left">
+          <div class="reforma-razon-card reforma-razon-card--up reforma-razon-card--delay-0">
+            <span class="reforma-razon-card-num">01</span>
+            <h3 class="reforma-razon-card-title">Disfruta todo el año</h3>
+            <p class="reforma-razon-card-desc">Pasa de 3-4 meses de baño a disfrutar de tu piscina durante 8 o más meses. Mañanas frescas de primavera y tardes de otoño serán igual de placenteras que en pleno verano.</p>
+          </div>
+          <div class="reforma-razon-card reforma-razon-card--down reforma-razon-card--delay-1">
+            <span class="reforma-razon-card-num">02</span>
+            <h3 class="reforma-razon-card-title">Ahorro energético</h3>
+            <p class="reforma-razon-card-desc">Las bombas de calor y paneles solares ofrecen una eficiencia excepcional. Ahorra en la factura energética mientras reduces tu huella de carbono con tecnologías respetuosas con el medio ambiente.</p>
+          </div>
         </div>
-        <div class="reason-card reveal">
-          <div class="reason-card-icon" style="background:var(--teal-pastel);color:var(--teal)"><i class="fas fa-bolt"></i></div>
-          <h4>Ahorro energético</h4>
-          <p>Las bombas de calor y paneles solares ofrecen una eficiencia excepcional. Ahorra en la factura energética mientras reduces tu huella de carbono con tecnologías respetuosas con el medio ambiente.</p>
+
+        <div class="reforma-razones-image-wrap">
+          <div class="reforma-razones-image-bg" aria-hidden="true"></div>
+          <div class="reforma-razones-image-inner">
+            <img src="../img/climatizacion/climatizacion-piscina-hero.jpg" alt="Piscina climatizada — temporada de baño ampliada con Cuesa Sport">
+            <div class="reforma-razones-image-gradient"></div>
+          </div>
         </div>
-        <div class="reason-card reveal">
-          <div class="reason-card-icon" style="background:var(--accent-pastel);color:var(--accent-dark)"><i class="fas fa-home"></i></div>
-          <h4>Revaloriza tu propiedad</h4>
-          <p>Una piscina climatizada supone un valor añadido indiscutible para tu vivienda o comunidad. Es un argumento de venta poderoso que aumenta significativamente el atractivo de la propiedad.</p>
-        </div>
-        <div class="reason-card reveal">
-          <div class="reason-card-icon" style="background:var(--lavender-light);color:var(--lavender)"><i class="fas fa-spa"></i></div>
-          <h4>Comodidad y bienestar</h4>
-          <p>Agua a temperatura constante, sin contrastes bruscos. Ideal para niños, mayores y para quienes buscan el relax. Nadar se convierte en una experiencia placentera en cualquier momento.</p>
+
+        <div class="reforma-razones-col reforma-razones-col--right">
+          <div class="reforma-razon-card reforma-razon-card--up reforma-razon-card--delay-2">
+            <span class="reforma-razon-card-num">03</span>
+            <h3 class="reforma-razon-card-title">Revaloriza tu propiedad</h3>
+            <p class="reforma-razon-card-desc">Una piscina climatizada supone un valor añadido indiscutible para tu vivienda o comunidad. Es un argumento de venta poderoso que aumenta significativamente el atractivo de la propiedad.</p>
+          </div>
+          <div class="reforma-razon-card reforma-razon-card--down reforma-razon-card--delay-3">
+            <span class="reforma-razon-card-num">04</span>
+            <h3 class="reforma-razon-card-title">Comodidad y bienestar</h3>
+            <p class="reforma-razon-card-desc">Agua a temperatura constante, sin contrastes bruscos. Ideal para niños, mayores y para quienes buscan el relax. Nadar se convierte en una experiencia placentera en cualquier momento.</p>
+          </div>
         </div>
       </div>
     </div>

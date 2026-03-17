@@ -43,15 +43,38 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.style.overflow = '';
     });
 
-    document.querySelectorAll('.nav-dropdown > .nav-link').forEach(link => {
-      link.addEventListener('click', (e) => {
-        if (window.innerWidth <= 768) {
-          e.preventDefault();
-          link.parentElement.classList.toggle('open');
-        }
-      });
+    nav.addEventListener('click', function(e) {
+      if (window.innerWidth > 768) return;
+      var trigger = e.target.closest('.nav-dropdown > .nav-link');
+      if (!trigger) return;
+      var dropdown = trigger.closest('.nav-dropdown');
+      if (!dropdown) return;
+      e.preventDefault();
+      e.stopPropagation();
+      dropdown.classList.toggle('open');
     });
   }
+
+  // ===== MAPA: pill Categorías → panel lateral (solo móvil) =====
+  document.querySelectorAll('.map-categories-pill').forEach(function(pill) {
+    pill.addEventListener('click', function() {
+      var section = this.closest('.map-section--full');
+      if (!section) return;
+      section.classList.add('map-filters-open');
+      this.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('overflow-hidden');
+    });
+  });
+  document.querySelectorAll('.map-search-drawer-close, .map-filters-overlay').forEach(function(el) {
+    el.addEventListener('click', function() {
+      var section = this.closest('.map-section--full');
+      if (!section) return;
+      section.classList.remove('map-filters-open');
+      var pill = section.querySelector('.map-categories-pill');
+      if (pill) pill.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('overflow-hidden');
+    });
+  });
 
   // ===== SCROLL REVEAL =====
   const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
@@ -323,17 +346,17 @@ document.addEventListener('DOMContentLoaded', () => {
             stage.classList.add('phase-2');
           }, 1500);
 
-          // Phase 3: crossfade to realistic (3s)
+          // Phase 3: crossfade to realistic
           setTimeout(() => {
             stage.classList.remove('phase-2');
             stage.classList.add('phase-3');
-          }, 3000);
+          }, 1900);
 
-          // Done: lock final state (4.5s)
+          // Done: lock final state
           setTimeout(() => {
             stage.classList.remove('phase-3');
             stage.classList.add('phase-done');
-          }, 4500);
+          }, 2700);
         }
       });
     }, { threshold: 0.6, rootMargin: '0px 0px -10% 0px' });
