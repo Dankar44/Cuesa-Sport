@@ -108,7 +108,7 @@ ul { list-style: none; }
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('../img/sectores/sector-chalets.jpg');
+  background-image: url('../img/sectores/sector-chalets.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -139,7 +139,7 @@ ul { list-style: none; }
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('../img/revestimiento/revestimiento-porque-piscina.jpg');
+  background-image: url('../img/revestimiento/revestimiento-porque-piscina.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -174,7 +174,7 @@ ul { list-style: none; }
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('../img/galeria-proyectos/galeria-02.png');
+  background-image: url('../img/galeria-proyectos/galeria-02.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -221,7 +221,7 @@ ul { list-style: none; }
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('../img/sobre-nosotros/fondo-calidad.jpg');
+  background-image: url('../img/sobre-nosotros/fondo-calidad.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -323,7 +323,7 @@ ul { list-style: none; }
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('../img/climatizacion/climatizacion-piscina-hero.jpg');
+  background-image: url('../img/climatizacion/climatizacion-piscina-hero.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -600,7 +600,7 @@ ul { list-style: none; }
 .section--servicios-fondo {
   position: relative;
   overflow: hidden;
-  background-image: url('../img/servicios/mapa-municipal-fondo.jpg');
+  background-image: url('../img/servicios/mapa-municipal-fondo.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -737,7 +737,7 @@ ul { list-style: none; }
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('../img/galeria-proyectos/galeria-01.png');
+  background-image: url('../img/galeria-proyectos/galeria-01.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -1422,7 +1422,7 @@ ul { list-style: none; }
   content: '';
   position: absolute;
   inset: 0;
-  background: url('../img/servicios/piscina-atardecer-servicios.jpg') center/cover;
+  background: url('../img/servicios/piscina-atardecer-servicios.webp') center/cover;
   opacity: 0.35;
   animation: heroZoom 20s ease-in-out infinite alternate;
 }
@@ -1844,7 +1844,7 @@ ul { list-style: none; }
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('../img/climatizacion/climatizacion-piscina-hero.jpg');
+  background-image: url('../img/climatizacion/climatizacion-piscina-hero.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -3503,7 +3503,7 @@ ul { list-style: none; }
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('../img/climatizacion/climatizacion-piscina-hero.jpg');
+  background-image: url('../img/climatizacion/climatizacion-piscina-hero.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -3525,7 +3525,7 @@ ul { list-style: none; }
 
 /* Cuadro "Por qué Cuesa Sport": imagen partida en el cuadro, sin filtro blanco */
 .about-img--bg-trabaja-split {
-  background-image: url('../img/trabaja-split-constructores-socorristas.jpg');
+  background-image: url('../img/trabaja-split-constructores-socorristas.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -7258,7 +7258,7 @@ body.page-sectores {
   content: '';
   position: absolute;
   inset: 0;
-  background: url('../img/servicios/piscina-atardecer-servicios.jpg') center/cover;
+  background: url('../img/servicios/piscina-atardecer-servicios.webp') center/cover;
   opacity: 0.35;
   z-index: 0;
 }
