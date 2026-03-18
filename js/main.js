@@ -340,26 +340,34 @@ document.addEventListener('DOMContentLoaded', () => {
           // Phase 1: blueprint appears big and centered (0ms)
           stage.classList.add('phase-1');
 
-          // Phase 2: slides to side + text appears (1.5s)
+          const isMobile = window.innerWidth <= 768;
+          const delay2 = isMobile ? 0 : 1500;
+          const delay3 = isMobile ? 0 : 1900;
+          const delayDone = isMobile ? 0 : 2700;
+
+          // Phase 2: slides to side + text appears
           setTimeout(() => {
             stage.classList.remove('phase-1');
             stage.classList.add('phase-2');
-          }, 1500);
+          }, delay2);
 
           // Phase 3: crossfade to realistic
           setTimeout(() => {
             stage.classList.remove('phase-2');
             stage.classList.add('phase-3');
-          }, 1900);
+          }, delay3);
 
           // Done: lock final state
           setTimeout(() => {
             stage.classList.remove('phase-3');
             stage.classList.add('phase-done');
-          }, 2700);
+          }, delayDone);
         }
       });
-    }, { threshold: 0.6, rootMargin: '0px 0px -10% 0px' });
+    }, {
+      threshold: window.innerWidth <= 768 ? 0.2 : 0.6,
+      rootMargin: '0px 0px -10% 0px'
+    });
 
     poolStages.forEach(stage => poolObserver.observe(stage));
   }

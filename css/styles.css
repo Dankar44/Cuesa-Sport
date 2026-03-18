@@ -3022,12 +3022,133 @@ ul { list-style: none; }
   color: var(--dark);
 }
 
+
+/* ===================== IMAGE COMPARISON SLIDER (MOBILE) ===================== */
+.compare-image-slider-wrap {
+  display: none; /* Hide on desktop by default */
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  --pos: 50%;
+}
+.compare-image-slider-wrap .absolute-inset {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+.compare-image-slider-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.compare-slider-label {
+  position: absolute;
+  top: 12px;
+  background: rgba(255,255,255,0.95);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--dark);
+  z-index: 5;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.slider-label-after { right: 12px; z-index: 1; }
+.slider-label-before { left: 12px; z-index: 10; }
+
+.slider-divider {
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 2px;
+  background: white;
+  z-index: 20;
+  pointer-events: none;
+  left: var(--pos);
+  transform: translateX(-50%);
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+.slider-handle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  color: var(--text-light);
+}
+
+.slider-input {
+  -webkit-appearance: none;
+  appearance: none;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: 30;
+  margin: 0;
+  opacity: 0;
+  cursor: ew-resize;
+}
+.slider-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 40px;
+  height: 100%;
+  background: transparent;
+  cursor: ew-resize;
+}
+.slider-input::-moz-range-thumb {
+  width: 40px;
+  height: 100%;
+  background: transparent;
+  border: none;
+  cursor: ew-resize;
+}
+.slider-hint {
+  display: none;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--text-light);
+  margin-top: 12px;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+}
+
 @media (max-width: 900px) {
+  #servicios .section-header {
+    margin-bottom: 24px;
+  }
+  .service-compare-list {
+    gap: 40px;
+  }
   .service-compare,
   .service-compare--reverse {
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: 24px;
     direction: ltr;
+  }
+
+  /* Show slider and hide grid on mobile */
+  .service-compare-images {
+    display: none;
+  }
+  .compare-image-slider-wrap,
+  .slider-hint {
+    display: flex;
   }
 
   .service-compare-content {
@@ -3590,7 +3711,14 @@ ul { list-style: none; }
 /* ===================== GALERÍA MURO (Proyectos) ===================== */
 .galeria-muro-section { padding-bottom: 80px; overflow-x: hidden; }
 .galeria-muro-header { text-align: center; margin-bottom: 48px; }
+@media (max-width: 768px) {
+  .galeria-muro-header { margin-bottom: 16px; }
+}
 .galeria-muro-cta { text-align: center; margin-top: 56px; }
+@media (max-width: 768px) {
+  .galeria-muro-cta { margin-top: 20px; }
+  .galeria-muro-section { padding-bottom: 30px !important; }
+}
 
 /* Escapar del container: ancho total de la pantalla para que las filas salgan por los lados */
 .galeria-muro {
@@ -3643,8 +3771,8 @@ ul { list-style: none; }
 .galeria-card {
   display: block;
   position: relative;
-  width: 300px;
-  height: 200px;
+  width: 220px;
+  height: 150px;
   flex-shrink: 0;
   border-radius: 24px;
   overflow: hidden;
@@ -4914,9 +5042,9 @@ ul { list-style: none; }
     transform: none !important;
     max-width: 100%;
   }
-  .vhub-scene { width: min(340px, 90vw); height: min(340px, 90vw); margin: 0 auto; }
-  .vhub-pill { width: 56px; height: 56px; font-size: 1rem; }
-  .vhub-pill span { font-size: 8px; }
+  .vhub-scene { width: min(400px, 92vw); height: min(400px, 92vw); margin: 0 auto; }
+  .vhub-pill { width: 64px; height: 64px; font-size: 1.15rem; }
+  .vhub-pill span { font-size: 9px; }
   .vhub-right { text-align: center; }
   .vhub-info { flex-direction: column; align-items: center; gap: 1rem; }
 }
@@ -5742,6 +5870,22 @@ ul { list-style: none; }
 
 /* Ubicaciones: buscador a la izquierda (fuera del mapa) + mapa a la derecha */
 .map-section--full { padding-bottom: 0; }
+@media (max-width: 768px) {
+  .map-section--full {
+    padding-top: 0 !important;
+    overflow: hidden;
+    background: var(--white) !important;
+  }
+  .map-section--full .section-header {
+    padding-top: 30px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+  /* Restore pill to light blue in this section */
+  .map-section--full .section-badge {
+    background: var(--primary-pastel) !important;
+  }
+}
 #localidades.map-section--full { position: relative; overflow: hidden; }
 #localidades::before {
   content: 'UBICACIONES';
@@ -5870,12 +6014,12 @@ ul { list-style: none; }
 @media (max-width: 768px) {
   .map-full-wrap {
     flex-direction: column;
-    min-height: 70vh;
+    min-height: 45vh;
     padding: 0 16px;
   }
   .map-categories-pill-wrap {
     display: block;
-    padding: 12px 0 10px;
+    padding: 4px 0 8px;
     order: -1;
   }
   .map-categories-pill {
@@ -8233,6 +8377,11 @@ body.page-sectores {
   /* En menú móvil abierto, las 3 líneas en negro */
   .nav.active + .hamburger span { background: var(--dark); }
 
+  /* Make section badges white on mobile as requested */
+  .section-badge {
+    background: var(--white) !important;
+  }
+
   .features-grid,
   .projects-grid,
   .pool-types-grid,
@@ -8362,9 +8511,9 @@ body.page-sectores {
   .about-stat .number { font-size: 1.15rem; }
   .about-stat .label { font-size: 0.6rem; }
 
-  .vhub-scene { width: 280px; height: 280px; }
-  .vhub-pill { width: 48px; height: 48px; font-size: 0.85rem; }
-  .vhub-pill span { font-size: 7px; }
+  .vhub-scene { width: 330px; height: 330px; }
+  .vhub-pill { width: 56px; height: 56px; font-size: 1rem; }
+  .vhub-pill span { font-size: 8px; }
 
   #nosotros .section-title { font-size: clamp(1.85rem, 4.5vw, 2.4rem); }
 }
@@ -8557,6 +8706,30 @@ body.page-sectores {
   }
 
   .pool-stage-text .btn { margin: 0 auto; }
+
+  /* Faster animations on mobile - TEXT APPEARS WITH BLUEPRINT */
+  .pool-stage-visual {
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                margin 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+  .pool-blueprint,
+  .pool-realistic {
+    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+  .pool-stage-text {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    pointer-events: auto !important;
+  }
+
+  .pool-stage.phase-2 .pool-stage-text,
+  .pool-stage.phase-3 .pool-stage-text,
+  .pool-stage.phase-done .pool-stage-text {
+    transform: none !important;
+  }
 }
 
 /* Página Mantenimiento piscinas públicas: bloques Invierno / Verano */
