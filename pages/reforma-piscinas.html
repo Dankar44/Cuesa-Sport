@@ -79,11 +79,19 @@
       <div class="reforma-razones-layout reveal" id="reformaRazonesLayout">
         <div class="reforma-razones-col reforma-razones-col--left">
           <div class="reforma-razon-card reforma-razon-card--up reforma-razon-card--delay-0">
+            <div class="reforma-razon-card-arrows">
+              <button type="button" class="reforma-razon-card-arrow reforma-razon-card-prev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+              <button type="button" class="reforma-razon-card-arrow reforma-razon-card-next" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+            </div>
             <span class="reforma-razon-card-num">01</span>
             <h3 class="reforma-razon-card-title">Modernización</h3>
             <p class="reforma-razon-card-desc">Actualice el diseño, los acabados y las funcionalidades de su piscina para que se adapte a las tendencias y necesidades actuales, dotándola de la última tecnología.</p>
           </div>
           <div class="reforma-razon-card reforma-razon-card--down reforma-razon-card--delay-1">
+            <div class="reforma-razon-card-arrows">
+              <button type="button" class="reforma-razon-card-arrow reforma-razon-card-prev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+              <button type="button" class="reforma-razon-card-arrow reforma-razon-card-next" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+            </div>
             <span class="reforma-razon-card-num">02</span>
             <h3 class="reforma-razon-card-title">Eficiencia</h3>
             <p class="reforma-razon-card-desc">Sistemas de filtración y depuración más eficientes reducen el consumo energético y el mantenimiento a largo plazo, cuidando tanto su bolsillo como el medio ambiente.</p>
@@ -100,11 +108,19 @@
 
         <div class="reforma-razones-col reforma-razones-col--right">
           <div class="reforma-razon-card reforma-razon-card--up reforma-razon-card--delay-2">
+            <div class="reforma-razon-card-arrows">
+              <button type="button" class="reforma-razon-card-arrow reforma-razon-card-prev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+              <button type="button" class="reforma-razon-card-arrow reforma-razon-card-next" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+            </div>
             <span class="reforma-razon-card-num">03</span>
             <h3 class="reforma-razon-card-title">Estética</h3>
             <p class="reforma-razon-card-desc">Gresite nuevo, azulejos o gres porcelánico transforman por completo el aspecto de su piscina y su entorno, creando un verdadero oasis visual en su hogar.</p>
           </div>
           <div class="reforma-razon-card reforma-razon-card--down reforma-razon-card--delay-3">
+            <div class="reforma-razon-card-arrows">
+              <button type="button" class="reforma-razon-card-arrow reforma-razon-card-prev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+              <button type="button" class="reforma-razon-card-arrow reforma-razon-card-next" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+            </div>
             <span class="reforma-razon-card-num">04</span>
             <h3 class="reforma-razon-card-title">Revalorización</h3>
             <p class="reforma-razon-card-desc">Una piscina reformada incrementa drásticamente el valor inmobiliario de su propiedad y mejora la experiencia de uso y confort para toda la familia y sus invitados.</p>
@@ -288,7 +304,18 @@
       </div>
     </div>
     <div class="map-full-wrap reveal">
-      <aside class="map-search map-search--sidebar">
+      <div class="map-categories-pill-wrap">
+        <button type="button" class="map-categories-pill" aria-expanded="false" aria-controls="mapFiltersPanelReforma">
+          <i class="fas fa-th-large"></i>
+          <span>Categorías</span>
+        </button>
+      </div>
+      <div class="map-filters-overlay" aria-hidden="true"></div>
+      <aside class="map-search map-search--sidebar" id="mapFiltersPanelReforma">
+        <div class="map-search-drawer-header">
+          <h2 class="map-search-drawer-title">Categorías</h2>
+          <button type="button" class="map-search-drawer-close" aria-label="Cerrar filtros"><i class="fas fa-times"></i></button>
+        </div>
         <div class="map-search-bar">
           <i class="fas fa-search map-search-icon"></i>
           <input type="text" id="mapSearchInputReforma" class="map-search-input" placeholder="Buscar por nombre o localidad…" autocomplete="off">
@@ -468,7 +495,7 @@
 
       function setActiveStep(i) {
         activeStep = Math.max(0, Math.min(i, total - 1));
-        if (barFill) barFill.style.width = 'calc(' + ((activeStep / (total - 1)) * 100) + '% - 3rem)';
+        if (barFill) barFill.style.width = 'calc(' + ((activeStep / (total - 1)) * 100) + '% - 2.25rem)';
         nodes.forEach(function(node, idx) {
           node.classList.toggle('is-active', idx <= activeStep);
         });
@@ -622,6 +649,162 @@
         if (searchInput) { searchInput.value = ''; searchInput.focus(); }
         searchQuery = ''; clearBtn.classList.remove('visible'); applyFilters();
       });
+    })();
+
+    // Puff: una tarjeta visible, flechas cambian con efecto fade+scale
+    (function() {
+      var layout = document.getElementById('reformaRazonesLayout');
+      if (!layout) return;
+
+      var leftCol = layout.querySelector('.reforma-razones-col--left');
+      var rightCol = layout.querySelector('.reforma-razones-col--right');
+      var BREAKPOINT = 768;
+      var currentIndex = 0;
+      var cards = [];
+      var slot = null;
+      var built = false;
+
+      function createSlot() {
+        slot = document.createElement('div');
+        slot.className = 'reforma-razones-puff-slot';
+        var imgWrap = layout.querySelector('.reforma-razones-image-wrap');
+        if (imgWrap && imgWrap.nextSibling) {
+          layout.insertBefore(slot, imgWrap.nextSibling);
+        } else {
+          layout.appendChild(slot);
+        }
+      }
+
+      function showCard(index) {
+        currentIndex = Math.max(0, Math.min(index, cards.length - 1));
+        cards.forEach(function(c, i) {
+          c.classList.toggle('puff-active', i === currentIndex);
+        });
+      }
+
+      function build() {
+        if (built) return;
+        var leftCards = leftCol ? Array.prototype.slice.call(leftCol.querySelectorAll('.reforma-razon-card')) : [];
+        var rightCards = rightCol ? Array.prototype.slice.call(rightCol.querySelectorAll('.reforma-razon-card')) : [];
+        cards = leftCards.concat(rightCards);
+        if (cards.length === 0) return;
+        if (!slot) createSlot();
+        cards.forEach(function(c) { slot.appendChild(c); });
+        layout.classList.add('puff-mobile');
+        built = true;
+        showCard(0);
+      }
+
+      function destroy() {
+        if (!built) return;
+        cards.forEach(function(c) { c.classList.remove('puff-active'); });
+        if (leftCol && cards.length >= 2) {
+          leftCol.appendChild(cards[0]);
+          leftCol.appendChild(cards[1]);
+        }
+        if (rightCol && cards.length >= 4) {
+          rightCol.appendChild(cards[2]);
+          rightCol.appendChild(cards[3]);
+        }
+        layout.classList.remove('puff-mobile');
+        built = false;
+      }
+
+      function isMobile() { return window.innerWidth <= BREAKPOINT; }
+
+      document.addEventListener('click', function(e) {
+        if (!built) return;
+        var prev = e.target.closest('.reforma-razon-card-prev');
+        var next = e.target.closest('.reforma-razon-card-next');
+        if (prev) { e.preventDefault(); showCard(currentIndex - 1); }
+        else if (next) { e.preventDefault(); showCard(currentIndex + 1); }
+      });
+
+      window.addEventListener('resize', function() {
+        if (isMobile()) { if (!built) build(); }
+        else { if (built) destroy(); }
+      });
+
+      if (isMobile()) build();
+    })();
+
+    // Slider automático "Reformas destacadas" (móvil): 1 sola imagen + puff
+    (function() {
+      var section = document.getElementById('reformas-destacadas');
+      if (!section) return;
+      var mq = window.matchMedia('(max-width: 768px)');
+      var cards = section.querySelectorAll('.project-card');
+      if (!cards || cards.length < 2) return;
+
+      var intervalMs = 4500;
+      var transitionMs = 240;
+      var index = 0;
+      var timer = null;
+      var animating = false;
+
+      function setActive(nextIndex, withPuffIn) {
+        if (withPuffIn) {
+          cards[nextIndex].classList.add('puff-in');
+          setTimeout(function() { cards[nextIndex].classList.remove('puff-in'); }, transitionMs);
+        }
+        cards[nextIndex].classList.add('is-active');
+      }
+
+      function swapTo(nextIndex) {
+        if (animating) return;
+        animating = true;
+
+        var current = index;
+        if (nextIndex === current) { animating = false; return; }
+
+        cards[current].classList.add('puff-out');
+
+        setTimeout(function() {
+          cards[current].classList.remove('is-active');
+          cards[current].classList.remove('puff-out');
+
+          index = nextIndex;
+          setActive(index, true);
+          animating = false;
+        }, transitionMs);
+      }
+
+      function start() {
+        // reset
+        if (timer) clearTimeout(timer);
+        cards.forEach(function(c, i) {
+          c.classList.toggle('is-active', i === 0);
+          c.classList.remove('puff-in');
+          c.classList.remove('puff-out');
+        });
+        index = 0;
+
+        function tick() {
+          if (!mq.matches) return;
+          swapTo((index + 1) % cards.length);
+          timer = setTimeout(tick, intervalMs);
+        }
+        timer = setTimeout(tick, intervalMs);
+      }
+
+      function stop() {
+        if (timer) clearTimeout(timer);
+        timer = null;
+        cards.forEach(function(c) {
+          c.classList.remove('is-active');
+          c.classList.remove('puff-in');
+          c.classList.remove('puff-out');
+        });
+      }
+
+      function onChange() {
+        if (mq.matches) start();
+        else stop();
+      }
+
+      // Init
+      onChange();
+      mq.addEventListener('change', onChange);
     })();
   </script>
 </body>

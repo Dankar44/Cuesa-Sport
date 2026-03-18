@@ -528,8 +528,8 @@
         <span class="section-badge"><i class="fas fa-quote-left"></i> Testimonios</span>
         <h2 class="section-title">Lo que dicen <span>nuestros clientes</span></h2>
       </div>
-      <div class="testimonial-grid">
-        <div class="testimonial-card reveal-scale">
+      <div class="testimonial-grid" id="testimonialCarousel">
+        <div class="testimonial-card reveal-scale is-active">
           <div class="testimonial-stars">
             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
           </div>
@@ -556,6 +556,53 @@
       </div>
     </div>
   </section>
+  <script>
+  (function(){
+    var grid = document.getElementById('testimonialCarousel');
+    if (!grid) return;
+    var cards = grid.querySelectorAll('.testimonial-card');
+    if (!cards.length) return;
+    var idx = 0;
+    var timer = null;
+
+    function show(n) {
+      for (var i = 0; i < cards.length; i++) {
+        cards[i].classList.remove('is-active');
+      }
+      idx = n % cards.length;
+      cards[idx].classList.add('is-active');
+    }
+
+    function next() { show(idx + 1); }
+
+    function start() {
+      if (timer) clearInterval(timer);
+      timer = setInterval(next, 6000);
+    }
+
+    function stop() {
+      if (timer) { clearInterval(timer); timer = null; }
+    }
+
+    show(0);
+    if (window.innerWidth <= 768) start();
+
+    window.addEventListener('resize', function() {
+      if (window.innerWidth <= 768) start();
+      else stop();
+    });
+
+    grid.addEventListener('touchstart', stop, { passive: true });
+    grid.addEventListener('touchend', function() {
+      if (window.innerWidth <= 768) start();
+    }, { passive: true });
+
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) stop();
+      else if (window.innerWidth <= 768) start();
+    });
+  })();
+  </script>
 
   <!-- CTA -->
   <section class="cta">
@@ -783,6 +830,27 @@
         marker._poolData = p;
         markers.push(marker);
         marker.addTo(map);
+      });
+
+      map.on('popupopen', function(e) {
+        var popup = e.popup;
+        var popupEl = popup.getElement ? popup.getElement() : (popup._container || null);
+        if (!popupEl) return;
+        setTimeout(function() {
+          var mapContainer = map.getContainer();
+          var containerRect = mapContainer.getBoundingClientRect();
+          var popupRect = popupEl.getBoundingClientRect();
+          var popupCenterX = popupRect.left + popupRect.width / 2;
+          var popupCenterY = popupRect.top + popupRect.height / 2;
+          var containerCenterX = containerRect.left + containerRect.width / 2;
+          var containerCenterY = containerRect.top + containerRect.height / 2;
+          var offsetX = containerCenterX - popupCenterX;
+          var offsetY = containerCenterY - popupCenterY;
+          if (window.innerWidth <= 768) {
+            offsetY -= 105;
+          }
+          map.panBy([-offsetX, -offsetY], { animate: true, duration: 0.25 });
+        }, 80);
       });
 
       var activeTipo = 'all';

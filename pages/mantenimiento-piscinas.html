@@ -99,7 +99,7 @@
     </div>
   </section>
 
-  <!-- 2. Piscinas particulares: imagen izquierda (1), texto derecha (2) -->
+  <!-- SECCIÓN OCULTA: Mantenimiento de piscinas particulares. Restaurar quitando el comentario de apertura y cierre si el cliente lo pide.
   <section class="section section--mantenimiento-privadas">
     <div class="container">
       <div class="about-layout about-layout--image-first about-layout--part stagger">
@@ -127,6 +127,7 @@
       </div>
     </div>
   </section>
+  -->
 
   <!-- 3. Mantenimiento de piscinas con máxima garantía (acordeón) — fondo gris claro, acordeón en blanco -->
   <section class="section section--outline section--accordion section--alt section--mantenimiento-bg">
@@ -202,32 +203,49 @@
         <h2 class="section-title" style="color: var(--dark)">Nuestro <span style="color: var(--primary)">proceso</span></h2>
         <p class="section-subtitle" style="color: var(--dark)">Un método probado que garantiza la excelencia en cada actuación.</p>
       </div>
-      <div class="process-steps-grid stagger">
-        <div class="process-step-card reveal">
+      <div class="process-steps-grid stagger" id="processCarousel">
+        <div class="process-step-card reveal is-active">
+          <div class="process-carousel-controls">
+            <button type="button" class="process-carousel-btn process-carousel-prev"><i class="fas fa-chevron-left"></i></button>
+            <button type="button" class="process-carousel-btn process-carousel-next"><i class="fas fa-chevron-right"></i></button>
+          </div>
           <div class="process-step-icon" style="background: #60a5fa;"><i class="fas fa-clipboard-check"></i></div>
           <span class="process-step-phase">FASE 01</span>
           <h3 class="process-step-title">Revisión integral</h3>
           <p class="process-step-desc">Analizamos su instalación, el estado del agua y los equipos para definir el plan de mantenimiento más adecuado.</p>
         </div>
         <div class="process-step-card reveal">
+          <div class="process-carousel-controls">
+            <button type="button" class="process-carousel-btn process-carousel-prev"><i class="fas fa-chevron-left"></i></button>
+            <button type="button" class="process-carousel-btn process-carousel-next"><i class="fas fa-chevron-right"></i></button>
+          </div>
           <div class="process-step-icon" style="background: #818cf8;"><i class="fas fa-file-lines"></i></div>
           <span class="process-step-phase">FASE 02</span>
           <h3 class="process-step-title">Documentación</h3>
           <p class="process-step-desc">Nos encargamos de toda la documentación técnica, certificados y registros que requiera la normativa vigente.</p>
         </div>
         <div class="process-step-card reveal">
+          <div class="process-carousel-controls">
+            <button type="button" class="process-carousel-btn process-carousel-prev"><i class="fas fa-chevron-left"></i></button>
+            <button type="button" class="process-carousel-btn process-carousel-next"><i class="fas fa-chevron-right"></i></button>
+          </div>
           <div class="process-step-icon" style="background: #22d3ee;"><i class="fas fa-user-check"></i></div>
           <span class="process-step-phase">FASE 03</span>
           <h3 class="process-step-title">Personal cualificado</h3>
           <p class="process-step-desc">Asignamos profesionales titulados con amplia experiencia en mantenimiento de instalaciones acuáticas.</p>
         </div>
         <div class="process-step-card reveal">
+          <div class="process-carousel-controls">
+            <button type="button" class="process-carousel-btn process-carousel-prev"><i class="fas fa-chevron-left"></i></button>
+            <button type="button" class="process-carousel-btn process-carousel-next"><i class="fas fa-chevron-right"></i></button>
+          </div>
           <div class="process-step-icon" style="background: #2dd4bf;"><i class="fas fa-box"></i></div>
           <span class="process-step-phase">FASE 04</span>
           <h3 class="process-step-title">Productos óptimos</h3>
           <p class="process-step-desc">Utilizamos los mejores productos del mercado, con los que trabajamos habitualmente y de los que conocemos su rendimiento.</p>
         </div>
       </div>
+      <div class="process-steps-dots" id="processCarouselDots"></div>
     </div>
   </section>
 
@@ -241,7 +259,18 @@
       </div>
     </div>
     <div class="map-full-wrap reveal">
-      <aside class="map-search map-search--sidebar">
+      <div class="map-categories-pill-wrap">
+        <button type="button" class="map-categories-pill" aria-expanded="false" aria-controls="mapFiltersPanelMantenimiento">
+          <i class="fas fa-th-large"></i>
+          <span>Categorías</span>
+        </button>
+      </div>
+      <div class="map-filters-overlay" aria-hidden="true"></div>
+      <aside class="map-search map-search--sidebar" id="mapFiltersPanelMantenimiento">
+        <div class="map-search-drawer-header">
+          <h2 class="map-search-drawer-title">Categorías</h2>
+          <button type="button" class="map-search-drawer-close" aria-label="Cerrar filtros"><i class="fas fa-times"></i></button>
+        </div>
         <div class="map-search-bar">
           <i class="fas fa-search map-search-icon"></i>
           <input type="text" id="mapSearchInputMantenimiento" class="map-search-input" placeholder="Buscar por nombre o localidad…" autocomplete="off">
@@ -470,15 +499,73 @@
       var accordion = document.getElementById('accordion-mantenimiento');
       if (!accordion) return;
       var panels = accordion.querySelectorAll('.accordion-panel');
+      var isMobile = function() { return window.innerWidth <= 768; };
       panels.forEach(function(panel, i) {
         panel.addEventListener('mouseenter', function() {
+          if (isMobile()) return;
           accordion.setAttribute('data-hovered', String(i));
           panel.classList.add('is-hovered');
         });
         panel.addEventListener('mouseleave', function() {
+          if (isMobile()) return;
           accordion.removeAttribute('data-hovered');
           panels.forEach(function(p) { p.classList.remove('is-hovered'); });
         });
+        panel.addEventListener('click', function() {
+          if (!isMobile()) return;
+          var wasActive = panel.classList.contains('is-active');
+          panels.forEach(function(p) { p.classList.remove('is-active'); });
+          if (!wasActive) panel.classList.add('is-active');
+        });
+      });
+      if (isMobile() && panels.length > 0) {
+        var opened = false;
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting && !opened) {
+              opened = true;
+              setTimeout(function() {
+                panels[0].classList.add('is-active');
+              }, 300);
+            }
+          });
+        }, { threshold: 0.3 });
+        observer.observe(accordion);
+      }
+    })();
+
+    (function() {
+      if (window.innerWidth > 767) return;
+      var grid = document.getElementById('processCarousel');
+      var dotsWrap = document.getElementById('processCarouselDots');
+      if (!grid || !dotsWrap) return;
+      var cards = grid.querySelectorAll('.process-step-card');
+      var total = cards.length;
+      if (total === 0) return;
+      var current = 0;
+      function goTo(idx) {
+        if (idx < 0) idx = total - 1;
+        if (idx >= total) idx = 0;
+        cards.forEach(function(c) { c.classList.remove('is-active'); });
+        cards[idx].classList.add('is-active');
+        current = idx;
+        dotsWrap.querySelectorAll('.process-steps-dot').forEach(function(d, i) {
+          d.classList.toggle('is-active', i === current);
+        });
+      }
+      for (var i = 0; i < total; i++) {
+        var dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'process-steps-dot' + (i === 0 ? ' is-active' : '');
+        dot.dataset.index = i;
+        dot.addEventListener('click', function() { goTo(parseInt(this.dataset.index, 10)); });
+        dotsWrap.appendChild(dot);
+      }
+      grid.querySelectorAll('.process-carousel-prev').forEach(function(btn) {
+        btn.addEventListener('click', function(e) { e.stopPropagation(); goTo(current - 1); });
+      });
+      grid.querySelectorAll('.process-carousel-next').forEach(function(btn) {
+        btn.addEventListener('click', function(e) { e.stopPropagation(); goTo(current + 1); });
       });
     })();
   </script>

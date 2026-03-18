@@ -233,11 +233,19 @@
       <div class="reforma-razones-layout reveal" id="climaRazonesLayout">
         <div class="reforma-razones-col reforma-razones-col--left">
           <div class="reforma-razon-card reforma-razon-card--up reforma-razon-card--delay-0">
+            <div class="reforma-razon-card-arrows">
+              <button type="button" class="reforma-razon-card-arrow reforma-razon-card-prev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+              <button type="button" class="reforma-razon-card-arrow reforma-razon-card-next" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+            </div>
             <span class="reforma-razon-card-num">01</span>
             <h3 class="reforma-razon-card-title">Disfruta todo el año</h3>
             <p class="reforma-razon-card-desc">Pasa de 3-4 meses de baño a disfrutar de tu piscina durante 8 o más meses. Mañanas frescas de primavera y tardes de otoño serán igual de placenteras que en pleno verano.</p>
           </div>
           <div class="reforma-razon-card reforma-razon-card--down reforma-razon-card--delay-1">
+            <div class="reforma-razon-card-arrows">
+              <button type="button" class="reforma-razon-card-arrow reforma-razon-card-prev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+              <button type="button" class="reforma-razon-card-arrow reforma-razon-card-next" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+            </div>
             <span class="reforma-razon-card-num">02</span>
             <h3 class="reforma-razon-card-title">Ahorro energético</h3>
             <p class="reforma-razon-card-desc">Las bombas de calor y paneles solares ofrecen una eficiencia excepcional. Ahorra en la factura energética mientras reduces tu huella de carbono con tecnologías respetuosas con el medio ambiente.</p>
@@ -254,11 +262,19 @@
 
         <div class="reforma-razones-col reforma-razones-col--right">
           <div class="reforma-razon-card reforma-razon-card--up reforma-razon-card--delay-2">
+            <div class="reforma-razon-card-arrows">
+              <button type="button" class="reforma-razon-card-arrow reforma-razon-card-prev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+              <button type="button" class="reforma-razon-card-arrow reforma-razon-card-next" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+            </div>
             <span class="reforma-razon-card-num">03</span>
             <h3 class="reforma-razon-card-title">Revaloriza tu propiedad</h3>
             <p class="reforma-razon-card-desc">Una piscina climatizada supone un valor añadido indiscutible para tu vivienda o comunidad. Es un argumento de venta poderoso que aumenta significativamente el atractivo de la propiedad.</p>
           </div>
           <div class="reforma-razon-card reforma-razon-card--down reforma-razon-card--delay-3">
+            <div class="reforma-razon-card-arrows">
+              <button type="button" class="reforma-razon-card-arrow reforma-razon-card-prev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+              <button type="button" class="reforma-razon-card-arrow reforma-razon-card-next" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+            </div>
             <span class="reforma-razon-card-num">04</span>
             <h3 class="reforma-razon-card-title">Comodidad y bienestar</h3>
             <p class="reforma-razon-card-desc">Agua a temperatura constante, sin contrastes bruscos. Ideal para niños, mayores y para quienes buscan el relax. Nadar se convierte en una experiencia placentera en cualquier momento.</p>
@@ -464,5 +480,91 @@
   </footer>
   <button class="back-to-top"><i class="fas fa-chevron-up"></i></button>
   <script src="../js/main.js"></script>
+  <script>
+    // Puff: "¿Por qué climatizar tu piscina?" en móvil (1 tarjeta visible + flechas)
+    (function() {
+      var layout = document.getElementById('climaRazonesLayout');
+      if (!layout) return;
+
+      var leftCol = layout.querySelector('.reforma-razones-col--left');
+      var rightCol = layout.querySelector('.reforma-razones-col--right');
+      var BREAKPOINT = 768;
+      var currentIndex = 0;
+      var cards = [];
+      var slot = null;
+      var built = false;
+
+      function createSlot() {
+        slot = document.createElement('div');
+        slot.className = 'reforma-razones-puff-slot';
+        var imgWrap = layout.querySelector('.reforma-razones-image-wrap');
+        if (imgWrap && imgWrap.nextSibling) layout.insertBefore(slot, imgWrap.nextSibling);
+        else layout.appendChild(slot);
+      }
+
+      function showCard(index) {
+        if (!cards.length) return;
+        var next = Math.max(0, Math.min(index, cards.length - 1));
+        if (next === currentIndex) return;
+        currentIndex = next;
+        cards.forEach(function(c, i) { c.classList.toggle('puff-active', i === currentIndex); });
+      }
+
+      function build() {
+        if (built) return;
+        var leftCards = leftCol ? Array.prototype.slice.call(leftCol.querySelectorAll('.reforma-razon-card')) : [];
+        var rightCards = rightCol ? Array.prototype.slice.call(rightCol.querySelectorAll('.reforma-razon-card')) : [];
+        cards = leftCards.concat(rightCards);
+        if (!cards.length) return;
+
+        if (!slot) createSlot();
+        while (slot.firstChild) slot.removeChild(slot.firstChild);
+        cards.forEach(function(c) { slot.appendChild(c); });
+
+        layout.classList.add('puff-mobile');
+        built = true;
+        currentIndex = 0;
+        cards.forEach(function(c, i) { c.classList.toggle('puff-active', i === currentIndex); });
+      }
+
+      function destroy() {
+        if (!built) return;
+        cards.forEach(function(c) { c.classList.remove('puff-active'); });
+
+        if (leftCol && cards.length >= 2) {
+          leftCol.appendChild(cards[0]);
+          leftCol.appendChild(cards[1]);
+        }
+        if (rightCol && cards.length >= 4) {
+          rightCol.appendChild(cards[2]);
+          rightCol.appendChild(cards[3]);
+        }
+
+        layout.classList.remove('puff-mobile');
+        built = false;
+      }
+
+      function isMobile() { return window.innerWidth <= BREAKPOINT; }
+
+      document.addEventListener('click', function(e) {
+        if (!built) return;
+        var prev = e.target.closest('.reforma-razon-card-prev');
+        var next = e.target.closest('.reforma-razon-card-next');
+        if (prev) { e.preventDefault(); showCard(currentIndex - 1); }
+        else if (next) { e.preventDefault(); showCard(currentIndex + 1); }
+      });
+
+      function onResize() {
+        if (isMobile()) {
+          if (!built) build();
+        } else {
+          if (built) destroy();
+        }
+      }
+
+      if (isMobile()) build();
+      window.addEventListener('resize', onResize);
+    })();
+  </script>
 </body>
 </html>

@@ -76,6 +76,35 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // ===== TRABAJA CON NOSOTROS: slider "Qué buscamos" en móvil =====
+  (function() {
+    var carousel = document.getElementById('qbCarousel');
+    if (!carousel) return;
+    var items = carousel.querySelectorAll('.qb-list-item');
+    if (!items.length) return;
+    var idx = 0;
+    function isMobile() { return window.innerWidth <= 768; }
+    function show(n) {
+      items.forEach(function(it) { it.classList.remove('is-active'); });
+      idx = ((n % items.length) + items.length) % items.length;
+      items[idx].classList.add('is-active');
+    }
+    function sync() {
+      if (isMobile()) show(idx);
+      else items.forEach(function(it) { it.classList.remove('is-active'); });
+    }
+    show(0);
+    sync();
+    carousel.addEventListener('click', function(e) {
+      if (!isMobile()) return;
+      var prev = e.target.closest('.qb-carousel-btn--prev');
+      var next = e.target.closest('.qb-carousel-btn--next');
+      if (prev) { e.preventDefault(); show(idx - 1); }
+      else if (next) { e.preventDefault(); show(idx + 1); }
+    });
+    window.addEventListener('resize', sync);
+  })();
+
   // ===== SCROLL REVEAL =====
   const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
 
