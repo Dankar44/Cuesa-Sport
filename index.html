@@ -20,7 +20,7 @@
   <!-- Header -->
   <header class="header">
     <div class="container">
-      <a href="index.html" class="logo">Cuesa <span>Sport</span></a>
+      <a href="index.html" class="logo"><img src="img/logo-empresa.webp" alt="" class="logo-img"> Cuesa <span>Sport</span></a>
       <nav class="nav">
         <a href="index.html" class="nav-link">Inicio</a>
         <div class="nav-dropdown">
@@ -703,7 +703,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="index.html" class="logo">Cuesa <span>Sport</span></a>
+          <a href="index.html" class="logo"><img src="img/logo-empresa.webp" alt="" class="logo-img"> Cuesa <span>Sport</span></a>
           <p>Empresa líder en construcción, mantenimiento y reforma de piscinas en Madrid. A tu servicio desde 1986 con la máxima calidad y profesionalidad.</p>
           <div class="footer-social">
             <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -784,9 +784,9 @@
       var empresaCoords = [40.2812, -3.7918];
       var orangeIcon = L.divIcon({
         className: 'map-marker-empresa',
-        html: '<div style="width:0;height:0;border-left:12px solid transparent;border-right:12px solid transparent;border-bottom:24px solid #e67e22;border-top:0;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));margin-top:2px;"></div>',
-        iconSize: [24, 24],
-        iconAnchor: [12, 24]
+        html: '<img src="img/logo-empresa.webp" alt="Cuesa Sport" class="map-marker-logo">',
+        iconSize: [44, 44],
+        iconAnchor: [22, 44]
       });
       var empresaPopup = '<div class="coverage-popup"><h4><i class="fas fa-building" style="color:#e67e22;margin-right:6px"></i>Cuesa Sport</h4><p class="popup-loc"><i class="fas fa-map-marker-alt" style="color:#e67e22;margin-right:4px"></i>Calle Olmo, 13-15<br>Pol. Ind. Niño del Remedio<br>28942 – Fuenlabrada (Madrid)</p><a href="pages/contacto.html">Cómo llegar / Contacto &rarr;</a></div>';
       L.marker(empresaCoords, { icon: orangeIcon }).bindPopup(empresaPopup, { maxWidth: 320 }).addTo(map);

@@ -1307,6 +1307,25 @@ ul { list-style: none; }
   font-weight: 700;
   color: var(--white);
   transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo .logo-img,
+.logo img {
+  max-height: 38px;
+  width: auto;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* Si el logo trae fondo blanco: en header oscuro se funde con multiply */
+.header:not(.scrolled) .logo .logo-img,
+.header:not(.scrolled) .logo img {
+  mix-blend-mode: multiply;
 }
 
 .logo span { color: var(--primary-light); }
@@ -3312,6 +3331,9 @@ ul { list-style: none; }
   overflow: hidden;
   box-shadow: var(--shadow-md);
   --pos: 50%;
+  touch-action: none; /* Evita que el navegador haga scroll al arrastrar la barra en móvil */
+  -webkit-user-select: none;
+  user-select: none;
 }
 .compare-image-slider-wrap .absolute-inset {
   position: absolute;
@@ -3357,8 +3379,10 @@ ul { list-style: none; }
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 32px;
-  height: 32px;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
   background: white;
   border-radius: 50%;
   display: flex;
@@ -3366,6 +3390,7 @@ ul { list-style: none; }
   justify-content: center;
   box-shadow: var(--shadow-md);
   color: var(--text-light);
+  pointer-events: none; /* el arrastre lo maneja el wrap con JS */
 }
 
 .slider-input {
@@ -3384,14 +3409,16 @@ ul { list-style: none; }
 .slider-input::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 40px;
+  width: 44px;
   height: 100%;
+  min-height: 44px;
   background: transparent;
   cursor: ew-resize;
 }
 .slider-input::-moz-range-thumb {
-  width: 40px;
+  width: 44px;
   height: 100%;
+  min-height: 44px;
   background: transparent;
   border: none;
   cursor: ew-resize;
@@ -5852,6 +5879,12 @@ ul { list-style: none; }
 .map-legend-dot--blue { background: #2e8bc0; }
 .map-legend-dot--orange { background: #e67e22; }
 .map-marker-empresa.leaflet-div-icon { background: none !important; border: none !important; }
+.map-marker-empresa .map-marker-logo {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  display: block;
+}
 .coverage-map-attribution { margin-top: 12px; font-size: 0.75rem; color: var(--text-light); text-align: center; }
 
 /* Proyectos: sección hero con 2 tarjetas (imagen, hover y pie) + palabra PROYECTOS al fondo */

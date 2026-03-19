@@ -1,5 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  // ===== FOOTER ACORDEÓN: móvil cerrado (excepto Contacto), escritorio todo abierto =====
+  (function() {
+    var FOOTER_ACCORDION_BREAK = 992;
+    var items = document.querySelectorAll('.footer-accordion-item');
+    function isContacto(details) {
+      var sum = details.querySelector('.footer-accordion-head');
+      return sum && sum.textContent.replace(/\s+/g, ' ').trim().toLowerCase().indexOf('contacto') !== -1;
+    }
+    function syncFooterAccordion() {
+      var isDesktop = window.innerWidth > FOOTER_ACCORDION_BREAK;
+      items.forEach(function(details) {
+        if (isDesktop) {
+          details.setAttribute('open', '');
+        } else {
+          if (isContacto(details)) details.setAttribute('open', '');
+          else details.removeAttribute('open');
+        }
+      });
+    }
+    syncFooterAccordion();
+    window.addEventListener('resize', syncFooterAccordion);
+  })();
+
   // ===== PRELOADER =====
   const preloader = document.querySelector('.preloader');
   if (preloader) {
@@ -75,6 +98,46 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.classList.remove('overflow-hidden');
     });
   });
+
+  // ===== COMPARE SLIDER (Antes/Después): arrastre táctil en móvil =====
+  (function() {
+    document.querySelectorAll('.compare-image-slider-wrap').forEach(function(wrap) {
+      var input = wrap.querySelector('.slider-input');
+      if (!input) return;
+      function getPercent(clientX) {
+        var r = wrap.getBoundingClientRect();
+        var x = clientX - r.left;
+        var p = (x / r.width) * 100;
+        return Math.max(0, Math.min(100, p));
+      }
+      function setPos(p) {
+        wrap.style.setProperty('--pos', p + '%');
+        input.value = Math.round(p);
+      }
+      function onPointerDown(e) {
+        e.preventDefault();
+        setPos(getPercent(e.clientX));
+        wrap.setPointerCapture(e.pointerId);
+        wrap.addEventListener('pointermove', onPointerMove);
+        wrap.addEventListener('pointerup', onPointerUp);
+        wrap.addEventListener('pointercancel', onPointerUp);
+      }
+      function onPointerMove(e) {
+        e.preventDefault();
+        setPos(getPercent(e.clientX));
+      }
+      function onPointerUp(e) {
+        try { wrap.releasePointerCapture(e.pointerId); } catch (_) {}
+        wrap.removeEventListener('pointermove', onPointerMove);
+        wrap.removeEventListener('pointerup', onPointerUp);
+        wrap.removeEventListener('pointercancel', onPointerUp);
+      }
+      wrap.addEventListener('pointerdown', onPointerDown);
+      input.addEventListener('input', function() {
+        wrap.style.setProperty('--pos', this.value + '%');
+      });
+    });
+  })();
 
   // ===== TRABAJA CON NOSOTROS: slider "Qué buscamos" en móvil =====
   (function() {
