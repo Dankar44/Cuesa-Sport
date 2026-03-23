@@ -702,4 +702,128 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   })();
 
+  // ===== BANNER DE COOKIES =====
+  (function() {
+    if (localStorage.getItem('cookie_consent')) return;
+
+    var isInPages = window.location.pathname.indexOf('/pages/') !== -1;
+    var isInBlog = window.location.pathname.indexOf('/pages/blog/') !== -1;
+    var cookiePolicyHref;
+    if (isInBlog) {
+      cookiePolicyHref = '../politica-cookies.html';
+    } else if (isInPages) {
+      cookiePolicyHref = 'politica-cookies.html';
+    } else {
+      cookiePolicyHref = 'pages/politica-cookies.html';
+    }
+
+    var banner = document.createElement('div');
+    banner.className = 'cookie-banner';
+    banner.innerHTML =
+      '<div class="cookie-banner-inner">' +
+        '<div class="cookie-banner-icon"><i class="fas fa-cookie-bite"></i></div>' +
+        '<div class="cookie-banner-text">' +
+          'Utilizamos cookies propias y de terceros para mejorar tu experiencia de navegación. ' +
+          'Puedes aceptar todas las cookies o rechazar las no esenciales. ' +
+          '<a href="' + cookiePolicyHref + '">Más información</a>' +
+        '</div>' +
+        '<div class="cookie-banner-actions">' +
+          '<button class="cookie-btn cookie-btn--accept" id="cookieAccept">Aceptar</button>' +
+          '<button class="cookie-btn cookie-btn--reject" id="cookieReject">Rechazar</button>' +
+        '</div>' +
+      '</div>';
+
+    document.body.appendChild(banner);
+
+    setTimeout(function() { banner.classList.add('visible'); }, 800);
+
+    function closeBanner(choice) {
+      localStorage.setItem('cookie_consent', choice);
+      banner.classList.remove('visible');
+      banner.classList.add('hiding');
+      setTimeout(function() { banner.remove(); }, 600);
+    }
+
+    banner.querySelector('#cookieAccept').addEventListener('click', function() {
+      closeBanner('accepted');
+    });
+    banner.querySelector('#cookieReject').addEventListener('click', function() {
+      closeBanner('rejected');
+    });
+  })();
+
+  // ===== LIGHTBOX GALERÍA DE PROYECTO =====
+  (function() {
+    var items = document.querySelectorAll('.proyecto-galeria-item');
+    if (!items.length) return;
+
+    var srcs = [];
+    items.forEach(function(el) {
+      var img = el.querySelector('img');
+      if (img) srcs.push(img.getAttribute('data-full') || img.src);
+    });
+
+    var overlay = document.createElement('div');
+    overlay.className = 'lightbox-overlay';
+    overlay.innerHTML =
+      '<button class="lightbox-close" aria-label="Cerrar"><i class="fas fa-times"></i></button>' +
+      '<button class="lightbox-nav lightbox-prev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>' +
+      '<img class="lightbox-img" src="" alt="">' +
+      '<button class="lightbox-nav lightbox-next" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>' +
+      '<div class="lightbox-counter"></div>';
+    document.body.appendChild(overlay);
+
+    var lbImg = overlay.querySelector('.lightbox-img');
+    var lbCounter = overlay.querySelector('.lightbox-counter');
+    var currentIdx = 0;
+
+    function show(idx) {
+      currentIdx = (idx + srcs.length) % srcs.length;
+      lbImg.src = srcs[currentIdx];
+      lbCounter.textContent = (currentIdx + 1) + ' / ' + srcs.length;
+    }
+
+    function open(idx) {
+      show(idx);
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function close() {
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    items.forEach(function(el, i) {
+      el.addEventListener('click', function() { open(i); });
+    });
+
+    overlay.querySelector('.lightbox-close').addEventListener('click', close);
+    overlay.querySelector('.lightbox-prev').addEventListener('click', function() { show(currentIdx - 1); });
+    overlay.querySelector('.lightbox-next').addEventListener('click', function() { show(currentIdx + 1); });
+
+    overlay.addEventListener('click', function(e) {
+      if (e.target === overlay) close();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (!overlay.classList.contains('active')) return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowLeft') show(currentIdx - 1);
+      if (e.key === 'ArrowRight') show(currentIdx + 1);
+    });
+
+    var touchStartX = 0;
+    overlay.addEventListener('touchstart', function(e) {
+      touchStartX = e.changedTouches[0].clientX;
+    }, { passive: true });
+    overlay.addEventListener('touchend', function(e) {
+      var diff = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) show(currentIdx - 1);
+        else show(currentIdx + 1);
+      }
+    }, { passive: true });
+  })();
+
 });
