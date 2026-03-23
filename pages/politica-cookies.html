@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Cookies | Cuesa Sport</title>
+  <meta name="description" content="Política de cookies de Cuesa Sport. Información sobre el uso de cookies en nuestro sitio web conforme a la LSSI-CE y el RGPD.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    .legal-hero {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark-soft) 100%);
+      padding: 100px 0 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .legal-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 70% 50%, rgba(126,181,214,0.15) 0%, transparent 60%);
+    }
+    .legal-hero .container { position: relative; z-index: 1; }
+    .legal-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--primary-light);
+      margin-bottom: 20px;
+    }
+    .legal-breadcrumb a { color: var(--primary-light); opacity: 0.7; transition: opacity 0.2s; }
+    .legal-breadcrumb a:hover { opacity: 1; }
+    .legal-breadcrumb i { font-size: 0.6rem; opacity: 0.5; }
+    .legal-hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--white);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .legal-hero p { color: rgba(255,255,255,0.6); font-size: 0.9rem; }
+    .legal-wrap {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      padding: 60px 0 100px;
+    }
+    @media (min-width: 1024px) {
+      .legal-wrap { grid-template-columns: 260px 1fr; gap: 60px; align-items: start; }
+    }
+    .legal-toc {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      padding: 28px 24px;
+      position: sticky;
+      top: 100px;
+    }
+    .legal-toc h3 {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 16px;
+    }
+    .legal-toc ul { list-style: none; padding: 0; margin: 0; }
+    .legal-toc ul li { margin-bottom: 4px; }
+    .legal-toc ul li a {
+      display: block;
+      padding: 7px 12px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      color: var(--text);
+      transition: all 0.2s;
+      line-height: 1.4;
+    }
+    .legal-toc ul li a:hover { background: var(--primary-pastel); color: var(--primary-dark); }
+    .legal-content h2 {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      color: var(--dark);
+      font-weight: 700;
+      margin: 48px 0 16px;
+      padding-top: 16px;
+      border-top: 2px solid var(--border);
+    }
+    .legal-content h2:first-child { margin-top: 0; border-top: none; padding-top: 0; }
+    .legal-content h3 { font-size: 1rem; font-weight: 700; color: var(--primary-dark); margin: 24px 0 10px; }
+    .legal-content p { color: var(--text); line-height: 1.8; margin-bottom: 14px; font-size: 0.95rem; }
+    .legal-content ul { list-style: none; padding: 0; margin: 0 0 14px; }
+    .legal-content ul li {
+      padding: 5px 0 5px 22px;
+      position: relative;
+      color: var(--text);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+    .legal-content ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 14px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary);
+    }
+    .legal-content a { color: var(--primary-dark); text-decoration: underline; }
+    .legal-content a:hover { color: var(--primary); }
+    .legal-info-box {
+      background: var(--primary-pastel);
+      border-left: 4px solid var(--primary);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 20px 24px;
+      margin: 24px 0;
+    }
+    .legal-info-box p { margin-bottom: 6px; font-size: 0.9rem; }
+    .legal-info-box p:last-child { margin-bottom: 0; }
+    .legal-info-box strong { color: var(--dark); }
+    .legal-update {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg-alt);
+      border-radius: var(--radius-full);
+      padding: 6px 16px;
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin-bottom: 32px;
+    }
+    .legal-update i { color: var(--primary); }
+    .legal-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 24px;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      display: block;
+    }
+    @media (min-width: 768px) { .legal-table { display: table; } }
+    .legal-table th {
+      background: var(--primary-pastel);
+      color: var(--dark);
+      font-weight: 700;
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 2px solid var(--primary-light);
+      white-space: nowrap;
+    }
+    .legal-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+      vertical-align: top;
+    }
+    .legal-table tr:last-child td { border-bottom: none; }
+    .legal-table tr:hover td { background: var(--bg-alt); }
+    .cookie-type-badge {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+    .badge--tecnica { background: var(--teal-pastel); color: #2e7d6e; }
+    .badge--analitica { background: var(--lavender-light); color: #4a3f9e; }
+    .badge--terceros { background: var(--sand); color: #7a5a20; }
+    .cookie-types-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+      margin: 20px 0 32px;
+    }
+    .cookie-type-card {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 20px 18px;
+    }
+    .cookie-type-card i { font-size: 1.4rem; margin-bottom: 12px; display: block; }
+    .cookie-type-card.tecnica i { color: #2e7d6e; }
+    .cookie-type-card.analitica i { color: #4a3f9e; }
+    .cookie-type-card.terceros i { color: #7a5a20; }
+    .cookie-type-card h4 { font-size: 0.9rem; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+    .cookie-type-card p { font-size: 0.82rem; color: var(--text-light); line-height: 1.5; margin: 0; }
+    .browser-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+    .browser-card {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      text-align: center;
+    }
+    .browser-card i { font-size: 1.6rem; color: var(--primary); margin-bottom: 8px; display: block; }
+    .browser-card span { font-size: 0.85rem; font-weight: 600; color: var(--dark); display: block; margin-bottom: 4px; }
+    .browser-card a { font-size: 0.75rem; color: var(--primary-dark); text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <div class="preloader">
+    <div class="preloader-logo">Cuesa <span>Sport</span></div>
+    <div class="preloader-bar"></div>
+  </div>
+
+  <header class="header">
+    <div class="container">
+      <a href="../index.html" class="logo"><img src="../img/logo-empresa.webp" alt="" class="logo-img"> Cuesa <span>Sport</span></a>
+      <nav class="nav">
+        <a href="../index.html" class="nav-link">Inicio</a>
+        <div class="nav-dropdown">
+          <a href="sobre-nosotros.html" class="nav-link">Sobre nosotros <i class="fas fa-chevron-down" style="font-size:0.6em;margin-left:4px"></i></a>
+          <div class="nav-dropdown-menu">
+            <a href="sobre-nosotros.html">Nuestra historia</a>
+            <a href="sobre-nosotros.html#valores">Misión y valores</a>
+            <a href="trabaja-con-nosotros.html">Trabaja con nosotros</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="servicios.html" class="nav-link">Servicios <i class="fas fa-chevron-down" style="font-size:0.6em;margin-left:4px"></i></a>
+          <div class="nav-dropdown-menu">
+            <a href="construccion-piscinas.html">Construcción de piscinas</a>
+            <a href="mantenimiento-piscinas.html">Mantenimiento de piscinas</a>
+            <a href="reforma-piscinas.html">Reforma de piscinas</a>
+            <a href="climatizacion-piscinas.html">Climatización de piscinas</a>
+          </div>
+        </div>
+        <a href="proyectos.html" class="nav-link">Proyectos</a>
+        <a href="sectores.html" class="nav-link">Sectores</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contacto.html" class="nav-link nav-cta">Contacto</a>
+      </nav>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </header>
+
+  <section class="legal-hero">
+    <div class="container">
+      <div class="legal-breadcrumb">
+        <a href="../index.html">Inicio</a>
+        <i class="fas fa-chevron-right"></i>
+        <span>Política de Cookies</span>
+      </div>
+      <h1>Política de Cookies</h1>
+      <p>Información sobre el uso de cookies y tecnologías similares en este sitio web</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="legal-wrap">
+
+        <aside class="legal-toc">
+          <h3>Contenido</h3>
+          <ul>
+            <li><a href="#que-son">1. ¿Qué son las cookies?</a></li>
+            <li><a href="#tipos">2. Tipos de cookies</a></li>
+            <li><a href="#cookies-usadas">3. Cookies que utilizamos</a></li>
+            <li><a href="#consentimiento">4. Consentimiento</a></li>
+            <li><a href="#gestion">5. Cómo gestionar las cookies</a></li>
+            <li><a href="#terceros">6. Cookies de terceros</a></li>
+            <li><a href="#cambios">7. Actualización de esta política</a></li>
+            <li><a href="#contacto">8. Contacto</a></li>
+          </ul>
+        </aside>
+
+        <div class="legal-content">
+
+          <div class="legal-update">
+            <i class="fas fa-calendar-alt"></i>
+            Última actualización: marzo de 2026
+          </div>
+
+          <p>En cumplimiento con lo dispuesto en el artículo 22.2 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico (LSSI-CE), y con el Reglamento (UE) 2016/679 (RGPD), le informamos sobre el uso de cookies en el sitio web <strong>cuesasport.com</strong>, titularidad de <strong>Cuesa Sport, S.L.</strong></p>
+
+          <h2 id="que-son">1. ¿Qué son las cookies?</h2>
+          <p>Las cookies son pequeños archivos de texto que se almacenan en su dispositivo (ordenador, teléfono o tableta) cuando visita un sitio web. Permiten que el sitio recuerde sus acciones y preferencias durante un período de tiempo, para que no tenga que volver a introducirlas cada vez que visite el sitio o navegue de una página a otra.</p>
+          <p>Además de las cookies, pueden utilizarse tecnologías similares como el almacenamiento local (localStorage) o las etiquetas de píxel. En esta política, el término «cookies» hace referencia a todas estas tecnologías.</p>
+
+          <h2 id="tipos">2. Tipos de cookies según su finalidad</h2>
+
+          <div class="cookie-types-grid">
+            <div class="cookie-type-card tecnica">
+              <i class="fas fa-cog"></i>
+              <h4>Cookies técnicas</h4>
+              <p>Imprescindibles para el funcionamiento del sitio. No requieren consentimiento.</p>
+            </div>
+            <div class="cookie-type-card analitica">
+              <i class="fas fa-chart-bar"></i>
+              <h4>Cookies analíticas</h4>
+              <p>Permiten conocer el uso del sitio para mejorar su funcionamiento. Requieren consentimiento.</p>
+            </div>
+            <div class="cookie-type-card terceros">
+              <i class="fas fa-external-link-alt"></i>
+              <h4>Cookies de terceros</h4>
+              <p>Instaladas por servicios externos integrados en el sitio. Requieren consentimiento.</p>
+            </div>
+          </div>
+
+          <h2 id="cookies-usadas">3. Cookies que utilizamos en este sitio</h2>
+
+          <h3>3.1. Cookies técnicas (necesarias)</h3>
+          <p>Estas cookies son estrictamente necesarias para el funcionamiento del sitio y no pueden desactivarse. No almacenan información personal identificable.</p>
+
+          <table class="legal-table">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Dominio</th>
+                <th>Duración</th>
+                <th>Finalidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>cookie_consent</code></td>
+                <td>cuesasport.com</td>
+                <td>1 año</td>
+                <td>Almacena la preferencia de consentimiento de cookies del usuario.</td>
+              </tr>
+              <tr>
+                <td>Cookies de sesión del navegador</td>
+                <td>cuesasport.com</td>
+                <td>Sesión</td>
+                <td>Permiten la navegación correcta y el funcionamiento del formulario de contacto.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>3.2. Cookies de mapas (Leaflet / OpenStreetMap)</h3>
+          <p>Nuestro sitio incluye mapas interactivos proporcionados por <strong>OpenStreetMap</strong> a través de la librería <strong>Leaflet</strong>. Al cargar los mapas, el servidor de teselas de OpenStreetMap puede almacenar cookies o registros de acceso según su propia política de privacidad.</p>
+
+          <table class="legal-table">
+            <thead>
+              <tr>
+                <th>Proveedor</th>
+                <th>Dominio</th>
+                <th>Política de privacidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>OpenStreetMap Foundation</td>
+                <td>openstreetmap.org</td>
+                <td><a href="https://wiki.osmfoundation.org/wiki/Privacy_Policy" target="_blank" rel="noopener">Ver política</a></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>3.3. Cookies analíticas (Google Analytics)</h3>
+          <p>Actualmente este sitio web <strong>no tiene instalado Google Analytics</strong>. En caso de que se instale en el futuro, se actualizará esta política y se solicitará el consentimiento previo al usuario conforme al RGPD antes de activar ninguna cookie analítica.</p>
+          <p>En ese momento, las cookies instaladas serían las siguientes:</p>
+
+          <table class="legal-table">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Proveedor</th>
+                <th>Duración</th>
+                <th>Finalidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>_ga</code></td>
+                <td>Google LLC</td>
+                <td>2 años</td>
+                <td>Distingue usuarios únicos mediante un identificador generado aleatoriamente.</td>
+              </tr>
+              <tr>
+                <td><code>_ga_XXXXXXXX</code></td>
+                <td>Google LLC</td>
+                <td>2 años</td>
+                <td>Mantiene el estado de la sesión en Google Analytics 4.</td>
+              </tr>
+              <tr>
+                <td><code>_gid</code></td>
+                <td>Google LLC</td>
+                <td>24 horas</td>
+                <td>Distingue usuarios con un identificador de sesión.</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>Política de privacidad de Google: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></p>
+
+          <h2 id="consentimiento">4. Consentimiento</h2>
+          <p>De conformidad con el art. 22.2 de la LSSI-CE y el art. 6.1.a del RGPD:</p>
+          <ul>
+            <li>Las <strong>cookies técnicas</strong> no requieren consentimiento previo, ya que son estrictamente necesarias para la prestación del servicio.</li>
+            <li>Las <strong>cookies analíticas y de terceros</strong> requieren su consentimiento expreso e informado antes de ser instaladas en su dispositivo.</li>
+          </ul>
+          <p>Al acceder al sitio web por primera vez, se le mostrará un banner de cookies donde podrá aceptar o rechazar cada categoría de cookies. Su preferencia quedará guardada y podrá modificarla en cualquier momento.</p>
+
+          <h2 id="gestion">5. Cómo gestionar y eliminar cookies</h2>
+          <p>Además de las opciones ofrecidas en el panel de preferencias del sitio, puede configurar su navegador para bloquear o eliminar cookies. A continuación encontrará los enlaces de ayuda de los principales navegadores:</p>
+
+          <div class="browser-grid">
+            <div class="browser-card">
+              <i class="fab fa-chrome"></i>
+              <span>Chrome</span>
+              <a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Ver instrucciones</a>
+            </div>
+            <div class="browser-card">
+              <i class="fab fa-firefox-browser"></i>
+              <span>Firefox</span>
+              <a href="https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias" target="_blank" rel="noopener">Ver instrucciones</a>
+            </div>
+            <div class="browser-card">
+              <i class="fab fa-safari"></i>
+              <span>Safari</span>
+              <a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" target="_blank" rel="noopener">Ver instrucciones</a>
+            </div>
+            <div class="browser-card">
+              <i class="fab fa-edge"></i>
+              <span>Edge</span>
+              <a href="https://support.microsoft.com/es-es/windows/eliminar-y-administrar-cookies-168dab11-0753-043d-7c16-ede5947fc64d" target="_blank" rel="noopener">Ver instrucciones</a>
+            </div>
+          </div>
+
+          <p>Tenga en cuenta que deshabilitar determinadas cookies puede afectar al funcionamiento del sitio web.</p>
+
+          <h2 id="terceros">6. Cookies de terceros y servicios integrados</h2>
+          <p>Nuestro sitio integra los siguientes servicios externos que pueden instalar sus propias cookies:</p>
+          <ul>
+            <li><strong>Font Awesome (cdnjs.cloudflare.com):</strong> librería de iconos. No instala cookies propias de seguimiento.</li>
+            <li><strong>Google Fonts (si aplica):</strong> tipografías web. Puede registrar la dirección IP del usuario según la política de Google.</li>
+            <li><strong>OpenStreetMap / Leaflet:</strong> mapas interactivos (ver sección 3.2).</li>
+          </ul>
+          <p>Cuesa Sport, S.L. no controla las cookies instaladas por estos terceros. Le recomendamos consultar sus políticas de privacidad para más información.</p>
+
+          <h2 id="cambios">7. Actualización de esta Política de Cookies</h2>
+          <p>Cuesa Sport, S.L. puede modificar esta Política de Cookies cuando sea necesario, por ejemplo, al incorporar nuevas funcionalidades, cambiar proveedores de servicios o adaptarse a cambios normativos. Cualquier modificación será publicada en esta página con la fecha de actualización correspondiente.</p>
+
+          <h2 id="contacto">8. Contacto</h2>
+          <p>Si tiene cualquier duda sobre el uso de cookies en este sitio web, puede ponerse en contacto con nosotros:</p>
+          <div class="legal-info-box">
+            <p><strong>Cuesa Sport, S.L.</strong></p>
+            <p><strong>Correo:</strong> <a href="mailto:cuesasport@cuesasport.com">cuesasport@cuesasport.com</a></p>
+            <p><strong>Teléfono:</strong> <a href="tel:916002054">91 600 20 54</a></p>
+            <p><strong>Dirección:</strong> Calle Olmo, 13-15, Pol. Ind. Niño del Remedio, 28942 Fuenlabrada (Madrid)</p>
+          </div>
+          <p>También puede ejercer sus derechos en materia de protección de datos consultando nuestra <a href="politica-privacidad.html">Política de Privacidad</a>, o presentar una reclamación ante la <strong>Agencia Española de Protección de Datos (AEPD)</strong> en <a href="https://www.aepd.es" target="_blank" rel="noopener">www.aepd.es</a>.</p>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="logo"><img src="../img/logo-empresa.webp" alt="" class="logo-img"> Cuesa <span>Sport</span></a>
+          <p>Empresa líder en construcción, mantenimiento y reforma de piscinas en Madrid. A tu servicio desde 1986 con la máxima calidad y profesionalidad.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <details class="footer-accordion-item" open>
+          <summary class="footer-accordion-head">Servicios <i class="fas fa-chevron-down footer-accordion-icon" aria-hidden="true"></i></summary>
+          <ul class="footer-links">
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="construccion-piscinas.html">Construcción de piscinas</a></li>
+            <li><a href="piscinas-infinity.html">Piscinas Infinity</a></li>
+            <li><a href="piscinas-desbordante.html">Piscinas Desbordantes</a></li>
+            <li><a href="mantenimiento-piscinas.html">Mantenimiento de piscinas</a></li>
+            <li><a href="reforma-piscinas.html">Reforma de piscinas</a></li>
+            <li><a href="climatizacion-piscinas.html">Climatización de piscinas</a></li>
+          </ul>
+        </details>
+        <details class="footer-accordion-item" open>
+          <summary class="footer-accordion-head">Empresa <i class="fas fa-chevron-down footer-accordion-icon" aria-hidden="true"></i></summary>
+          <ul class="footer-links">
+            <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
+            <li><a href="proyectos.html">Proyectos</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="trabaja-con-nosotros.html">Trabaja con nosotros</a></li>
+          </ul>
+        </details>
+        <details class="footer-accordion-item" open>
+          <summary class="footer-accordion-head">Contacto <i class="fas fa-chevron-down footer-accordion-icon" aria-hidden="true"></i></summary>
+          <div class="footer-contact-wrap">
+            <div class="footer-contact-item"><i class="fas fa-phone"></i><span><a href="tel:916002054">91 600 20 54</a></span></div>
+            <div class="footer-contact-item"><i class="fas fa-envelope"></i><span><a href="mailto:cuesasport@cuesasport.com">cuesasport@cuesasport.com</a></span></div>
+            <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><span>Calle Olmo, 13-15<br>Pol. Ind. Niño del Remedio<br>28942 Fuenlabrada (Madrid)</span></div>
+          </div>
+        </details>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Cuesa Sport, S.L. Todos los derechos reservados.</span>
+        <div class="footer-bottom-links">
+          <a href="aviso-legal.html">Aviso legal</a>
+          <a href="politica-cookies.html">Política de cookies</a>
+          <a href="politica-privacidad.html">Política de privacidad</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="Volver arriba"><i class="fas fa-chevron-up"></i></button>
+  <script src="../js/main.js"></script>
+</body>
+</html>

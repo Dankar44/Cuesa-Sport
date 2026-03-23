@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aviso Legal | Cuesa Sport</title>
+  <meta name="description" content="Aviso legal de Cuesa Sport. Información sobre el titular del sitio web, condiciones de uso y propiedad intelectual.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    .legal-hero {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark-soft) 100%);
+      padding: 100px 0 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .legal-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 70% 50%, rgba(126,181,214,0.15) 0%, transparent 60%);
+    }
+    .legal-hero .container { position: relative; z-index: 1; }
+    .legal-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--primary-light);
+      margin-bottom: 20px;
+    }
+    .legal-breadcrumb a { color: var(--primary-light); opacity: 0.7; transition: opacity 0.2s; }
+    .legal-breadcrumb a:hover { opacity: 1; }
+    .legal-breadcrumb i { font-size: 0.6rem; opacity: 0.5; }
+    .legal-hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--white);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .legal-hero p {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.9rem;
+    }
+    .legal-wrap {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      padding: 60px 0 100px;
+    }
+    @media (min-width: 1024px) {
+      .legal-wrap { grid-template-columns: 260px 1fr; gap: 60px; align-items: start; }
+    }
+    .legal-toc {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      padding: 28px 24px;
+      position: sticky;
+      top: 100px;
+    }
+    .legal-toc h3 {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 16px;
+    }
+    .legal-toc ul { list-style: none; padding: 0; margin: 0; }
+    .legal-toc ul li { margin-bottom: 4px; }
+    .legal-toc ul li a {
+      display: block;
+      padding: 7px 12px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      color: var(--text);
+      transition: all 0.2s;
+      line-height: 1.4;
+    }
+    .legal-toc ul li a:hover {
+      background: var(--primary-pastel);
+      color: var(--primary-dark);
+    }
+    .legal-content h2 {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      color: var(--dark);
+      font-weight: 700;
+      margin: 48px 0 16px;
+      padding-top: 16px;
+      border-top: 2px solid var(--border);
+    }
+    .legal-content h2:first-child { margin-top: 0; border-top: none; padding-top: 0; }
+    .legal-content h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin: 24px 0 10px;
+    }
+    .legal-content p {
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+    }
+    .legal-content ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 14px;
+    }
+    .legal-content ul li {
+      padding: 5px 0 5px 22px;
+      position: relative;
+      color: var(--text);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+    .legal-content ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 14px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary);
+    }
+    .legal-content a { color: var(--primary-dark); text-decoration: underline; }
+    .legal-content a:hover { color: var(--primary); }
+    .legal-info-box {
+      background: var(--primary-pastel);
+      border-left: 4px solid var(--primary);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 20px 24px;
+      margin: 24px 0;
+    }
+    .legal-info-box p { margin-bottom: 6px; font-size: 0.9rem; }
+    .legal-info-box p:last-child { margin-bottom: 0; }
+    .legal-info-box strong { color: var(--dark); }
+    .legal-update {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg-alt);
+      border-radius: var(--radius-full);
+      padding: 6px 16px;
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin-bottom: 32px;
+    }
+    .legal-update i { color: var(--primary); }
+  </style>
+</head>
+<body>
+
+  <div class="preloader">
+    <div class="preloader-logo">Cuesa <span>Sport</span></div>
+    <div class="preloader-bar"></div>
+  </div>
+
+  <header class="header">
+    <div class="container">
+      <a href="../index.html" class="logo"><img src="../img/logo-empresa.webp" alt="" class="logo-img"> Cuesa <span>Sport</span></a>
+      <nav class="nav">
+        <a href="../index.html" class="nav-link">Inicio</a>
+        <div class="nav-dropdown">
+          <a href="sobre-nosotros.html" class="nav-link">Sobre nosotros <i class="fas fa-chevron-down" style="font-size:0.6em;margin-left:4px"></i></a>
+          <div class="nav-dropdown-menu">
+            <a href="sobre-nosotros.html">Nuestra historia</a>
+            <a href="sobre-nosotros.html#valores">Misión y valores</a>
+            <a href="trabaja-con-nosotros.html">Trabaja con nosotros</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="servicios.html" class="nav-link">Servicios <i class="fas fa-chevron-down" style="font-size:0.6em;margin-left:4px"></i></a>
+          <div class="nav-dropdown-menu">
+            <a href="construccion-piscinas.html">Construcción de piscinas</a>
+            <a href="mantenimiento-piscinas.html">Mantenimiento de piscinas</a>
+            <a href="reforma-piscinas.html">Reforma de piscinas</a>
+            <a href="climatizacion-piscinas.html">Climatización de piscinas</a>
+          </div>
+        </div>
+        <a href="proyectos.html" class="nav-link">Proyectos</a>
+        <a href="sectores.html" class="nav-link">Sectores</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contacto.html" class="nav-link nav-cta">Contacto</a>
+      </nav>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </header>
+
+  <section class="legal-hero">
+    <div class="container">
+      <div class="legal-breadcrumb">
+        <a href="../index.html">Inicio</a>
+        <i class="fas fa-chevron-right"></i>
+        <span>Aviso Legal</span>
+      </div>
+      <h1>Aviso Legal</h1>
+      <p>Información legal sobre el titular y las condiciones de uso del sitio web</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="legal-wrap">
+
+        <aside class="legal-toc">
+          <h3>Contenido</h3>
+          <ul>
+            <li><a href="#datos-identificativos">1. Datos identificativos</a></li>
+            <li><a href="#objeto">2. Objeto y ámbito de aplicación</a></li>
+            <li><a href="#uso">3. Condiciones de uso</a></li>
+            <li><a href="#propiedad-intelectual">4. Propiedad intelectual</a></li>
+            <li><a href="#responsabilidad">5. Responsabilidad</a></li>
+            <li><a href="#enlaces">6. Política de enlaces</a></li>
+            <li><a href="#legislacion">7. Legislación aplicable</a></li>
+          </ul>
+        </aside>
+
+        <div class="legal-content">
+
+          <div class="legal-update">
+            <i class="fas fa-calendar-alt"></i>
+            Última actualización: marzo de 2026
+          </div>
+
+          <h2 id="datos-identificativos">1. Datos identificativos del titular</h2>
+          <p>En cumplimiento con el deber de información recogido en el artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico (LSSI-CE), se indican a continuación los datos identificativos del titular del sitio web:</p>
+
+          <div class="legal-info-box">
+            <p><strong>Razón social:</strong> Cuesa Sport, S.L.</p>
+            <p><strong>CIF:</strong> [NÚMERO CIF — completar]</p>
+            <p><strong>Domicilio social:</strong> Calle Olmo, 13-15, Pol. Ind. Niño del Remedio, 28942 Fuenlabrada (Madrid)</p>
+            <p><strong>Teléfono:</strong> <a href="tel:916002054">91 600 20 54</a></p>
+            <p><strong>Correo electrónico:</strong> <a href="mailto:cuesasport@cuesasport.com">cuesasport@cuesasport.com</a></p>
+            <p><strong>Sitio web:</strong> <a href="https://cuesasport.com">https://cuesasport.com</a></p>
+            <p><strong>Registro Mercantil:</strong> [Datos de inscripción — completar]</p>
+          </div>
+
+          <h2 id="objeto">2. Objeto y ámbito de aplicación</h2>
+          <p>El presente Aviso Legal regula el acceso y uso del sitio web <strong>cuesasport.com</strong> (en adelante, «el Sitio»), titularidad de Cuesa Sport, S.L., cuya actividad principal es la construcción, reforma, mantenimiento y climatización de piscinas en la Comunidad de Madrid.</p>
+          <p>El acceso al Sitio y el uso de sus contenidos implica la aceptación plena y sin reservas de las presentes condiciones. Si no está de acuerdo con ellas, le rogamos que abandone el Sitio.</p>
+
+          <h2 id="uso">3. Condiciones de uso</h2>
+          <h3>3.1. Uso correcto del Sitio</h3>
+          <p>El usuario se compromete a utilizar el Sitio de conformidad con la ley, la moral, el orden público y las presentes condiciones. Queda expresamente prohibido:</p>
+          <ul>
+            <li>Reproducir, copiar, distribuir o modificar los contenidos sin autorización expresa y por escrito de Cuesa Sport, S.L.</li>
+            <li>Utilizar el Sitio con fines ilícitos, lesivos de derechos de terceros o que puedan dañar, inutilizar o sobrecargar la infraestructura.</li>
+            <li>Introducir o difundir virus informáticos o cualquier código dañino.</li>
+            <li>Publicar o transmitir información falsa, engañosa o que atente contra derechos de terceros.</li>
+          </ul>
+
+          <h3>3.2. Menores de edad</h3>
+          <p>El Sitio no está dirigido a menores de 14 años. Si tiene conocimiento de que un menor ha facilitado datos personales sin consentimiento de sus tutores legales, póngase en contacto con nosotros para proceder a su supresión.</p>
+
+          <h2 id="propiedad-intelectual">4. Propiedad intelectual e industrial</h2>
+          <p>Todos los contenidos del Sitio — incluyendo textos, fotografías, gráficos, imágenes, logotipos, iconos, código fuente, diseño gráfico y demás elementos — son propiedad de Cuesa Sport, S.L. o de terceros que han autorizado su uso, y están protegidos por la legislación española e internacional sobre propiedad intelectual e industrial.</p>
+          <p>Queda expresamente prohibida la reproducción total o parcial, transformación, distribución, comunicación pública o cualquier otra forma de explotación de dichos contenidos sin el consentimiento previo y por escrito del titular.</p>
+          <p>Las marcas, nombres comerciales y demás signos distintivos que aparecen en el Sitio son propiedad de Cuesa Sport, S.L. o de terceros autorizados, y no podrán ser utilizados sin autorización expresa.</p>
+
+          <h2 id="responsabilidad">5. Exención de responsabilidad</h2>
+          <h3>5.1. Disponibilidad del Sitio</h3>
+          <p>Cuesa Sport, S.L. no garantiza la disponibilidad ininterrumpida del Sitio y no se responsabiliza de los daños o perjuicios que puedan derivarse de interrupciones, errores o fallos del servicio por causas ajenas a su control.</p>
+
+          <h3>5.2. Exactitud de la información</h3>
+          <p>La información publicada tiene carácter orientativo. Cuesa Sport, S.L. se reserva el derecho a modificar, ampliar o eliminar contenidos sin previo aviso, y no se responsabiliza de los errores u omisiones que pudieran existir.</p>
+
+          <h3>5.3. Virus y seguridad</h3>
+          <p>Cuesa Sport, S.L. no garantiza que el Sitio esté libre de virus u otros elementos que puedan causar daños en sistemas informáticos. Es responsabilidad del usuario adoptar las medidas adecuadas de seguridad.</p>
+
+          <h2 id="enlaces">6. Política de enlaces</h2>
+          <p>El Sitio puede contener enlaces a páginas web de terceros. Cuesa Sport, S.L. no tiene control sobre dichas páginas externas, no se responsabiliza de sus contenidos y no implica ningún tipo de relación comercial o asociación con sus titulares.</p>
+          <p>Para establecer un enlace hacia el Sitio desde una página de terceros, deberá obtenerse autorización previa y por escrito de Cuesa Sport, S.L.</p>
+
+          <h2 id="legislacion">7. Legislación aplicable y jurisdicción</h2>
+          <p>Las presentes condiciones se rigen por la legislación española. Para la resolución de cualquier controversia derivada del uso del Sitio, las partes se someten a los Juzgados y Tribunales de Madrid (España), con renuncia expresa a cualquier otro fuero que pudiera corresponderles.</p>
+          <p>Normativa de referencia:</p>
+          <ul>
+            <li>Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico (LSSI-CE).</li>
+            <li>Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales (LOPDGDD).</li>
+            <li>Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo (RGPD).</li>
+            <li>Real Decreto Legislativo 1/1996, de 12 de abril, que aprueba el Texto Refundido de la Ley de Propiedad Intelectual.</li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="logo"><img src="../img/logo-empresa.webp" alt="" class="logo-img"> Cuesa <span>Sport</span></a>
+          <p>Empresa líder en construcción, mantenimiento y reforma de piscinas en Madrid. A tu servicio desde 1986 con la máxima calidad y profesionalidad.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <details class="footer-accordion-item" open>
+          <summary class="footer-accordion-head">Servicios <i class="fas fa-chevron-down footer-accordion-icon" aria-hidden="true"></i></summary>
+          <ul class="footer-links">
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="construccion-piscinas.html">Construcción de piscinas</a></li>
+            <li><a href="piscinas-infinity.html">Piscinas Infinity</a></li>
+            <li><a href="piscinas-desbordante.html">Piscinas Desbordantes</a></li>
+            <li><a href="mantenimiento-piscinas.html">Mantenimiento de piscinas</a></li>
+            <li><a href="reforma-piscinas.html">Reforma de piscinas</a></li>
+            <li><a href="climatizacion-piscinas.html">Climatización de piscinas</a></li>
+          </ul>
+        </details>
+        <details class="footer-accordion-item" open>
+          <summary class="footer-accordion-head">Empresa <i class="fas fa-chevron-down footer-accordion-icon" aria-hidden="true"></i></summary>
+          <ul class="footer-links">
+            <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
+            <li><a href="proyectos.html">Proyectos</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="trabaja-con-nosotros.html">Trabaja con nosotros</a></li>
+          </ul>
+        </details>
+        <details class="footer-accordion-item" open>
+          <summary class="footer-accordion-head">Contacto <i class="fas fa-chevron-down footer-accordion-icon" aria-hidden="true"></i></summary>
+          <div class="footer-contact-wrap">
+            <div class="footer-contact-item"><i class="fas fa-phone"></i><span><a href="tel:916002054">91 600 20 54</a></span></div>
+            <div class="footer-contact-item"><i class="fas fa-envelope"></i><span><a href="mailto:cuesasport@cuesasport.com">cuesasport@cuesasport.com</a></span></div>
+            <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><span>Calle Olmo, 13-15<br>Pol. Ind. Niño del Remedio<br>28942 Fuenlabrada (Madrid)</span></div>
+          </div>
+        </details>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Cuesa Sport, S.L. Todos los derechos reservados.</span>
+        <div class="footer-bottom-links">
+          <a href="aviso-legal.html">Aviso legal</a>
+          <a href="politica-cookies.html">Política de cookies</a>
+          <a href="politica-privacidad.html">Política de privacidad</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="Volver arriba"><i class="fas fa-chevron-up"></i></button>
+  <script src="../js/main.js"></script>
+</body>
+</html>
